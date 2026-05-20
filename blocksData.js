@@ -1,5 +1,3 @@
-let F = "folder";
-let B = "block";
 const libraryData = {
     "Quests": {
         type: F,

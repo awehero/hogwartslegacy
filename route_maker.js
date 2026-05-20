@@ -1,10 +1,6 @@
 let libraryRoot = document.getElementById("blockLibrary");
 let routeContainer = document.getElementById("routeContainer");
 
-const F = "folder";
-const B = "block";
-
-
 // -----------------------------
 // Recursive renderer
 // -----------------------------
