@@ -3,11 +3,11 @@ let routeContainer = document.getElementById("routeContainer");
 
 
 // -----------------------------
-// Render Library (recursive)
+// Recursive renderer (FIXED)
 // -----------------------------
-function renderNode(node, parent, idPath = "") {
+function renderNode(node, parent) {
 
-    let currentPath = idPath + "/" + (node.name || "");
+    if (!node) return;
 
     // FOLDER
     if (node.type === "folder") {
@@ -26,8 +26,10 @@ function renderNode(node, parent, idPath = "") {
         folder.appendChild(content);
         parent.appendChild(folder);
 
-        for (let key in node.children) {
-            renderNode(node.children[key], content, currentPath);
+        if (node.children) {
+            for (let key in node.children) {
+                renderNode(node.children[key], content);
+            }
         }
 
         return;
@@ -40,7 +42,7 @@ function renderNode(node, parent, idPath = "") {
         block.className = "libraryBlock";
 
         block.innerText = node.name;
-        block.dataset.id = node.id || currentPath;
+
         block.dataset.name = node.name;
 
         parent.appendChild(block);
@@ -49,9 +51,10 @@ function renderNode(node, parent, idPath = "") {
 
 
 // -----------------------------
-// Build full library UI
+// Build library
 // -----------------------------
 function buildLibrary() {
+    libraryRoot.innerHTML = "";
     renderNode(libraryData, libraryRoot);
 }
 
@@ -59,24 +62,21 @@ buildLibrary();
 
 
 // -----------------------------
-// Route renderer (simple)
+// Route render (simple)
 // -----------------------------
 function renderRouteBlock(data) {
-
-    if (!data) return "<b>Unknown Block</b>";
-
     return `<b>${data.name}</b>`;
 }
 
 
 // -----------------------------
-// Make ONLY blocks draggable
+// Drag setup (FIXED)
 // -----------------------------
-function initLibraryDrag() {
+function initDrag() {
 
-    document.querySelectorAll(".libraryBlock").forEach(block => {
+    document.querySelectorAll(".folderContent").forEach(container => {
 
-        new Sortable(block.parentElement, {
+        new Sortable(container, {
             group: {
                 name: "shared",
                 pull: "clone",
@@ -85,10 +85,11 @@ function initLibraryDrag() {
             sort: false,
             animation: 150
         });
+
     });
 }
 
-initLibraryDrag();
+initDrag();
 
 
 // -----------------------------
@@ -111,8 +112,8 @@ new Sortable(routeContainer, {
         block.classList.remove("libraryBlock");
         block.classList.add("routeBlock");
 
-        let name = block.dataset.name;
-
-        block.innerHTML = renderRouteBlock({ name });
+        block.innerHTML = renderRouteBlock({
+            name: block.dataset.name
+        });
     }
 });
