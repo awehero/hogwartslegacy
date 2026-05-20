@@ -13,5 +13,9 @@ let libraryData = {
                 "Redeem"
             ]
         }
-    ]
+    ],
+    travel: [
+        { id: "floo_castle", name: "Floo: Hogwarts Castle", to: "castle" },
+        { id: "floo_hogsmeade", name: "Floo: Hogsmeade", to: "hogsmeade" }
+    ],
 };
