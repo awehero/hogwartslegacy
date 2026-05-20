@@ -8,7 +8,7 @@ const B = "block";
 // -----------------------------
 // Recursive renderer
 // -----------------------------
-function renderNode(node, parent, name = null) {
+function renderNode(node, parent, name = null, path = []) {
 
     if (!node) return;
 
@@ -25,11 +25,27 @@ function renderNode(node, parent, name = null) {
         let content = document.createElement("div");
         content.className = "folderContent";
 
+        folder.dataset.collapsed = "false";
+
+        header.style.cursor = "pointer";
+
+        header.addEventListener("click", () => {
+
+            let collapsed = folder.dataset.collapsed === "true";
+
+            if (collapsed) {
+                content.style.display = "block";
+                folder.dataset.collapsed = "false";
+            } else {
+                content.style.display = "none";
+                folder.dataset.collapsed = "true";
+            }
+        });
+
         folder.appendChild(header);
         folder.appendChild(content);
         parent.appendChild(folder);
 
-        // attach drag to THIS folder ONLY
         new Sortable(content, {
             group: {
                 name: "shared",
@@ -41,8 +57,9 @@ function renderNode(node, parent, name = null) {
         });
 
         if (node.items) {
+            let newPath = [...path, node.name || name || "Folder"];
             for (let key in node.items) {
-                renderNode(node.items[key], content, key);
+                renderNode(node.items[key], content, key, newPath);
             }
         }
 
@@ -55,10 +72,13 @@ function renderNode(node, parent, name = null) {
         let block = document.createElement("div");
         block.className = "libraryBlock";
 
-        block.innerText = node.name || name || "Block";
+        let fullPath = [...path, node.name || name].filter(Boolean);
 
-        // IMPORTANT: store name for route
-        block.dataset.name = node.name || name;
+        let displayName = fullPath.join(" - ");
+
+        block.innerText = displayName;
+
+        block.dataset.name = displayName;
 
         parent.appendChild(block);
     }
