@@ -1,66 +1,64 @@
 let libraryRoot = document.getElementById("blockLibrary");
 let routeContainer = document.getElementById("routeContainer");
 
+const F = "folder";
+const B = "block";
+
 
 // -----------------------------
-// Recursive renderer (FIXED)
+// Recursive renderer
 // -----------------------------
-function renderNode(node, parent) {
+function renderNode(node, parent, name = null) {
 
     if (!node) return;
 
-    // FOLDER
-    if (node.type === "folder") {
+    // ---------------- FOLDER ----------------
+    if (node.type === F) {
+
         let folder = document.createElement("div");
         folder.className = "folder";
 
         let header = document.createElement("div");
         header.className = "folderHeader";
-        header.innerText = node.name || "Folder";
+        header.innerText = node.name || name || "Folder";
 
         let content = document.createElement("div");
         content.className = "folderContent";
-
-        // default: expanded
-        folder.dataset.collapsed = "false";
-
-        header.style.cursor = "pointer";
-
-        header.addEventListener("click", () => {
-
-            let isCollapsed = folder.dataset.collapsed === "true";
-
-            if (isCollapsed) {
-                content.style.display = "block";
-                folder.dataset.collapsed = "false";
-            } else {
-                content.style.display = "none";
-                folder.dataset.collapsed = "true";
-            }
-        });
 
         folder.appendChild(header);
         folder.appendChild(content);
         parent.appendChild(folder);
 
-        if (node.children) {
-            for (let key in node.children) {
-                renderNode(node.children[key], content);
+        // attach drag to THIS folder ONLY
+        new Sortable(content, {
+            group: {
+                name: "shared",
+                pull: "clone",
+                put: false
+            },
+            sort: false,
+            animation: 150
+        });
+
+        if (node.items) {
+            for (let key in node.items) {
+                renderNode(node.items[key], content, key);
             }
         }
 
         return;
     }
 
-    // BLOCK
-    if (node.type === "block") {
+    // ---------------- BLOCK ----------------
+    if (node.type === B) {
 
         let block = document.createElement("div");
         block.className = "libraryBlock";
 
-        block.innerText = node.name;
+        block.innerText = node.name || name || "Block";
 
-        block.dataset.name = node.name;
+        // IMPORTANT: store name for route
+        block.dataset.name = node.name || name;
 
         parent.appendChild(block);
     }
@@ -72,8 +70,9 @@ function renderNode(node, parent) {
 // -----------------------------
 function buildLibrary() {
     libraryRoot.innerHTML = "";
-    for (let key in libraryData.children) {
-        renderNode(libraryData.children[key], libraryRoot);
+
+    for (let key in libraryData) {
+        renderNode(libraryData[key], libraryRoot, key);
     }
 }
 
@@ -81,34 +80,11 @@ buildLibrary();
 
 
 // -----------------------------
-// Route render (simple)
+// Route renderer
 // -----------------------------
 function renderRouteBlock(data) {
     return `<b>${data.name}</b>`;
 }
-
-
-// -----------------------------
-// Drag setup (FIXED)
-// -----------------------------
-function initDrag() {
-
-    document.querySelectorAll(".folderContent").forEach(container => {
-
-        new Sortable(container, {
-            group: {
-                name: "shared",
-                pull: "clone",
-                put: false
-            },
-            sort: false,
-            animation: 150
-        });
-
-    });
-}
-
-initDrag();
 
 
 // -----------------------------

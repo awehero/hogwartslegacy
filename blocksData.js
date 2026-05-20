@@ -1,30 +1,71 @@
 const libraryData = {
-    type: "folder",
-    name: "root",
-    children: {
-        quests: {
-            type: "folder",
-            name: "Quests",
-            children: {
-                gobstones: {
-                    type: "folder",
-                    name: "Gobs of Gobstones",
-                    children: {
-                        start: { type: "block", name: "Start" },
-                        courtyard: { type: "block", name: "Courtyard" },
-                        tower: { type: "block", name: "Tower" },
-                        trophy: { type: "block", name: "Trophy Room" }
-                    }
+    "Quests": {
+        type: F,
+        items: {
+            "Gobs of Gobstones": {
+                type: F,
+                items: {
+                    "Start": {type: B},
+                    "Courtyard": {type: B},
+                    "Tower": {type: B},
+                    "Trophy": {type: B}
                 }
             }
-        },
+        }
+    },
+    "Travel": {
+        type: F,
+        items: {
+            "Floo": {
+                type: F,
+                items: {
+                    "Hogwarts": {
+                        type: F,
+                        items: {
 
-        travel: {
-            type: "folder",
-            name: "Travel",
-            children: {
-                floo1: { type: "block", name: "Floo: Hogwarts Castle" },
-                floo2: { type: "block", name: "Floo: Hogsmeade" }
+                        }
+                    },
+                    "Hogsmeade": {
+                        type: F,
+                        items: {
+
+                        }
+                    },
+                    "Highlands": {
+                        type: F,
+                        items: {
+
+                        }
+                    },
+                }
+            }
+        }
+    },
+    "Collect": {
+        type: F,
+        items: {
+            "Floo": {
+                type: F,
+                items: {
+                    "Hogwarts": {
+                        type: F,
+                        items: {
+
+                        }
+                    },
+                    "Hogsmeade": {
+                        type: F,
+                        items: {
+
+                        }
+                    },
+                    "Highlands": {
+                        type: F,
+                        items: {
+
+                        }
+                    },
+                }
             }
         }
     }
