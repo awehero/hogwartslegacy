@@ -3,106 +3,80 @@ let routeContainer = document.getElementById("routeContainer");
 
 
 // -----------------------------
-// Build Library UI
+// Render Library (recursive)
 // -----------------------------
-function buildLibrary() {
+function renderNode(node, parent, idPath = "") {
 
-    for (let category in libraryData) {
+    let currentPath = idPath + "/" + (node.name || "");
+
+    // FOLDER
+    if (node.type === "folder") {
 
         let folder = document.createElement("div");
         folder.className = "folder";
 
         let header = document.createElement("div");
         header.className = "folderHeader";
-        header.innerText = category;
+        header.innerText = node.name || "Folder";
 
         let content = document.createElement("div");
         content.className = "folderContent";
 
-        libraryData[category].forEach(block => {
-
-            let div = document.createElement("div");
-            div.className = "libraryBlock";
-
-            div.dataset.id = block.id;
-            div.dataset.type = category;
-
-            div.innerText = block.name;
-
-            content.appendChild(div);
-        });
-
         folder.appendChild(header);
         folder.appendChild(content);
-        libraryRoot.appendChild(folder);
-    }
-}
+        parent.appendChild(folder);
 
-
-// -----------------------------
-// Find block in library data
-// -----------------------------
-function findBlock(id) {
-
-    for (let category in libraryData) {
-
-        let found = libraryData[category].find(b => b.id === id);
-
-        if (found) {
-            return {
-                category,
-                data: found
-            };
+        for (let key in node.children) {
+            renderNode(node.children[key], content, currentPath);
         }
+
+        return;
     }
 
-    return null;
+    // BLOCK
+    if (node.type === "block") {
+
+        let block = document.createElement("div");
+        block.className = "libraryBlock";
+
+        block.innerText = node.name;
+        block.dataset.id = node.id || currentPath;
+        block.dataset.name = node.name;
+
+        parent.appendChild(block);
+    }
 }
 
 
 // -----------------------------
-// Route renderer
+// Build full library UI
 // -----------------------------
-function renderRouteBlock(type, data) {
-
-    if (!data) return "<b>Unknown Block</b>";
-
-    let title = data.name;
-
-    if (type === "quests") {
-        return `<b>${title}</b><br>Quest`;
-    }
-
-    if (type === "travel") {
-        return `<b>${title}</b><br>Travel`;
-    }
-
-    if (type === "collect") {
-        return `<b>${title}</b><br>Collect`;
-    }
-
-    if (type === "enemy") {
-        return `<b>${title}</b><br>Enemy`;
-    }
-
-    return `<b>${title}</b>`;
+function buildLibrary() {
+    renderNode(libraryData, libraryRoot);
 }
 
-
-// -----------------------------
-// Init library
-// -----------------------------
 buildLibrary();
 
 
 // -----------------------------
-// Make ONLY blocks draggable (not folders)
+// Route renderer (simple)
+// -----------------------------
+function renderRouteBlock(data) {
+
+    if (!data) return "<b>Unknown Block</b>";
+
+    return `<b>${data.name}</b>`;
+}
+
+
+// -----------------------------
+// Make ONLY blocks draggable
 // -----------------------------
 function initLibraryDrag() {
 
-    document.querySelectorAll(".folderContent").forEach(container => {
+    document.querySelectorAll(".libraryBlock").forEach(block => {
 
-        new Sortable(container, {
+        new Sortable(block.parentElement, {
             group: {
                 name: "shared",
                 pull: "clone",
@@ -111,7 +85,6 @@ function initLibraryDrag() {
             sort: false,
             animation: 150
         });
-
     });
 }
 
@@ -119,7 +92,7 @@ initLibraryDrag();
 
 
 // -----------------------------
-// Route container drag/drop
+// Route container
 // -----------------------------
 new Sortable(routeContainer, {
 
@@ -134,14 +107,12 @@ new Sortable(routeContainer, {
     onAdd: function (evt) {
 
         let block = evt.item;
-        let id = block.dataset.id;
-        let type = block.dataset.type;
-
-        let result = findBlock(id);
 
         block.classList.remove("libraryBlock");
         block.classList.add("routeBlock");
 
-        block.innerHTML = renderRouteBlock(type, result ? result.data : null);
+        let name = block.dataset.name;
+
+        block.innerHTML = renderRouteBlock({ name });
     }
 });
