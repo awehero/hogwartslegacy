@@ -4,12 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hogwarts Legacy Speedrunning Route Maker by Awehero</title>
-    <link rel="icon" href="https://awehero.github.io/intro/awehero.png" type="image/png">
+    <link rel="icon" href="images/awehero_icon.png" type="image/png">
     <link rel="stylesheet" type="text/css" href="route_maker.css">
 </head>
 <body>
-    <h1>Hogwarts Legacy Speedrunning Route Maker</h1>
-    <p>Made by awehero</p>
+    <div id="app">
+        <div id="sidebar">
+            <h2>Blocks</h2>
+            <div id="blockLibrary">
+
+                <div class="libraryBlock" data-type="quest">
+                    Quest
+                </div>
+                <div class="libraryBlock" data-type="travel">
+                    Travel
+                </div>
+                <div class="libraryBlock" data-type="item">
+                    Item Pickup
+                </div>
+                <div class="libraryBlock" data-type="enemy">
+                    Enemy
+                </div>
+            </div>
+        </div>
+        <div id="workspace">
+            <h2>Route</h2>
+            <div id="routeContainer"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
+    <script src="route_maker.js"></script>
 </body>
-<script type="text/javascript" src="route_maker.js"></script>
 </html>

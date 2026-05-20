@@ -1,98 +1,48 @@
-body { font-family: Arial, sans-serif; margin: 20px; }
-table { border-collapse: collapse; width: 100%; background: #fff; }
-th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-th { background-color: #007bff; color: white; }
-textarea { width: 100%; padding: 10px; font-family: monospace; }
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    line-height: 1.6;
-    background-color: #f9f9f9;
-    color: #333;
-}
-h1 {
-    font-size: 2em;
-    color: #007bff;
-    margin-bottom: 10px;
-}
-div {
-    margin-bottom: 10px;
-    font-size: 1.2em;
-}
-p {
-    margin-bottom: 10px;
-    font-size: 1em;
-}
-textarea {
-    width: 100%;
-    max-width: 600px;
-    padding: 10px;
-    font-family: monospace;
-    font-size: 1.7em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-}
-button {
-    padding: 10px 20px;
-    font-size: 1em;
-    background-color: #007bff;
+    margin: 0;
+    background-color: #1a1a1a;
     color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: Arial;
 }
-button:hover {
-    background-color: #0056b3;
-}
-#output {
-    background-color: #f4f4f4;
-    padding: 15px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    font-family: monospace;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    overflow-x: auto;
-    max-width: 100%;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-}
-#copyButton {
-    margin-top: 10px;
-}
-.button-group {
+
+#app {
     display: flex;
-    gap: 10px;
-    margin: 10px 0;
+    height: 100vh;
 }
-#suggestions {
-    position: absolute;
-    max-height: 12em;
-    width: 15em;
-    overflow: auto;
-    background-color: white;
-    border: 1px solid black;
-    display: none;
-    padding-left: 5px;
-    padding-right: 5px;
+
+#sidebar {
+    width: 250px;
+    background-color: #222;
+    padding: 15px;
+    box-sizing: border-box;
+    border-right: 2px solid #444;
+    overflow-y: auto;
 }
-.suggestion-item {
-    font-size: 1em;
-    cursor: pointer;
-    border: 2px solid black;
-    border-radius: 5px;
-    padding-left: 5px;
+
+#workspace {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
 }
-.suggestion-item:hover {
-    background-color: #f0f0f0;
+
+#routeContainer {
+    min-height: 500px;
+    border: 2px dashed #666;
+    border-radius: 10px;
+    padding: 10px;
 }
-.setupBox {
-    width: 100px;
-    height: 100px;
-    font-size: 4em;
-    align-content: center;
+
+.libraryBlock,
+.routeBlock {
+    background-color: #444;
+    border: 2px solid #666;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 10px;
+    cursor: grab;
+    user-select: none;
 }
-.letterOption {
-    font-size: 0.5em;
+
+.libraryBlock:hover {
+    background-color: #555;
 }
