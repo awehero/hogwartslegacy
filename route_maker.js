@@ -1,6 +1,10 @@
-let library = document.getElementById("blockLibrary");
+let libraryRoot = document.getElementById("blockLibrary");
 let routeContainer = document.getElementById("routeContainer");
 
+
+// -----------------------------
+// Build Library UI
+// -----------------------------
 function buildLibrary() {
 
     for (let category in libraryData) {
@@ -30,47 +34,93 @@ function buildLibrary() {
 
         folder.appendChild(header);
         folder.appendChild(content);
-        library.appendChild(folder);
+        libraryRoot.appendChild(folder);
     }
 }
 
-buildLibrary();
 
-function renderRouteBlock(type, block) {
+// -----------------------------
+// Find block in library data
+// -----------------------------
+function findBlock(id) {
 
-    let title = block.name || "Unknown";
+    for (let category in libraryData) {
 
-    let duration = block.duration || 0;
+        let found = libraryData[category].find(b => b.id === id);
 
-    if (type == "quest") {
-        return `<b>${title}</b><br>Quest<br>${duration}s`;
+        if (found) {
+            return {
+                category,
+                data: found
+            };
+        }
     }
 
-    if (type == "travel") {
-        return `<b>${title}</b><br>Travel<br>${duration}s`;
+    return null;
+}
+
+
+// -----------------------------
+// Route renderer
+// -----------------------------
+function renderRouteBlock(type, data) {
+
+    if (!data) return "<b>Unknown Block</b>";
+
+    let title = data.name;
+
+    if (type === "quests") {
+        return `<b>${title}</b><br>Quest`;
     }
 
-    if (type == "item") {
-        return `<b>${title}</b><br>Item Pickup<br>${duration}s`;
+    if (type === "travel") {
+        return `<b>${title}</b><br>Travel`;
     }
 
-    if (type == "enemy") {
-        return `<b>${title}</b><br>Enemy Encounter<br>${duration}s`;
+    if (type === "collect") {
+        return `<b>${title}</b><br>Collect`;
+    }
+
+    if (type === "enemy") {
+        return `<b>${title}</b><br>Enemy`;
     }
 
     return `<b>${title}</b>`;
 }
 
-new Sortable(library, {
-    group: {
-        name: "shared",
-        pull: "clone",
-        put: false
-    },
-    sort: false,
-    animation: 150
-});
 
+// -----------------------------
+// Init library
+// -----------------------------
+buildLibrary();
+
+
+// -----------------------------
+// Make ONLY blocks draggable (not folders)
+// -----------------------------
+function initLibraryDrag() {
+
+    document.querySelectorAll(".folderContent").forEach(container => {
+
+        new Sortable(container, {
+            group: {
+                name: "shared",
+                pull: "clone",
+                put: false
+            },
+            sort: false,
+            animation: 150
+        });
+
+    });
+}
+
+initLibraryDrag();
+
+
+// -----------------------------
+// Route container drag/drop
+// -----------------------------
 new Sortable(routeContainer, {
 
     group: {
@@ -82,23 +132,16 @@ new Sortable(routeContainer, {
     animation: 150,
 
     onAdd: function (evt) {
+
         let block = evt.item;
         let id = block.dataset.id;
+        let type = block.dataset.type;
 
-        let result = null;
-
-        for (let category in libraryData) {
-            result = libraryData[category].find(b => b.id === id);
-            if (result) break;
-        }
+        let result = findBlock(id);
 
         block.classList.remove("libraryBlock");
         block.classList.add("routeBlock");
 
-        if (!result) return;
-
-        let type = block.dataset.type;
-
-        block.innerHTML = renderRouteBlock(type, result);
+        block.innerHTML = renderRouteBlock(type, result ? result.data : null);
     }
 });
