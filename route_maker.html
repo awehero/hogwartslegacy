@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squaredle Maker</title>
+    <link rel="icon" href="https://awehero.github.io/intro/awehero.png" type="image/png">
+    </head>
+    <body>
+        <h1>Squaredle Maker</h1>
+        <p>Use the slider to change the size and select or type letters to create the board</p>
+		<div id="sizeText">Board Size (5 x 5)</div>
+		<input id="sizeSlider" type="range" min="3" max="10" step="1" value="5">
+		<div id="setupContainer"></div>
+        <button onclick="findWords()">Find Words</button>
+		<div id="wordListContainer"></div>
+    </body>
+</html>
