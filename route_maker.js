@@ -1,6 +1,6 @@
 let libraryRoot = document.getElementById("blockLibrary");
 let routeContainer = document.getElementById("routeContainer");
-
+let usedBlocks = new Set();
 // -----------------------------
 // Recursive renderer
 // -----------------------------
@@ -21,7 +21,8 @@ function renderNode(node, parent, name = null, path = []) {
         let content = document.createElement("div");
         content.className = "folderContent";
 
-        folder.dataset.collapsed = "false";
+        folder.dataset.collapsed = "true";
+        content.style.display = "none";
 
         header.style.cursor = "pointer";
 
@@ -76,6 +77,8 @@ function renderNode(node, parent, name = null, path = []) {
 
         block.dataset.name = displayName;
 
+        block.dataset.repeatable = node.repeatable ? "true" : "false";
+
         parent.appendChild(block);
     }
 }
@@ -117,9 +120,28 @@ new Sortable(routeContainer, {
     animation: 150,
 
     onAdd: function (evt) {
-
         let block = evt.item;
 
+        let id = block.dataset.name;
+        let repeatable = block.dataset.repeatable === "true";
+
+        // ❗ CHECK FIRST
+        if (!repeatable && usedBlocks.has(id)) {
+            block.remove();
+            return;
+        }
+
+        if (!repeatable) {
+            usedBlocks.add(id);
+
+            document.querySelectorAll(".libraryBlock").forEach(el => {
+                if (el.dataset.name === id) {
+                    el.classList.add("disabledBlock");
+                }
+            });
+        }
+
+        // THEN render
         block.classList.remove("libraryBlock");
         block.classList.add("routeBlock");
 

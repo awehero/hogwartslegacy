@@ -75,3 +75,17 @@ body {
     font-size: 14px;
     opacity: 0.9;
 }
+
+.libraryBlock {
+    transition: 0.2s;
+}
+
+.libraryBlock.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.disabledBlock {
+    opacity: 0.3;
+    pointer-events: none;
+}

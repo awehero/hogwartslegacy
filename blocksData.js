@@ -6,9 +6,12 @@ const libraryData = {
                 type: F,
                 items: {
                     "Start": {type: B},
-                    "Courtyard": {type: B},
-                    "Tower": {type: B},
-                    "Trophy": {type: B}
+                    "Transfiguration Courtyard": {type: B},
+                    "Ravenclaw Tower": {type: B},
+                    "Central Hall Rafters": {type: B},
+                    "Divination Classroom": {type: B},
+                    "Trophy Room (2)": {type: B},
+                    "Redeem": {type: B},
                 }
             }
         }
