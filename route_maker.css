@@ -89,3 +89,15 @@ body {
     opacity: 0.3;
     pointer-events: none;
 }
+
+#errors {
+    width: 250px;
+    border-left: 2px solid black;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.errorItem {
+    color: red;
+    margin-bottom: 6px;
+}
