@@ -11,7 +11,6 @@ function renderNode(node, parent) {
 
     // FOLDER
     if (node.type === "folder") {
-
         let folder = document.createElement("div");
         folder.className = "folder";
 
@@ -21,6 +20,24 @@ function renderNode(node, parent) {
 
         let content = document.createElement("div");
         content.className = "folderContent";
+
+        // default: expanded
+        folder.dataset.collapsed = "false";
+
+        header.style.cursor = "pointer";
+
+        header.addEventListener("click", () => {
+
+            let isCollapsed = folder.dataset.collapsed === "true";
+
+            if (isCollapsed) {
+                content.style.display = "block";
+                folder.dataset.collapsed = "false";
+            } else {
+                content.style.display = "none";
+                folder.dataset.collapsed = "true";
+            }
+        });
 
         folder.appendChild(header);
         folder.appendChild(content);
@@ -55,7 +72,9 @@ function renderNode(node, parent) {
 // -----------------------------
 function buildLibrary() {
     libraryRoot.innerHTML = "";
-    renderNode(libraryData, libraryRoot);
+    for (let key in libraryData.children) {
+        renderNode(libraryData.children[key], libraryRoot);
+    }
 }
 
 buildLibrary();
