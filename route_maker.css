@@ -46,3 +46,32 @@ body {
 .libraryBlock:hover {
     background-color: #555;
 }
+
+.folder {
+    margin-bottom: 15px;
+}
+
+.folderHeader {
+    background-color: #333;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+}
+
+.folderHeader:hover {
+    background-color: #444;
+}
+
+.folderContent {
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.stepBlock {
+    margin-left: 15px;
+    padding: 4px;
+    font-size: 14px;
+    opacity: 0.9;
+}
