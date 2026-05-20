@@ -85,28 +85,20 @@ new Sortable(routeContainer, {
         let block = evt.item;
         let id = block.dataset.id;
 
-        // find quest in library
-        let quest = libraryData.quests.find(q => q.id === id);
+        let result = null;
+
+        for (let category in libraryData) {
+            result = libraryData[category].find(b => b.id === id);
+            if (result) break;
+        }
 
         block.classList.remove("libraryBlock");
         block.classList.add("routeBlock");
 
-        // clear original content
-        block.innerHTML = "";
+        if (!result) return;
 
-        // if it's a quest, expand it
-        if (quest) {
+        let type = block.dataset.type;
 
-            let title = document.createElement("div");
-            title.innerHTML = "<b>" + quest.name + "</b>";
-            block.appendChild(title);
-
-            quest.steps.forEach(step => {
-                let stepDiv = document.createElement("div");
-                stepDiv.className = "stepBlock";
-                stepDiv.innerText = step;
-                block.appendChild(stepDiv);
-            });
-        }
+        block.innerHTML = renderRouteBlock(type, result);
     }
 });
