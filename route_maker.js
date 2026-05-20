@@ -1,14 +1,17 @@
 let libraryRoot = document.getElementById("blockLibrary");
 let routeContainer = document.getElementById("routeContainer");
+
 let usedBlocks = new Set();
-// -----------------------------
+
+
+// =============================
 // Recursive renderer
-// -----------------------------
-function renderNode(node, parent, name = null, path = []) {
+// =============================
+function renderNode(node, parent, key = null, path = []) {
 
     if (!node) return;
 
-    // ---------------- FOLDER ----------------
+    // ================= FOLDER =================
     if (node.type === F) {
 
         let folder = document.createElement("div");
@@ -16,11 +19,12 @@ function renderNode(node, parent, name = null, path = []) {
 
         let header = document.createElement("div");
         header.className = "folderHeader";
-        header.innerText = node.name || name || "Folder";
+        header.innerText = node.name || key || "Folder";
 
         let content = document.createElement("div");
         content.className = "folderContent";
 
+        // start collapsed
         folder.dataset.collapsed = "true";
         content.style.display = "none";
 
@@ -43,6 +47,7 @@ function renderNode(node, parent, name = null, path = []) {
         folder.appendChild(content);
         parent.appendChild(folder);
 
+        // attach drag to this folder only
         new Sortable(content, {
             group: {
                 name: "shared",
@@ -53,30 +58,31 @@ function renderNode(node, parent, name = null, path = []) {
             animation: 150
         });
 
+        let newPath = [...path, node.name || key || "Folder"];
+
         if (node.items) {
-            let newPath = [...path, node.name || name || "Folder"];
-            for (let key in node.items) {
-                renderNode(node.items[key], content, key, newPath);
+            for (let k in node.items) {
+                renderNode(node.items[k], content, k, newPath);
             }
         }
 
         return;
     }
 
-    // ---------------- BLOCK ----------------
+
+    // ================= BLOCK =================
     if (node.type === B) {
 
         let block = document.createElement("div");
         block.className = "libraryBlock";
 
-        let fullPath = [...path, node.name || name].filter(Boolean);
-
+        let fullPath = [...path, node.name || key].filter(Boolean);
         let displayName = fullPath.join(" - ");
 
         block.innerText = displayName;
 
         block.dataset.name = displayName;
-
+        block.dataset.origin = "library";
         block.dataset.repeatable = node.repeatable ? "true" : "false";
 
         parent.appendChild(block);
@@ -84,31 +90,32 @@ function renderNode(node, parent, name = null, path = []) {
 }
 
 
-// -----------------------------
+// =============================
 // Build library
-// -----------------------------
+// =============================
 function buildLibrary() {
+
     libraryRoot.innerHTML = "";
 
     for (let key in libraryData) {
-        renderNode(libraryData[key], libraryRoot, key);
+        renderNode(libraryData[key], libraryRoot, key, []);
     }
 }
 
 buildLibrary();
 
 
-// -----------------------------
+// =============================
 // Route renderer
-// -----------------------------
+// =============================
 function renderRouteBlock(data) {
     return `<b>${data.name}</b>`;
 }
 
 
-// -----------------------------
-// Route container
-// -----------------------------
+// =============================
+// ROUTE SYSTEM
+// =============================
 new Sortable(routeContainer, {
 
     group: {
@@ -119,13 +126,16 @@ new Sortable(routeContainer, {
 
     animation: 150,
 
+
+    // ================= ADD TO ROUTE =================
     onAdd: function (evt) {
+
         let block = evt.item;
 
         let id = block.dataset.name;
         let repeatable = block.dataset.repeatable === "true";
 
-        // ❗ CHECK FIRST
+        // reject duplicates if not repeatable
         if (!repeatable && usedBlocks.has(id)) {
             block.remove();
             return;
@@ -134,19 +144,41 @@ new Sortable(routeContainer, {
         if (!repeatable) {
             usedBlocks.add(id);
 
-            document.querySelectorAll(".libraryBlock").forEach(el => {
+            document.querySelectorAll('[data-origin="library"]').forEach(el => {
                 if (el.dataset.name === id) {
                     el.classList.add("disabledBlock");
                 }
             });
         }
 
-        // THEN render
         block.classList.remove("libraryBlock");
         block.classList.add("routeBlock");
+
+        block.dataset.origin = "route";
 
         block.innerHTML = renderRouteBlock({
             name: block.dataset.name
         });
+    },
+
+
+    // ================= REMOVE FROM ROUTE =================
+    onRemove: function (evt) {
+
+        let block = evt.item;
+
+        let id = block.dataset.name;
+        let repeatable = block.dataset.repeatable === "true";
+
+        if (!repeatable) {
+
+            usedBlocks.delete(id);
+
+            document.querySelectorAll('[data-origin="library"]').forEach(el => {
+                if (el.dataset.name === id) {
+                    el.classList.remove("disabledBlock");
+                }
+            });
+        }
     }
 });
