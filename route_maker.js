@@ -63,9 +63,9 @@ function renderNode(node, parent, key = null, path = []) {
         // IMPORTANT: library must allow dragging OUT AND BACK IN
         new Sortable(content, {
             group: {
-                name: "shared",
+                name: "libraryBlocks",
                 pull: "clone",
-                put: true
+                put: false   // IMPORTANT: cannot drop folders or route items here
             },
             sort: false,
             animation: 150
@@ -127,7 +127,7 @@ function renderRouteBlock(data) {
 // =============================
 new Sortable(routeContainer, {
     group: {
-        name: "shared",
+        name: "libraryBlocks",
         pull: true,
         put: true
     },
@@ -136,7 +136,10 @@ new Sortable(routeContainer, {
     // ================= ADD TO ROUTE =================
     onAdd(evt) {
         const block = evt.item;
-
+        if (!block.dataset.name || block.dataset.name === "undefined") {
+            block.remove();
+            return;
+        }
         const id = block.dataset.name;
         const repeatable = block.dataset.repeatable === "true";
 
