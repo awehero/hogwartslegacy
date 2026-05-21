@@ -1,16 +1,14 @@
-import { validateRoute } from "./routeValidator.js";
 const libraryRoot = document.getElementById("blockLibrary");
 const routeContainer = document.getElementById("routeContainer");
-
-// track used non-repeatable blocks
-const usedBlocks = new Set();
-
 const errorPanel = document.getElementById("errorPanel");
 
+const usedBlocks = new Set();
+
+// =============================
+// ERROR SYSTEM
+// =============================
 function updateErrors() {
-
     const blocks = Array.from(routeContainer.children);
-
     const errors = validateRoute(blocks);
 
     errorPanel.innerHTML = "";
@@ -20,29 +18,28 @@ function updateErrors() {
         return;
     }
 
-    for (const err of errors) {
+    for (const e of errors) {
         const div = document.createElement("div");
         div.className = "errorItem";
-        div.innerText = err.message;
+        div.innerText = e.message;
         errorPanel.appendChild(div);
     }
 }
 
 // =============================
-// Recursive renderer
+// RENDER LIBRARY
 // =============================
-function renderNode(node, parent, key = null, path = []) {
+function renderNode(node, parent, key, path = []) {
     if (!node) return;
 
-    // ================= FOLDER =================
-    if (node.type === "F") {
-
+    // -------- FOLDER --------
+    if (node.type === F) {
         const folder = document.createElement("div");
         folder.className = "folder";
 
         const header = document.createElement("div");
         header.className = "folderHeader";
-        header.innerText = key || "Folder";
+        header.innerText = key;
 
         const content = document.createElement("div");
         content.className = "folderContent";
@@ -50,50 +47,47 @@ function renderNode(node, parent, key = null, path = []) {
         folder.dataset.collapsed = "true";
         content.style.display = "none";
 
-        header.addEventListener("click", () => {
-            const collapsed = folder.dataset.collapsed === "true";
-            folder.dataset.collapsed = collapsed ? "false" : "true";
-            content.style.display = collapsed ? "block" : "none";
-        });
+        header.onclick = () => {
+            const c = folder.dataset.collapsed === "true";
+            folder.dataset.collapsed = c ? "false" : "true";
+            content.style.display = c ? "block" : "none";
+        };
 
         folder.appendChild(header);
         folder.appendChild(content);
         parent.appendChild(folder);
 
-        // IMPORTANT: library must allow dragging OUT AND BACK IN
+        // ONLY library blocks allowed here
         new Sortable(content, {
             group: {
-                name: "libraryBlocks",
+                name: "blocks",
                 pull: "clone",
-                put: false   // IMPORTANT: cannot drop folders or route items here
+                put: false
             },
-            sort: false,
-            animation: 150
+            sort: false
         });
 
-        const newPath = [...path, key || "Folder"];
-
         for (const k in node.items || {}) {
-            renderNode(node.items[k], content, k, newPath);
+            renderNode(node.items[k], content, k, [...path, key]);
         }
 
         return;
     }
 
-    // ================= BLOCK =================
-    if (node.type === "B") {
-
+    // -------- BLOCK --------
+    if (node.type === B) {
         const block = document.createElement("div");
         block.className = "libraryBlock";
 
         const fullPath = [...path, key].filter(Boolean);
-        const displayName = fullPath.join(" - ");
+        const name = fullPath.join(" - ");
 
-        block.innerText = displayName;
+        block.innerText = name;
 
-        block.dataset.name = displayName;
+        block.dataset.name = name;
         block.dataset.origin = "library";
         block.dataset.repeatable = node.repeatable ? "true" : "false";
+
         if (node.after) {
             block.dataset.after = JSON.stringify(node.after);
         }
@@ -103,23 +97,26 @@ function renderNode(node, parent, key = null, path = []) {
 }
 
 // =============================
-// Build library
+// BUILD LIBRARY
 // =============================
 function buildLibrary() {
     libraryRoot.innerHTML = "";
 
-    for (const key in libraryData) {
-        renderNode(libraryData[key], libraryRoot, key, []);
+    for (const k in libraryData) {
+        renderNode(libraryData[k], libraryRoot, k);
     }
 }
 
 buildLibrary();
 
 // =============================
-// Route renderer
+// FINALIZE BLOCK
 // =============================
-function renderRouteBlock(data) {
-    return `<b>${data.name}</b>`;
+function finalize(block) {
+    block.className = "routeBlock";
+    block.dataset.origin = "route";
+
+    block.innerHTML = `<b>${block.dataset.name}</b>`;
 }
 
 // =============================
@@ -127,39 +124,43 @@ function renderRouteBlock(data) {
 // =============================
 new Sortable(routeContainer, {
     group: {
-        name: "libraryBlocks",
+        name: "blocks",
         pull: true,
         put: true
     },
+
     animation: 150,
 
-    // ================= ADD TO ROUTE =================
     onAdd(evt) {
         const block = evt.item;
+
+        // HARD GUARD
         if (!block.dataset.name || block.dataset.name === "undefined") {
             block.remove();
             return;
         }
+
         const id = block.dataset.name;
         const repeatable = block.dataset.repeatable === "true";
 
-        // prevent duplicates
         if (!repeatable && usedBlocks.has(id)) {
             block.remove();
             return;
         }
 
-        // mark used + disable library copy
         if (!repeatable) {
             usedBlocks.add(id);
-            updateLibraryDisabledState(id, true);
+            document.querySelectorAll(`[data-name="${id}"]`).forEach(el => {
+                if (el.dataset.origin === "library") {
+                    el.classList.add("disabledBlock");
+                }
+            });
         }
 
-        finalizeRouteBlock(block);
+        finalize(block);
         updateErrors();
     },
 
-    // ================= REMOVE FROM ROUTE =================
     onRemove(evt) {
         const block = evt.item;
 
@@ -168,31 +169,11 @@ new Sortable(routeContainer, {
 
         if (!repeatable) {
             usedBlocks.delete(id);
-            updateLibraryDisabledState(id, false);
+            document.querySelectorAll(`[data-name="${id}"]`).forEach(el => {
+                el.classList.remove("disabledBlock");
+            });
         }
+
         updateErrors();
     }
 });
-
-// =============================
-// Helpers
-// =============================
-
-function updateLibraryDisabledState(id, disabled) {
-    document.querySelectorAll('[data-origin="library"]').forEach(el => {
-        if (el.dataset.name === id) {
-            el.classList.toggle("disabledBlock", disabled);
-        }
-    });
-}
-
-function finalizeRouteBlock(block) {
-    block.classList.remove("libraryBlock");
-    block.classList.add("routeBlock");
-
-    block.dataset.origin = "route";
-
-    block.innerHTML = renderRouteBlock({
-        name: block.dataset.name
-    });
-}

@@ -49,6 +49,7 @@ body {
 
 .folder {
     margin-bottom: 15px;
+    user-select: none;
 }
 
 .folderHeader {
@@ -67,6 +68,7 @@ body {
 .folderContent {
     padding-top: 10px;
     padding-left: 10px;
+    user-select: none;
 }
 
 .stepBlock {

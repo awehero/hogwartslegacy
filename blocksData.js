@@ -8,24 +8,42 @@ const libraryData = {
                     "Start": {
                         type: B
                     },
+
                     "Transfiguration Courtyard": {
-                        type: B
+                        type: B,
+                        after: ["Quests - Gobs of Gobstones - Start"]
                     },
+
                     "Ravenclaw Tower": {
-                        type: B
+                        type: B,
+                        after: ["Quests - Gobs of Gobstones - Start"]
                     },
+
                     "Central Hall Rafters": {
-                        type: B
+                        type: B,
+                        after: ["Quests - Gobs of Gobstones - Start"]
                     },
+
                     "Divination Classroom": {
-                        type: B
+                        type: B,
+                        after: ["Quests - Gobs of Gobstones - Start"]
                     },
+
                     "Trophy Room (2)": {
-                        type: B
+                        type: B,
+                        after: ["Quests - Gobs of Gobstones - Start"]
                     },
+
                     "Redeem": {
-                        type: B
-                    },
+                        type: B,
+                        after: [
+                            "Quests - Gobs of Gobstones - Transfiguration Courtyard",
+                            "Quests - Gobs of Gobstones - Ravenclaw Tower",
+                            "Quests - Gobs of Gobstones - Central Hall Rafters",
+                            "Quests - Gobs of Gobstones - Divination Classroom",
+                            "Quests - Gobs of Gobstones - Trophy Room (2)"
+                        ]
+                    }
                 }
             }
         }

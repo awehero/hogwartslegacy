@@ -1,39 +1,41 @@
-// routeValidator.js
-
-export function validateRoute(routeBlocks) {
+function validateRoute(routeBlocks) {
     const errors = [];
 
-    // map: blockName -> first index in route
-    const positionMap = new Map();
+    // CLEAN INPUT (prevents undefined + folders)
+    const blocks = routeBlocks.filter(el =>
+        el &&
+        el.dataset &&
+        el.dataset.name &&
+        el.dataset.name !== "undefined"
+    );
 
-    routeBlocks.forEach((block, index) => {
-        if (!positionMap.has(block.dataset.name)) {
-            positionMap.set(block.dataset.name, index);
+    const position = new Map();
+
+    blocks.forEach((b, i) => {
+        if (!position.has(b.dataset.name)) {
+            position.set(b.dataset.name, i);
         }
     });
 
-    routeBlocks.forEach((block, index) => {
-        const name = block.dataset.name;
+    blocks.forEach((b, i) => {
+        const name = b.dataset.name;
 
-        let after = block.dataset.after;
+        if (!b.dataset.after) return;
 
-        if (!after) return;
-
+        let after;
         try {
-            after = JSON.parse(after);
-        } catch (e) {
+            after = JSON.parse(b.dataset.after);
+        } catch {
             return;
         }
 
-        for (const required of after) {
+        for (const req of after) {
+            const reqIndex = position.get(req);
 
-            const requiredIndex = positionMap.get(required);
-
-            // not found OR appears after current block
-            if (requiredIndex === undefined || requiredIndex >= index) {
+            if (reqIndex === undefined || reqIndex >= i) {
                 errors.push({
                     type: "ORDER",
-                    message: `"${required}" must come before "${name}"`
+                    message: `"${req}" must come before "${name}"`
                 });
             }
         }
@@ -41,3 +43,4 @@ export function validateRoute(routeBlocks) {
 
     return errors;
 }
+window.validateRoute = validateRoute;
