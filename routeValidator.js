@@ -36,4 +36,3 @@ function validateRoute() {
     });
 
 }
-window.validateRoute = validateRoute;

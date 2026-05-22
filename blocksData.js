@@ -1,6 +1,6 @@
 //blocksData.js
 const libraryData = {
-    "Quests": {
+    "Quest": {
         type: F,
         items: {
             "Gobs of Gobstones": {
