@@ -1,3 +1,4 @@
+//blocksData.js
 const libraryData = {
     "Quests": {
         type: F,
@@ -85,7 +86,7 @@ const libraryData = {
                     "Hogwarts": {
                         type: F,
                         items: {
-
+                            "South Exit": {type: B}
                         }
                     },
                     "Hogsmeade": {

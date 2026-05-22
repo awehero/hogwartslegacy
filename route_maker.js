@@ -26,6 +26,31 @@ function updateErrors() {
     }
 }
 
+function makeLibrarySortable(el) {
+    new Sortable(el, {
+        group: {
+            name: "blocks",
+            pull: "clone",
+            put: false
+        },
+
+        sort: false,
+
+        filter: ".disabledBlock, .folder",
+
+        onMove(evt) {
+
+            if (evt.dragged.classList.contains("folder")) {
+                return false;
+            }
+
+            if (evt.dragged.classList.contains("disabledBlock")) {
+                return false;
+            }
+        }
+    });
+}
+
 // =============================
 // RENDER LIBRARY
 // =============================
@@ -36,6 +61,7 @@ function renderNode(node, parent, key, path = []) {
     if (node.type === F) {
         const folder = document.createElement("div");
         folder.className = "folder";
+        folder.draggable = false;
 
         const header = document.createElement("div");
         header.className = "folderHeader";
@@ -58,14 +84,7 @@ function renderNode(node, parent, key, path = []) {
         parent.appendChild(folder);
 
         // ONLY library blocks allowed here
-        new Sortable(content, {
-            group: {
-                name: "blocks",
-                pull: "clone",
-                put: false
-            },
-            sort: false
-        });
+        makeLibrarySortable(content);
 
         for (const k in node.items || {}) {
             renderNode(node.items[k], content, k, [...path, key]);
