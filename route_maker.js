@@ -8,6 +8,7 @@ document.querySelectorAll(".folderContent").forEach(el => {
             put: false
         },
         draggable: ".libraryBlock",
+        filter: ".disabled",
         sort: false,
         animation: 150
     });
@@ -15,8 +16,46 @@ document.querySelectorAll(".folderContent").forEach(el => {
 
 new Sortable(routeContainer, {
     group: "blocks",
-    animation: 150
+    animation: 150,
+    
+    onAdd() {
+        updateLibraryBlocks();
+    },
+
+    onRemove() {
+        updateLibraryBlocks();
+    },
+
+    onSort() {
+        updateLibraryBlocks();
+    }
 });
+
+function updateLibraryBlocks() {
+
+    const usedPaths = [];
+
+    routeContainer.querySelectorAll(".libraryBlock").forEach(el => {
+        usedPaths.push(el.dataset.path);
+    });
+
+    libraryRoot.querySelectorAll(".libraryBlock").forEach(el => {
+
+        if (el.dataset.repeatable === "true") {
+            el.classList.remove("disabled");
+            return;
+        }
+
+        if (usedPaths.includes(el.dataset.path)) {
+            el.classList.add("disabled");
+        } else {
+            el.classList.remove("disabled");
+        }
+
+    });
+
+}
+
 /*const usedBlocks = new Set();
 
 // =============================

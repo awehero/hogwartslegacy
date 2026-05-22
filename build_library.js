@@ -30,8 +30,9 @@ function buildLibrary(data, name, path = "") {
             class="libraryBlock"
             data-name="${name}"
             data-path="${fullPath}"
+            data-repeatable="${data.repeatable === true}"
         >
-            ${name}
+            ${fullPath}
         </button>
         `;
     }
