@@ -182,90 +182,87 @@ const libraryData = {
                             "Forbidden Forest": {
                                 type: F,
                                 items: {
-                                    
+                                    "Jackdaw's Tomb": {type: B},
+                                    "North Ford Bog Entrance": {type: B},
+                                    "West Forbidden Forest": {type: B},
                                 }
                             },
                             "Hogsmeade Valley": {
                                 type: F,
                                 items: {
-                                    
+                                    "East Hosgmeade Valley": {type: B},
+                                    "Falbarton Castle": {type: B},
+                                    "Upper Hogsfield": {type: B},
                                 }
                             },
                             "North Hogwarts Region": {
                                 type: F,
                                 items: {
-                                    
+                                    "East North Hogwarts Region": {type: B},
+                                    "Korrow Ruins": {type: B},
+                                    "The Collector's Cave": {type: B},
                                 }
                             },
-                            "": {
+                            "South Hogwarts Region": {
                                 type: F,
                                 items: {
                                     
                                 }
                             },
-                            "": {
+                            "Hogwarts Valley": {
                                 type: F,
                                 items: {
                                     
                                 }
                             },
-                            "": {
+                            "Feldcroft Region": {
                                 type: F,
                                 items: {
                                     
                                 }
                             },
-                            "": {
+                            "South Sea Bog": {
                                 type: F,
                                 items: {
                                     
                                 }
                             },
-                            "": {
+                            "Coastal Cavern": {
                                 type: F,
                                 items: {
                                     
                                 }
                             },
-                            "": {
+                            "Poidsear Coast": {
                                 type: F,
                                 items: {
                                     
                                 }
                             },
-                            "": {
+                            "Marunweem Lake": {
                                 type: F,
                                 items: {
                                     
                                 }
                             },
-                            "": {
+                            "Manor Cape": {
                                 type: F,
                                 items: {
                                     
                                 }
                             },
-                            "": {
+                            "Cragcroftshire": {
                                 type: F,
                                 items: {
                                     
                                 }
                             },
-                            "": {
+                            "Clagmar Coast": {
                                 type: F,
                                 items: {
                                     
                                 }
                             },
-                            "North Ford Bog Entrance": {type: B},
-                            "West Forbidden Forest": {type: B},
-                            "Upper Hogsfield": {type: B},
-                            "Jackdaw's Tomb": {type: B},
-                            "East Hosgmeade Valley": {type: B},
-                            "Falbarton Castle": {type: B},
-                            "East North Hogwarts Region": {type: B},
-                            "The Collector's Cave": {type: B},
-                            "Korrow Ruins": {type: B},
                             "Forbidden Forest": {type: B},
                             "Mooncalf Den": {type: B},
                             "Aranshire": {type: B},
