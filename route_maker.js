@@ -1,5 +1,20 @@
 //route_maker.js
 
+new Sortable(libraryRoot, {
+    group: {
+        name: "blocks",
+        pull: "clone",
+        put: false
+    },
+    draggable: ".libraryBlock",
+    sort: false,
+    animation: 150
+});
+
+new Sortable(routeContainer, {
+    group: "blocks",
+    animation: 150
+});
 /*const usedBlocks = new Set();
 
 // =============================

@@ -87,23 +87,90 @@ const libraryData = {
                         type: F,
                         items: {
                             "Astronomy Wing": {
-                                type: B,
+                                type: F,
                                 items: {
                                     "Astronomy Tower": {type: B},
-                                    "": {type: B},
-                                    "": {type: B},
-                                    "": {type: B},
-                                    "": {type: B},
-                                    "": {type: B},
-                                    "": {type: B},
+                                    "Charms": {type: B},
+                                    "Defense Against the Dark Arts Tower": {type: B},
+                                    "Defense Against the Dark Arts Classroom": {type: B},
+                                    "Professor Fig's Classroom": {type: B},
+                                    "Transfiguration Classroom": {type: B},
+                                    "Transfiguration Courtyard": {type: B},
                                 }
-                            }
+                            },
+                            "Bell Tower Wing": {
+                                type: F,
+                                items: {
+                                    "Bell Tower Courtyard": {type: B},
+                                    "Flying Class Lawn": {type: B},
+                                    "Beasts Classroom": {type: B},
+                                    "Hogwarts North Exit": {type: B},
+                                    "West Tower": {type: B},
+                                }
+                            },
+                            "Grand Staircase": {
+                                type: F,
+                                items: {
+                                    "Astronomy Tower": {type: B},
+                                    "Charms": {type: B},
+                                    "Defense Against the Dark Arts Tower": {type: B},
+                                    "Defense Against the Dark Arts Classroom": {type: B},
+                                    "Professor Fig's Classroom": {type: B},
+                                    "Transfiguration Classroom": {type: B},
+                                    "Trophy Room": {type: B},
+                                }
+                            },
+                            "Great Hall": {
+                                type: F,
+                                items: {
+                                    "Astronomy Tower": {type: B},
+                                    "Charms": {type: B},
+                                    "Defense Against the Dark Arts Tower": {type: B},
+                                    "Defense Against the Dark Arts Classroom": {type: B},
+                                    "Professor Fig's Classroom": {type: B},
+                                    "Transfiguration Classroom": {type: B},
+                                    "Transfiguration Courtyard": {type: B},
+                                }
+                            },
+                            "Library Annex": {
+                                type: F,
+                                items: {
+                                    "Central Hall": {type: B},
+                                    "Charms": {type: B},
+                                    "Defense Against the Dark Arts Tower": {type: B},
+                                    "Defense Against the Dark Arts Classroom": {type: B},
+                                    "Professor Fig's Classroom": {type: B},
+                                    "Transfiguration ": {type: B},
+                                    "Potions Classroom": {type: B},
+                                }
+                            },
+                            "South Wing": {
+                                type: F,
+                                items: {
+                                    "Astronomy Tower": {type: B},
+                                    "Charms": {type: B},
+                                    "Defense Against the Dark Arts Tower": {type: B},
+                                    "Defense Against the Dark Arts Classroom": {type: B},
+                                    "Professor Fig's Classroom": {type: B},
+                                    "Transfiguration Classroom": {type: B},
+                                    "Transfiguration Courtyard": {type: B},
+                                }
+                            },
+                            "Secret Rooms": {
+                                type: F,
+                                items: {
+                                    "Map Chamber": {type: B},
+                                    "Room of Requirement": {type: B},
+                                }
+                            },
                         }
                     },
                     "Hogsmeade": {
                         type: F,
                         items: {
-
+                            "North Hogsmeade": {type: B},
+                            "South Hogsmeade": {type: B},
+                            "West Hogsmeade": {type: B},
                         }
                     },
                     "Highlands": {
@@ -113,7 +180,7 @@ const libraryData = {
                         }
                     },
                 }
-            }
+            },
         }
     }
 };

@@ -1,14 +1,24 @@
 //build_library.js
-function buildLibrary(data, name) {
+function buildLibrary(data, name, path = "") {
     let html = "";
-    if (data.type == F) {
+    const fullPath =
+        path === ""
+        ? name
+        : `${path} - ${name}`;
+    if (data.type === F) {
         html += `
         <div class="libraryFolder">
-            <button class="folderButton">${name}</button>
+            <button class="folderButton">
+                ${name}
+            </button>
             <div class="folderContent">
         `;
         for (const k in data.items) {
-            html += buildLibrary(data.items[k], k);
+            html += buildLibrary(
+                data.items[k],
+                k,
+                fullPath
+            );
         }
         html += `
             </div>
@@ -16,7 +26,11 @@ function buildLibrary(data, name) {
         `;
     } else {
         html += `
-        <div class="libraryBlock">
+        <div
+            class="libraryBlock"
+            data-name="${name}"
+            data-path="${fullPath}"
+        >
             ${name}
         </div>
         `;
@@ -39,3 +53,4 @@ document.querySelectorAll(".folderButton").forEach(button => {
             : "none";
     });
 });
+libraryRoot.querySelectorAll("button").forEach(btn=>btn.click());
