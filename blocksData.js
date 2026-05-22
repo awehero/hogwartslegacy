@@ -86,7 +86,7 @@ const libraryData = {
                     "Hogwarts": {
                         type: F,
                         items: {
-                            "Astronomy Wing": {
+                            "The Astronomy Wing": {
                                 type: F,
                                 items: {
                                     "Astronomy Tower": {type: B},
@@ -98,7 +98,7 @@ const libraryData = {
                                     "Transfiguration Courtyard": {type: B},
                                 }
                             },
-                            "Bell Tower Wing": {
+                            "The Bell Tower Wing": {
                                 type: F,
                                 items: {
                                     "Bell Tower Courtyard": {type: B},
@@ -108,7 +108,7 @@ const libraryData = {
                                     "West Tower": {type: B},
                                 }
                             },
-                            "Grand Staircase": {
+                            "The Grand Staircase": {
                                 type: F,
                                 items: {
                                     "Astronomy Tower": {type: B},
@@ -120,10 +120,10 @@ const libraryData = {
                                     "Trophy Room": {type: B},
                                 }
                             },
-                            "Great Hall": {
+                            "The Great Hall": {
                                 type: F,
                                 items: {
-                                    "Astronomy Tower": {type: B},
+                                    "Boathouse": {type: B},
                                     "Charms": {type: B},
                                     "Defense Against the Dark Arts Tower": {type: B},
                                     "Defense Against the Dark Arts Classroom": {type: B},
@@ -132,28 +132,15 @@ const libraryData = {
                                     "Transfiguration Courtyard": {type: B},
                                 }
                             },
-                            "Library Annex": {
+                            "The Library Annex": {
                                 type: F,
                                 items: {
                                     "Central Hall": {type: B},
-                                    "Charms": {type: B},
+                                    "Divination Classroom": {type: B},
                                     "Defense Against the Dark Arts Tower": {type: B},
-                                    "Defense Against the Dark Arts Classroom": {type: B},
-                                    "Professor Fig's Classroom": {type: B},
-                                    "Transfiguration ": {type: B},
+                                    "Greenhouses": {type: B},
+                                    "Library": {type: B},
                                     "Potions Classroom": {type: B},
-                                }
-                            },
-                            "South Wing": {
-                                type: F,
-                                items: {
-                                    "Astronomy Tower": {type: B},
-                                    "Charms": {type: B},
-                                    "Defense Against the Dark Arts Tower": {type: B},
-                                    "Defense Against the Dark Arts Classroom": {type: B},
-                                    "Professor Fig's Classroom": {type: B},
-                                    "Transfiguration Classroom": {type: B},
-                                    "Transfiguration Courtyard": {type: B},
                                 }
                             },
                             "Secret Rooms": {
@@ -161,6 +148,16 @@ const libraryData = {
                                 items: {
                                     "Map Chamber": {type: B},
                                     "Room of Requirement": {type: B},
+                                }
+                            },
+                            "The South Wing": {
+                                type: F,
+                                items: {
+                                    "Clock Tower Courtyard": {type: B},
+                                    "Faculty Tower": {type: B},
+                                    "Hospital Wing": {type: B},
+                                    "Hogwarts South Exit": {type: B},
+                                    "??Gryffindor Common Room": {type: B},
                                 }
                             },
                         }
