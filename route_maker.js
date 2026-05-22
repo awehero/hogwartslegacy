@@ -17,7 +17,7 @@ document.querySelectorAll(".folderContent").forEach(el => {
 new Sortable(routeContainer, {
     group: "blocks",
     animation: 150,
-    
+
     onAdd() {
         updateLibraryBlocks();
     },
@@ -55,6 +55,7 @@ function updateLibraryBlocks() {
     });
 
 }
+updateLibraryBlocks();
 
 /*const usedBlocks = new Set();
 
