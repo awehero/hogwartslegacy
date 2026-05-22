@@ -9,42 +9,63 @@ function validateRoute(){
     clearRouteErrors();
 
     const route=[...routeContainer.querySelectorAll(".libraryBlock")];
-    const afterSet=new Set();
-    const pathToElement=new Map();
+    const completed=new Set();
 
-    route.forEach(el=>{
-        pathToElement.set(el.dataset.path,el);
-    });
-
-    for(let i=route.length-1;i>=0;i--){
-        const el=route[i];
+    route.forEach((el,index)=>{
         const path=el.dataset.path;
         const data=blockLookup[path];
 
         if(data&&data.after){
+
             data.after.forEach(required=>{
-                if(!afterSet.has(required)){
+
+                const appearsLater=route.slice(index+1).some(x=>
+                    x.dataset.path===required
+                );
+
+                if(!completed.has(required)||appearsLater){
 
                     el.classList.add("routeBlockError");
 
                     const error=document.createElement("div");
                     error.className="errorItem";
-                    error.textContent=`"${path}" requires "${required}" later in route`;
+
+                    if(appearsLater){
+                        error.textContent=`"${required}" appears after "${path}"`;
+                    }else{
+                        error.textContent=`"${path}" requires "${required}" before it`;
+                    }
 
                     error.onclick=()=>{
-                        const target=pathToElement.get(required);
+                        const target=route.find(x=>
+                            x.dataset.path===required
+                        );
+
                         if(target){
-                            target.scrollIntoView({behavior:"smooth",block:"center"});
+                            target.scrollIntoView({
+                                behavior:"smooth",
+                                block:"center"
+                            });
+
+                            document.querySelectorAll(".routeSelected").forEach(x=>{
+                                x.classList.remove("routeSelected");
+                            });
+
                             target.classList.add("routeSelected");
-                            setTimeout(()=>target.classList.remove("routeSelected"),800);
+
+                            setTimeout(()=>{
+                                target.classList.remove("routeSelected");
+                            },800);
                         }
                     };
 
                     errorPanel.appendChild(error);
                 }
+
             });
+
         }
 
-        afterSet.add(path);
-    }
+        completed.add(path);
+    });
 }

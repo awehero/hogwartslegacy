@@ -32,7 +32,17 @@ const libraryData = {
                     }
                 }
             },
-            "Side": {
+            "Assignment": {
+                type: F,
+                items: {
+                    "Professor Ronen's Assignment": {
+                        type: B,
+                        split: true,
+                        after: ["Quest - Main - Weasley After Class"]
+                    }
+                }
+            },
+            "Other": {
                 type: F,
                 items: {
                     "Gobs of Gobstones": {
@@ -45,37 +55,37 @@ const libraryData = {
 
                             "Transfiguration Courtyard": {
                                 type: B,
-                                after: ["Quest - Side - Gobs of Gobstones - Start"]
+                                after: ["Quest - Other - Gobs of Gobstones - Start"]
                             },
 
                             "Ravenclaw Tower": {
                                 type: B,
-                                after: ["Quest - Side - Gobs of Gobstones - Start"]
+                                after: ["Quest - Other - Gobs of Gobstones - Start"]
                             },
 
                             "Central Hall Rafters": {
                                 type: B,
-                                after: ["Quest - Side - Gobs of Gobstones - Start"]
+                                after: ["Quest - Other - Gobs of Gobstones - Start"]
                             },
 
                             "Divination Classroom": {
                                 type: B,
-                                after: ["Quest - Side - Gobs of Gobstones - Start"]
+                                after: ["Quest - Other - Gobs of Gobstones - Start"]
                             },
 
                             "Trophy Room (2)": {
                                 type: B,
-                                after: ["Quest - Side - Gobs of Gobstones - Start"]
+                                after: ["Quest - Other - Gobs of Gobstones - Start"]
                             },
 
                             "Redeem": {
                                 type: B,
                                 after: [
-                                    "Quest - Side - Gobs of Gobstones - Transfiguration Courtyard",
-                                    "Quest - Side - Gobs of Gobstones - Ravenclaw Tower",
-                                    "Quest - Side - Gobs of Gobstones - Central Hall Rafters",
-                                    "Quest - Side - Gobs of Gobstones - Divination Classroom",
-                                    "Quest - Side - Gobs of Gobstones - Trophy Room (2)"
+                                    "Quest - Other - Gobs of Gobstones - Transfiguration Courtyard",
+                                    "Quest - Other - Gobs of Gobstones - Ravenclaw Tower",
+                                    "Quest - Other - Gobs of Gobstones - Central Hall Rafters",
+                                    "Quest - Other - Gobs of Gobstones - Divination Classroom",
+                                    "Quest - Other - Gobs of Gobstones - Trophy Room (2)"
                                 ]
                             }
                         }
