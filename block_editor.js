@@ -4,13 +4,14 @@ function openBlockEditor(block){
     <div>${block.dataset.path}</div>
     <label>Notes</label>
     <textarea id="notes"></textarea>
+    <label>Custom name</label>
+    <input id="custom">
     <button id="splitBtn">Split</button>
     <button id="deleteBtn" style="margin-top:10px;background:#a33;color:white;">Delete</button>
     `;
 
     const notes=document.getElementById("notes");
     const custom=document.getElementById("custom");
-    const canSplit=selectedRouteBlock.dataset.split==="true";
 
     notes.value=block.dataset.notes||"";
     custom.value=block.dataset.custom||"";
@@ -21,9 +22,8 @@ function openBlockEditor(block){
         block.dataset.custom=custom.value;
         block.textContent=custom.value||block.dataset.path;
     };
+
     document.getElementById("splitBtn").onclick=function(){
-        const block=selectedRouteBlock;
-        if(!block)return;
         if(block.dataset.split!=="true")return;
 
         const clone=block.cloneNode(true);
@@ -35,17 +35,11 @@ function openBlockEditor(block){
 
         openBlockEditor(block);
     };
+
     document.getElementById("deleteBtn").onclick=function(){
-        const block=selectedRouteBlock;
-        if(!block)return;
-
-        const path=block.dataset.path;
-
         block.remove();
-
         selectedRouteBlock=null;
         blockEditor.innerHTML="Select a route block";
-
         updateLibraryBlocks();
         validateRoute();
     };
