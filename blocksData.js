@@ -111,12 +111,13 @@ const libraryData = {
                             "The Grand Staircase": {
                                 type: F,
                                 items: {
-                                    "Astronomy Tower": {type: B},
-                                    "Charms": {type: B},
-                                    "Defense Against the Dark Arts Tower": {type: B},
-                                    "Defense Against the Dark Arts Classroom": {type: B},
-                                    "Professor Fig's Classroom": {type: B},
-                                    "Transfiguration Classroom": {type: B},
+                                    "Grand Staircase": {type: B},
+                                    "Grand Staircase Tower": {type: B},
+                                    "Lower Grand Staircase": {type: B},
+                                    "Quad Courtyard": {type: B},
+                                    "Ravenclaw Common Room": {type: B},
+                                    "Ravenclaw Tower": {type: B},
+                                    "Slytherin Common Room": {type: B},
                                     "Trophy Room": {type: B},
                                 }
                             },
