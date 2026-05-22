@@ -134,7 +134,7 @@ new Sortable(routeContainer, {
     onAdd(evt) {
         const block = evt.item;
 
-        // HARD GUARD
+        // Invalid block protection
         if (!block.dataset.name || block.dataset.name === "undefined") {
             block.remove();
             return;
@@ -143,15 +143,26 @@ new Sortable(routeContainer, {
         const id = block.dataset.name;
         const repeatable = block.dataset.repeatable === "true";
 
-        if (!repeatable && usedBlocks.has(id)) {
-            block.remove();
-            return;
-        }
-
+        // Prevent duplicate non-repeatables
         if (!repeatable) {
+
+            // Count how many already exist in route
+            const existing = Array.from(routeContainer.children)
+                .filter(el =>
+                    el !== block &&
+                    el.dataset.name === id
+                );
+
+            if (existing.length > 0) {
+                block.remove();
+                return;
+            }
+
             usedBlocks.add(id);
-            document.querySelectorAll(`[data-name="${id}"]`).forEach(el => {
-                if (el.dataset.origin === "library") {
+
+            // Disable ONLY library versions
+            document.querySelectorAll(".libraryBlock").forEach(el => {
+                if (el.dataset.name === id) {
                     el.classList.add("disabledBlock");
                 }
             });
@@ -164,16 +175,35 @@ new Sortable(routeContainer, {
     onRemove(evt) {
         const block = evt.item;
 
+        // Ignore removals from library clone source
+        if (block.dataset.origin !== "route") {
+            return;
+        }
+
         const id = block.dataset.name;
         const repeatable = block.dataset.repeatable === "true";
 
         if (!repeatable) {
-            usedBlocks.delete(id);
-            document.querySelectorAll(`[data-name="${id}"]`).forEach(el => {
-                el.classList.remove("disabledBlock");
-            });
+
+            // Check if another copy still exists
+            const stillExists = Array.from(routeContainer.children)
+                .some(el => el.dataset.name === id);
+
+            if (!stillExists) {
+                usedBlocks.delete(id);
+
+                document.querySelectorAll(".libraryBlock").forEach(el => {
+                    if (el.dataset.name === id) {
+                        el.classList.remove("disabledBlock");
+                    }
+                });
+            }
         }
 
+        updateErrors();
+    },
+
+    onEnd() {
         updateErrors();
     }
 });
