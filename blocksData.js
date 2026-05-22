@@ -12,37 +12,37 @@ const libraryData = {
 
                     "Transfiguration Courtyard": {
                         type: B,
-                        after: ["Quests - Gobs of Gobstones - Start"]
+                        after: ["Quest - Gobs of Gobstones - Start"]
                     },
 
                     "Ravenclaw Tower": {
                         type: B,
-                        after: ["Quests - Gobs of Gobstones - Start"]
+                        after: ["Quest - Gobs of Gobstones - Start"]
                     },
 
                     "Central Hall Rafters": {
                         type: B,
-                        after: ["Quests - Gobs of Gobstones - Start"]
+                        after: ["Quest - Gobs of Gobstones - Start"]
                     },
 
                     "Divination Classroom": {
                         type: B,
-                        after: ["Quests - Gobs of Gobstones - Start"]
+                        after: ["Quest - Gobs of Gobstones - Start"]
                     },
 
                     "Trophy Room (2)": {
                         type: B,
-                        after: ["Quests - Gobs of Gobstones - Start"]
+                        after: ["Quest - Gobs of Gobstones - Start"]
                     },
 
                     "Redeem": {
                         type: B,
                         after: [
-                            "Quests - Gobs of Gobstones - Transfiguration Courtyard",
-                            "Quests - Gobs of Gobstones - Ravenclaw Tower",
-                            "Quests - Gobs of Gobstones - Central Hall Rafters",
-                            "Quests - Gobs of Gobstones - Divination Classroom",
-                            "Quests - Gobs of Gobstones - Trophy Room (2)"
+                            "Quest - Gobs of Gobstones - Transfiguration Courtyard",
+                            "Quest - Gobs of Gobstones - Ravenclaw Tower",
+                            "Quest - Gobs of Gobstones - Central Hall Rafters",
+                            "Quest - Gobs of Gobstones - Divination Classroom",
+                            "Quest - Gobs of Gobstones - Trophy Room (2)"
                         ]
                     }
                 }
@@ -170,11 +170,94 @@ const libraryData = {
                     "Highlands": {
                         type: F,
                         items: {
-                            "North Ford Bog": {type: B},
-                            "Pitt-Upon-Ford": {type: B},
-                            "San Bakar's Tower": {type: B},
+                            "North Ford Bog": {
+                                type: F,
+                                items: {
+                                    "East North Ford Bog": {type: B},
+                                    "North Ford Bog": {type: B},
+                                    "Pitt-Upon-Ford": {type: B},
+                                    "San Bakar's Tower": {type: B},
+                                }
+                            },
+                            "Forbidden Forest": {
+                                type: F,
+                                items: {
+                                    
+                                }
+                            },
+                            "Hogsmeade Valley": {
+                                type: F,
+                                items: {
+                                    
+                                }
+                            },
+                            "North Hogwarts Region": {
+                                type: F,
+                                items: {
+                                    
+                                }
+                            },
+                            "": {
+                                type: F,
+                                items: {
+                                    
+                                }
+                            },
+                            "": {
+                                type: F,
+                                items: {
+                                    
+                                }
+                            },
+                            "": {
+                                type: F,
+                                items: {
+                                    
+                                }
+                            },
+                            "": {
+                                type: F,
+                                items: {
+                                    
+                                }
+                            },
+                            "": {
+                                type: F,
+                                items: {
+                                    
+                                }
+                            },
+                            "": {
+                                type: F,
+                                items: {
+                                    
+                                }
+                            },
+                            "": {
+                                type: F,
+                                items: {
+                                    
+                                }
+                            },
+                            "": {
+                                type: F,
+                                items: {
+                                    
+                                }
+                            },
+                            "": {
+                                type: F,
+                                items: {
+                                    
+                                }
+                            },
+                            "": {
+                                type: F,
+                                items: {
+                                    
+                                }
+                            },
                             "North Ford Bog Entrance": {type: B},
-                            "East North Ford Bog": {type: B},
                             "West Forbidden Forest": {type: B},
                             "Upper Hogsfield": {type: B},
                             "Jackdaw's Tomb": {type: B},
