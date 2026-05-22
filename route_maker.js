@@ -1,8 +1,6 @@
-const libraryRoot = document.getElementById("blockLibrary");
-const routeContainer = document.getElementById("routeContainer");
-const errorPanel = document.getElementById("errorPanel");
+//route_maker.js
 
-const usedBlocks = new Set();
+/*const usedBlocks = new Set();
 
 // =============================
 // ERROR SYSTEM
@@ -225,4 +223,4 @@ new Sortable(routeContainer, {
     onEnd() {
         updateErrors();
     }
-});
+});*/
