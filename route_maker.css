@@ -156,3 +156,20 @@ button {
     font-size: 13px;
     opacity: 0.85;
 }
+
+#blockEditor {
+    margin-top: 20px;
+    padding: 15px;
+    background: #222;
+    border: 2px solid #444;
+    border-radius: 12px;
+}
+
+#blockEditor input,
+#blockEditor textarea,
+#blockEditor select {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
