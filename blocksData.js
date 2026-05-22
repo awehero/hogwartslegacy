@@ -86,7 +86,18 @@ const libraryData = {
                     "Hogwarts": {
                         type: F,
                         items: {
-                            "South Exit": {type: B}
+                            "Astronomy Wing": {
+                                type: B,
+                                items: {
+                                    "Astronomy Tower": {type: B},
+                                    "": {type: B},
+                                    "": {type: B},
+                                    "": {type: B},
+                                    "": {type: B},
+                                    "": {type: B},
+                                    "": {type: B},
+                                }
+                            }
                         }
                     },
                     "Hogsmeade": {

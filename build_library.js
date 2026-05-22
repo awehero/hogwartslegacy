@@ -1,8 +1,4 @@
 //build_library.js
-const libraryRoot = document.getElementById("blockLibrary");
-const routeContainer = document.getElementById("routeContainer");
-const errorPanel = document.getElementById("errorPanel");
-
 function buildLibrary(data, name) {
     let html = "";
     if (data.type == F) {
