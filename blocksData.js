@@ -125,12 +125,9 @@ const libraryData = {
                                 type: F,
                                 items: {
                                     "Boathouse": {type: B},
-                                    "Charms": {type: B},
-                                    "Defense Against the Dark Arts Tower": {type: B},
-                                    "Defense Against the Dark Arts Classroom": {type: B},
-                                    "Professor Fig's Classroom": {type: B},
-                                    "Transfiguration Classroom": {type: B},
-                                    "Transfiguration Courtyard": {type: B},
+                                    "Great Hall": {type: B},
+                                    "Hufflepuff Common Room": {type: B},
+                                    "Viaduct Courtyard": {type: B},
                                 }
                             },
                             "The Library Annex": {
@@ -138,7 +135,6 @@ const libraryData = {
                                 items: {
                                     "Central Hall": {type: B},
                                     "Divination Classroom": {type: B},
-                                    "Defense Against the Dark Arts Tower": {type: B},
                                     "Greenhouses": {type: B},
                                     "Library": {type: B},
                                     "Potions Classroom": {type: B},
@@ -156,9 +152,9 @@ const libraryData = {
                                 items: {
                                     "Clock Tower Courtyard": {type: B},
                                     "Faculty Tower": {type: B},
+                                    "Gryffindor Common Room": {type: B},
                                     "Hospital Wing": {type: B},
                                     "Hogwarts South Exit": {type: B},
-                                    "??Gryffindor Common Room": {type: B},
                                 }
                             },
                         }
@@ -167,14 +163,54 @@ const libraryData = {
                         type: F,
                         items: {
                             "North Hogsmeade": {type: B},
-                            "South Hogsmeade": {type: B},
                             "West Hogsmeade": {type: B},
+                            "South Hogsmeade": {type: B},
                         }
                     },
                     "Highlands": {
                         type: F,
                         items: {
-
+                            "North Ford Bog": {type: B},
+                            "Pitt-Upon-Ford": {type: B},
+                            "San Bakar's Tower": {type: B},
+                            "North Ford Bog Entrance": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
+                            "": {type: B},
                         }
                     },
                 }
