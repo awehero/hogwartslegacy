@@ -3,51 +3,69 @@ const libraryData = {
     "Quest": {
         type: F,
         items: {
-            
-            "Gobs of Gobstones": {
+            "Main": {
                 type: F,
                 items: {
-                    "Start": {
-                        type: B
-                    },
-
-                    "Transfiguration Courtyard": {
+                    "The Path to Hogwarts": {
                         type: B,
-                        after: ["Quest - Gobs of Gobstones - Start"]
+                        split: true,
                     },
-
-                    "Ravenclaw Tower": {
+                    "Welcome to Hogwarts": {
                         type: B,
-                        after: ["Quest - Gobs of Gobstones - Start"]
+                        split: true,
+                        after: ["Quest - Main - The Path to Hogwarts"]
                     },
+                }
+            },
+            "Side": {
+                type: F,
+                items: {
+                    "Gobs of Gobstones": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B
+                            },
 
-                    "Central Hall Rafters": {
-                        type: B,
-                        after: ["Quest - Gobs of Gobstones - Start"]
-                    },
+                            "Transfiguration Courtyard": {
+                                type: B,
+                                after: ["Quest - Side - Gobs of Gobstones - Start"]
+                            },
 
-                    "Divination Classroom": {
-                        type: B,
-                        after: ["Quest - Gobs of Gobstones - Start"]
-                    },
+                            "Ravenclaw Tower": {
+                                type: B,
+                                after: ["Quest - Side - Gobs of Gobstones - Start"]
+                            },
 
-                    "Trophy Room (2)": {
-                        type: B,
-                        after: ["Quest - Gobs of Gobstones - Start"]
-                    },
+                            "Central Hall Rafters": {
+                                type: B,
+                                after: ["Quest - Side - Gobs of Gobstones - Start"]
+                            },
 
-                    "Redeem": {
-                        type: B,
-                        after: [
-                            "Quest - Gobs of Gobstones - Transfiguration Courtyard",
-                            "Quest - Gobs of Gobstones - Ravenclaw Tower",
-                            "Quest - Gobs of Gobstones - Central Hall Rafters",
-                            "Quest - Gobs of Gobstones - Divination Classroom",
-                            "Quest - Gobs of Gobstones - Trophy Room (2)"
-                        ]
+                            "Divination Classroom": {
+                                type: B,
+                                after: ["Quest - Side - Gobs of Gobstones - Start"]
+                            },
+
+                            "Trophy Room (2)": {
+                                type: B,
+                                after: ["Quest - Side - Gobs of Gobstones - Start"]
+                            },
+
+                            "Redeem": {
+                                type: B,
+                                after: [
+                                    "Quest - Side - Gobs of Gobstones - Transfiguration Courtyard",
+                                    "Quest - Side - Gobs of Gobstones - Ravenclaw Tower",
+                                    "Quest - Side - Gobs of Gobstones - Central Hall Rafters",
+                                    "Quest - Side - Gobs of Gobstones - Divination Classroom",
+                                    "Quest - Side - Gobs of Gobstones - Trophy Room (2)"
+                                ]
+                            }
+                        }
                     }
                 }
-            }
+            },
         }
     },
     "Travel": {

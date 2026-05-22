@@ -31,6 +31,7 @@ function buildLibrary(data, name, path = "") {
             data-name="${name}"
             data-path="${fullPath}"
             data-repeatable="${data.repeatable === true}"
+            data-split="${data.split === true}"
         >
             ${fullPath}
         </button>
