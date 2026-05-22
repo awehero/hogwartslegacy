@@ -15,6 +15,21 @@ const libraryData = {
                         split: true,
                         after: ["Quest - Main - The Path to Hogwarts"]
                     },
+                    "Defense Against the Dark Arts Class": {
+                        type: B,
+                        split: true,
+                        after: ["Quest - Main - Welcome to Hogwarts"]
+                    },
+                    "Charms Class": {
+                        type: B,
+                        split: true,
+                        after: ["Quest - Main - Welcome to Hogwarts"]
+                    },
+                    "Weasley After Class": {
+                        type: B,
+                        split: true,
+                        after: ["Quest - Main - Defense Against the Dark Arts Class", "Quest - Main - Charms Class"]
+                    }
                 }
             },
             "Side": {
@@ -24,7 +39,8 @@ const libraryData = {
                         type: F,
                         items: {
                             "Start": {
-                                type: B
+                                type: B,
+                                after: ["Quest - Main - Weasley After Class"]
                             },
 
                             "Transfiguration Courtyard": {
