@@ -1,46 +1,39 @@
-function validateRoute(routeBlocks) {
-    const errors = [];
+function validateRoute() {
 
-    // CLEAN INPUT (prevents undefined + folders)
-    const blocks = routeBlocks.filter(el =>
-        el &&
-        el.dataset &&
-        el.dataset.name &&
-        el.dataset.name !== "undefined"
-    );
+    errorPanel.innerHTML = "";
 
-    const position = new Map();
+    const completed = [];
 
-    blocks.forEach((b, i) => {
-        if (!position.has(b.dataset.name)) {
-            position.set(b.dataset.name, i);
+    routeContainer.querySelectorAll(".libraryBlock").forEach(el => {
+
+        const path = el.dataset.path;
+
+        const data = blockLookup[path];
+
+        if (data.after) {
+
+            data.after.forEach(required => {
+
+                if (!completed.includes(required)) {
+
+                    const error = document.createElement("div");
+
+                    error.className = "errorItem";
+
+                    error.textContent =
+                        `"${path}" requires "${required}" before it`;
+
+                    errorPanel.appendChild(error);
+
+                }
+
+            });
+
         }
+
+        completed.push(path);
+
     });
 
-    blocks.forEach((b, i) => {
-        const name = b.dataset.name;
-
-        if (!b.dataset.after) return;
-
-        let after;
-        try {
-            after = JSON.parse(b.dataset.after);
-        } catch {
-            return;
-        }
-
-        for (const req of after) {
-            const reqIndex = position.get(req);
-
-            if (reqIndex === undefined || reqIndex >= i) {
-                errors.push({
-                    type: "ORDER",
-                    message: `"${req}" must come before "${name}"`
-                });
-            }
-        }
-    });
-
-    return errors;
 }
 window.validateRoute = validateRoute;

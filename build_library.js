@@ -55,3 +55,30 @@ document.querySelectorAll(".folderButton").forEach(button => {
     });
 });
 libraryRoot.querySelectorAll("button").forEach(btn=>btn.click());
+
+//Block Lookup Table
+const blockLookup = {};
+
+function buildBlockLookup(data, name, path = "") {
+
+    const fullPath =
+        path === ""
+        ? name
+        : `${path} - ${name}`;
+
+    if (data.type === F) {
+
+        for (const k in data.items) {
+            buildBlockLookup(data.items[k], k, fullPath);
+        }
+
+    } else {
+
+        blockLookup[fullPath] = data;
+
+    }
+}
+
+for (const k in libraryData) {
+    buildBlockLookup(libraryData[k], k);
+}
