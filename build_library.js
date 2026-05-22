@@ -26,13 +26,13 @@ function buildLibrary(data, name, path = "") {
         `;
     } else {
         html += `
-        <div
+        <button
             class="libraryBlock"
             data-name="${name}"
             data-path="${fullPath}"
         >
             ${name}
-        </div>
+        </button>
         `;
     }
     return html;
