@@ -1,61 +1,38 @@
 //block_editor.js
-function openBlockEditor(block) {
-
-    blockEditor.innerHTML = `
-        <h2>${block.dataset.path}</h2>
-
-        <label>
-            Notes
-        </label>
-
-        <textarea id="blockNotes"></textarea>
-
-        <label>
-            Custom Name
-        </label>
-
-        <input id="blockCustomName" type="text">
+function openBlockEditor(block){
+    blockEditor.innerHTML=`
+        <div>${block.dataset.path}</div>
+        <label>Notes</label>
+        <textarea id="notes"></textarea>
+        <label>Custom name</label>
+        <input id="custom">
     `;
 
-    const notesInput =
-        document.getElementById("blockNotes");
+    const notes=document.getElementById("notes");
+    const custom=document.getElementById("custom");
 
-    const customNameInput =
-        document.getElementById("blockCustomName");
+    notes.value=block.dataset.notes||"";
+    custom.value=block.dataset.custom||"";
 
-    notesInput.value =
-        block.dataset.notes || "";
+    notes.oninput=()=>block.dataset.notes=notes.value;
 
-    customNameInput.value =
-        block.dataset.customName || "";
-
-    notesInput.addEventListener("input", () => {
-
-        block.dataset.notes =
-            notesInput.value;
-
-    });
-
-    customNameInput.addEventListener("input", () => {
-
-        block.dataset.customName =
-            customNameInput.value;
-
-        block.textContent =
-            customNameInput.value || block.dataset.path;
-
-    });
-
+    custom.oninput=()=>{
+        block.dataset.custom=custom.value;
+        block.textContent=custom.value||block.dataset.path;
+    };
 }
 
-routeContainer.addEventListener("click", e => {
+routeContainer.addEventListener("click",e=>{
+    const block=e.target.closest(".libraryBlock");
+    if(!block)return;
 
-    const block = e.target.closest(".libraryBlock");
+    selectedRouteBlock=block;
 
-    if (!block) return;
+    document.querySelectorAll(".routeSelected").forEach(el=>{
+        el.classList.remove("routeSelected");
+    });
 
-    selectedRouteBlock = block;
+    block.classList.add("routeSelected");
 
     openBlockEditor(block);
-
 });

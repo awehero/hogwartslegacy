@@ -3,6 +3,7 @@ const libraryData = {
     "Quest": {
         type: F,
         items: {
+            
             "Gobs of Gobstones": {
                 type: F,
                 items: {
@@ -206,96 +207,87 @@ const libraryData = {
                             "South Hogwarts Region": {
                                 type: F,
                                 items: {
-                                    
+                                    "Aranshire": {type: B},
+                                    "Forbidden Forest": {type: B},
+                                    "Lower Hogsfield": {type: B},
+                                    "Mooncalf Den": {type: B},
                                 }
                             },
                             "Hogwarts Valley": {
                                 type: F,
                                 items: {
-                                    
+                                    "Brocburrow": {type: B},
+                                    "Central Hogwarts Valley": {type: B},
+                                    "Keenbridge": {type: B},
+                                    "The Mine's Eye": {type: B},
                                 }
                             },
                             "Feldcroft Region": {
                                 type: F,
                                 items: {
-                                    
+                                    "Feldcroft": {type: B},
+                                    "Feldcroft Catacomb": {type: B},
+                                    "Irondale": {type: B},
+                                    "North Feldcroft": {type: B},
+                                    "Rookwood Castle": {type: B},
+                                    "South Feldcroft": {type: B},
+                                    "West Hogwarts Valley": {type: B},
                                 }
                             },
                             "South Sea Bog": {
                                 type: F,
                                 items: {
-                                    
+                                    "Northern South Sea Bog": {type: B},
                                 }
                             },
                             "Coastal Cavern": {
                                 type: F,
                                 items: {
-                                    
+                                    "East South Sea Bog?": {type: B},
+                                    "North Poidsear Coast": {type: B},
                                 }
                             },
                             "Poidsear Coast": {
                                 type: F,
                                 items: {
-                                    
+                                    "Marunweem Bridge": {type: B},
+                                    "Phoenix Mountain Cave": {type: B},
+                                    "Poidsear Castle": {type: B},
+                                    "South Poidsear Coast": {type: B},
+                                    "Tomb of Treachery": {type: B},
                                 }
                             },
                             "Marunweem Lake": {
                                 type: F,
                                 items: {
-                                    
+                                    "Coastal Mine": {type: B},
+                                    "Marunweem": {type: B},
+                                    "Marunweem Lake": {type: B},
+                                    "Marunweem Ruins": {type: B},
+                                    "Tower Tunnel": {type: B},
                                 }
                             },
                             "Manor Cape": {
                                 type: F,
                                 items: {
-                                    
+                                    "Bainburgh": {type: B},
+                                    "West Manor Cape": {type: B},
                                 }
                             },
                             "Cragcroftshire": {
                                 type: F,
                                 items: {
-                                    
+                                    "Cragcroft": {type: B},
+                                    "Cragcroft Shore": {type: B},
                                 }
                             },
                             "Clagmar Coast": {
                                 type: F,
                                 items: {
-                                    
+                                    "Clagmar Castle": {type: B},
+                                    "South Clagmar Coast": {type: B},
                                 }
                             },
-                            "Forbidden Forest": {type: B},
-                            "Mooncalf Den": {type: B},
-                            "Aranshire": {type: B},
-                            "Lower Hogsfield": {type: B},
-                            "Central Hogwarts Valley": {type: B},
-                            "Brocburrow": {type: B},
-                            "West Hogwarts Valley": {type: B},
-                            "North Feldcroft": {type: B},
-                            "Keenbridge": {type: B},
-                            "The Mine's Eye": {type: B},
-                            "Northern South Sea Bog": {type: B},
-                            "Rookwood Castle": {type: B},
-                            "Feldcroft": {type: B},
-                            "South Feldcroft": {type: B},
-                            "East South Sea Bog?": {type: B},
-                            "Irondale": {type: B},
-                            "North Poidsear Coast": {type: B},
-                            "Tomb of Treachery": {type: B},
-                            "Phoenix Mountain Cave": {type: B},
-                            "Poidsear Castle": {type: B},
-                            "Coastal Mine": {type: B},
-                            "Marunweem Bridge": {type: B},
-                            "South Poidsear Coast": {type: B},
-                            "Marunweem Lake": {type: B},
-                            "Tower Tunnel": {type: B},
-                            "Marunweem": {type: B},
-                            "Marunweem Ruins": {type: B},
-                            "Bainburgh": {type: B},
-                            "Cragcroft Shore": {type: B},
-                            "West Manor Cape": {type: B},
-                            "Cragcroft": {type: B},
-                            "Clagmar Castle": {type: B},
-                            "South Clagmar Coast": {type: B},
                         }
                     },
                 }
