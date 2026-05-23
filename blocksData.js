@@ -417,6 +417,23 @@ const libraryData = {
                             }
                         }
                     },
+                    "Follow the Butterflies": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                after: ["Quest - Main - Jackdaw's Rest"]
+                            },
+                            "Follow Butterflies": {
+                                type: B,
+                                after: ["Quest - Other - Follow the Butterflies - Start"]
+                            },
+                            "Redeem": {
+                                type: B,
+                                after: ["Quest - Other - Follow the Butterflies - Follow Butterflies"]
+                            }
+                        }
+                    },
                 }
             },
         }
