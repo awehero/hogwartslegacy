@@ -626,16 +626,21 @@ const libraryData = {
                 }
             },
             "Chest": {
-
+                type: F,
+                items: {}
             },
             "Beast": {
-                "Puffskein": {type: B, repeatable: true},
-                "Jobberknoll": {type: B, repeatable: true},
-                "Mooncalf": {type: B, repeatable: true},
-                "Diricawl": {type: B, repeatable: true},
+                type: F,
+                items: {
+                    "Puffskein": {type: B, repeatable: true},
+                    "Jobberknoll": {type: B, repeatable: true},
+                    "Mooncalf": {type: B, repeatable: true},
+                    "Diricawl": {type: B, repeatable: true},
+                }
             },
             "Item": {
-
+                type: F,
+                items: {}
             }
         }
     }
