@@ -42,6 +42,67 @@ const libraryData = {
                     }
                 }
             },
+            "Sebby": {
+                type: F,
+                items: {
+
+                }
+            },
+            "Natty": {
+                type: F,
+                items: {
+
+                }
+            },
+            "Poppy": {
+                type: F,
+                items: {
+
+                }
+            },
+            "Dueling Club": {
+                type: F,
+                items: {
+                    "Crossed Wands: Round 1": {
+                        type: B,
+                        after: ["Quest - Main - Defense Against the Dark Arts Class"]
+                    },
+                    "Crossed Wands: Round 2": {
+                        type: B,
+                        after: ["Quest - Dueling Club - Crossed Wands: Round 1"]
+                    },
+                    "Crossed Wands: Round 3": {
+                        type: B,
+                        after: ["Quest - Main - Tomes and Tribulations"]
+                    },
+                    "Spell Combination Practice 1": {
+                        type: B,
+                        after: ["Quest - Dueling Club - Crossed Wands: Round 1"]
+                    },
+                    "Spell Combination Practice 2": {
+                        type: B,
+                        after: ["Quest - Main - Tomes and Tribulations"]
+                    }
+                }
+            },
+            "Summoner's Court": {
+                type: F,
+                items: {
+
+                }
+            },
+            "Deek": {
+                type: F,
+                items: {
+
+                }
+            },
+            "Flying": {
+                type: F,
+                items: {
+
+                }
+            },
             "Other": {
                 type: F,
                 items: {
@@ -89,7 +150,41 @@ const libraryData = {
                                 ]
                             }
                         }
-                    }
+                    },
+                    "Like a Moth to a Frame": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                after: ["Quest - Main - Welcome to Hogwarts"]
+                            },
+                            "Moth": {
+                                type: B,
+                                after: ["Quest - Other - Like a Moth to a Frame - Start"]
+                            },
+                            "Redeem": {
+                                type: B,
+                                after: ["Quest - Other - Like a Moth to a Frame - Moth"]
+                            }
+                        }
+                    },
+                    "Flying off the Shelves": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                after: ["Quest - Main - Charms Class"]
+                            },
+                            "Books": {
+                                type: B,
+                                after: ["Quest - Other - Flying off the Shelves - Start"]
+                            },
+                            "Redeem": {
+                                type: B,
+                                after: ["Quest - Other - Flying off the Shelves - Books"]
+                            }
+                        }
+                    },
                 }
             },
         }
