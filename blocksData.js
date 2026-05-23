@@ -221,7 +221,7 @@ const libraryData = {
                                 split: true,
                                 after: [
                                     "Quest - Dueling Club - Crossed Wands: Round 2",
-                                    "Quest - Spell Combination Practice 1"
+                                    "Quest - Dueling Club - Spell Combination Practice 1"
                                 ]
                             }
                         }
