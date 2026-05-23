@@ -66,5 +66,61 @@ function updateLibraryBlocks(){
         }
     });
 }
+function renderSearchResults(search){
+    let html="";
+    Object.keys(blockLookup).forEach(path=>{
+        if(!path.toLowerCase().includes(search.toLowerCase()))return;
+        const data=blockLookup[path];
+        html += `
+        <button
+            class="libraryBlock"
+            data-name="${path}"
+            data-path="${path}"
+            data-repeatable="${data.repeatable===true}"
+            data-split="${data.split===true}"
+        >
+            ${path}
+        </button>
+        `;
+    });
+
+    libraryRoot.innerHTML = html;
+
+    new Sortable(libraryRoot,{
+        group:{
+            name:"blocks",
+            pull:"clone",
+            put:false
+        },
+        draggable: ".libraryBlock",
+        filter: ".disabled",
+        sort: false,
+        animation: 150
+    });
+
+    updateLibraryBlocks();
+}
+librarySearch.addEventListener("input",()=>{
+    const value=librarySearch.value.trim();
+    if(value===""){
+        libraryRoot.innerHTML=finalHTML;
+        document.querySelectorAll(".folderContent").forEach(el=>{
+            new Sortable(el,{
+                group:{
+                    name:"blocks",
+                    pull:"clone",
+                    put:false
+                },
+                draggable:".libraryBlock",
+                filter:".disabled",
+                sort:false,
+                animation:150
+            });
+        });
+        updateLibraryBlocks();
+        return;
+    }
+    renderSearchResults(value);
+});
 updateLibraryBlocks();
 validateRoute();
