@@ -405,6 +405,9 @@ const libraryData = {
                         }
                     },
                 }
+            },
+            "Point": {
+
             }
         }
     },
@@ -622,6 +625,18 @@ const libraryData = {
                     },
                 }
             },
+            "Chest": {
+
+            },
+            "Beast": {
+                "Puffskein": {type: B, repeatable: true},
+                "Jobberknoll": {type: B, repeatable: true},
+                "Mooncalf": {type: B, repeatable: true},
+                "Diricawl": {type: B, repeatable: true},
+            },
+            "Item": {
+
+            }
         }
     }
 };
