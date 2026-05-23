@@ -88,7 +88,7 @@ const libraryData = {
                         type: B,
                         split: true,
                         after: [
-                            "Quest - Assignment - Professor Hecat's Assignment 2",
+                            "Quest - Assignment - Professor Hecat's Assignment 2 - Learn Expelliarmus",
                             "Quest - Main - Ollivander's Heirloom"
                         ]
                     },
@@ -207,6 +207,47 @@ const libraryData = {
                         type: B,
                         split: true,
                         after: ["Quest - Main - Weasley After Class"]
+                    },
+                    "Professor Hecat's Assignment 1": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Main - The Locket's Secret"]
+                            },
+                            "Incendio": {
+                                type: B,
+                                split: true,
+                                after: [
+                                    "Quest - Dueling Club - Crossed Wands: Round 2",
+                                    "Quest - Spell Combination Practice 1"
+                                ]
+                            }
+                        }
+                    },
+                    "Professor Hecat's Assignment 2": {
+                        type: F,
+                        items: {
+                            "Incendio 5 Enemies": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Main - Tomes and Tribulations"]
+                            },
+                            "Dodge 10 Attacks": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Main - Tomes and Tribulations"]
+                            },
+                            "Learn Expelliarmus": {
+                                type: B,
+                                split: true,
+                                after: [
+                                    "Quest - Assignment - Professor Hecat's Assignment 2 - Incendio 5 Enemies",
+                                    "Quest - Assignment - Professor Hecat's Assignment 2 - Dodge 10 Attacks"
+                                ]
+                            },
+                        }
                     }
                 }
             },
