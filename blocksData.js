@@ -48,7 +48,7 @@ const libraryData = {
                         split: true,
                         after: [
                             "Quest - Main - The Locket's Secret",
-                            "Quest - Assignment - Professor Hecat's Assignment 1 - Start"
+                            "Quest - Assignment - Professor Hecat's Assignment 1 - Learn Incendio"
                         ]
                     },
                     "Tomes and Tribulations": {
@@ -216,7 +216,7 @@ const libraryData = {
                                 split: true,
                                 after: ["Quest - Main - The Locket's Secret"]
                             },
-                            "Incendio": {
+                            "Learn Incendio": {
                                 type: B,
                                 split: true,
                                 after: [
@@ -248,7 +248,178 @@ const libraryData = {
                                 ]
                             },
                         }
-                    }
+                    },
+                    "Professor Sharp's Assignment 1": {
+                        type: F,
+                        items: {
+                            "Use a Focus Potion": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Main - Jackdaw's Rest"]
+                            },
+                            "Use a Maxima and Edurus Potion Simultaneously": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Main - Jackdaw's Rest"]
+                            },
+                            "Learn Depulso": {
+                                type: B,
+                                split: true,
+                                after: [
+                                    "Quest - Assignment - Professor Sharp's Assignment 1 - Use a Focus Potion",
+                                    "Quest - Assignment - Professor Sharp's Assignment 1 - Use a Maxima and Edurus Potion Simultaneously"
+                                ]
+                            },
+                        }
+                    },
+                    "Professor Sharp's Assignment 2": {
+                        type: F,
+                        items: {
+                            "Use an Invisibility Potion": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Assignment - Professor Sharp's Assignment 1 - Learn Depulso"]
+                            },
+                            "Use a Thunderbrew Potion Against Enemies": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Assignment - Professor Sharp's Assignment 1 - Learn Depulso"]
+                            },
+                            "Learn Depulso": {
+                                type: B,
+                                split: true,
+                                after: [
+                                    "Quest - Assignment - Professor Sharp's Assignment 2 - Use an Invisibility Potion",
+                                    "Quest - Assignment - Professor Sharp's Assignment 2 - Use a Thunderbrew Potion Against Enemies"
+                                ]
+                            },
+                        }
+                    },
+                    "Professor Garlick's Assignment 1": {
+                        type: F,
+                        items: {
+                            "Use a Venomous Tentacula": {
+                                type: B,
+                                split: true,
+                                after: [
+                                    "Quest - Main - In the Shadow of the Undercroft",
+                                    "Quest - Main - The Room of Requirement"
+                                ]
+                            },
+                            "Use a Mandrake on Multiple Enemies Simultaneously": {
+                                type: B,
+                                split: true,
+                                after: [
+                                    "Quest - Main - In the Shadow of the Undercroft",
+                                    "Quest - Main - The Room of Requirement"
+                                ]
+                            },
+                            "Learn Wingardium Leviosa": {
+                                type: B,
+                                split: true,
+                                after: [
+                                    "Quest - Assignment - Professor Garlick's Assignment 1 - Use a Venomous Tentacula",
+                                    "Quest - Assignment - Professor Garlick's Assignment 1 - Use a Mandrake on Multiple Enemies Simultaneously"
+                                ]
+                            },
+                        }
+                    },
+                    "Professor Garlick's Assignment 2": {
+                        type: F,
+                        items: {
+                            "Grow and Harvest Fluxweed": {
+                                type: B,
+                                split: true,
+                                after: [
+                                    "Quest - Assignment - Professor Garlick's Assignment 1 - Learn Depulso",
+                                    "Buy - Tomes and Scrolls - Large Pot",
+                                    "Buy - The Magic Neep - Fluxweed Seed"
+                                ]
+                            },
+                            "Acquire All Three Combat Plants and Use Them Simultaneously": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Assignment - Professor Garlick's Assignment 1 - Learn Depulso"]
+                            },
+                            "Learn Flipendo": {
+                                type: B,
+                                split: true,
+                                after: [
+                                    "Quest - Assignment - Professor Garlick's Assignment 2 - Grow and Harvest Fluxweed",
+                                    "Quest - Assignment - Professor Garlick's Assignment 2 - UAcquire All Three Combat Plants and Use Them Simultaneously"
+                                ]
+                            },
+                        }
+                    },
+                    "Madam Kogawa's Assignment 1": {
+                        type: F,
+                        items: {
+                            "Pop Quidditch Pitch Balloons": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Main - The Map Chamber"]
+                            },
+                            "Pop Hogsmeade Station Balloons": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Main - The Map Chamber"]
+                            },
+                            "Learn Glacius": {
+                                type: B,
+                                split: true,
+                                after: [
+                                    "Quest - Assignment - Madam Kogawa's Assignment 1 - Pop Quidditch Pitch Balloons",
+                                    "Quest - Assignment - Madam Kogawa's Assignment 1 - Pop Hogsmeade Station Balloons"
+                                ]
+                            },
+                        }
+                    },
+                    "Madam Kogawa's Assignment 2": {
+                        type: F,
+                        items: {
+                            "Pop The Spires Balloons": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Assignment - Madam Kogawa's Assignment 1 - Learn Glacius"]
+                            },
+                            "Pop Keenbridge Balloons": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Assignment - Madam Kogawa's Assignment 1 - Learn Glacius"]
+                            },
+                            "Learn Arresto Momentum": {
+                                type: B,
+                                split: true,
+                                after: [
+                                    "Quest - Assignment - Madam Kogawa's Assignment 2 - Pop The Spires Balloons",
+                                    "Quest - Assignment - Madam Kogawa's Assignment 2 - Pop Keenbridge Balloons"
+                                ]
+                            },
+                        }
+                    },
+                    "Professor Onai's Assignment": {
+                        type: F,
+                        items: {
+                            "Collect Troll Bogeys": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Main - Percival Rackham's Trial"]
+                            },
+                            "Cast Depulso on a Levitated Enemy": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Assignment - Madam Kogawa's Assignment 1 - Learn Glacius"]
+                            },
+                            "Learn Descendo": {
+                                type: B,
+                                split: true,
+                                after: [
+                                    "Quest - Assignment - Professor Onai's Assignment - Collect Troll Bogeys",
+                                    "Quest - Assignment - Professor Onai's Assignment - Cast Depulso on a Levitated Enemy"
+                                ]
+                            },
+                        }
+                    },
                 }
             },
             "Sebby": {
