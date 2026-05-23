@@ -48,7 +48,7 @@ const libraryData = {
                         split: true,
                         after: [
                             "Quest - Main - The Locket's Secret",
-                            "Quest - Assignment - Professor Hecat's Assignment 1"
+                            "Quest - Assignment - Professor Hecat's Assignment 1 - Start"
                         ]
                     },
                     "Tomes and Tribulations": {
