@@ -28,7 +28,175 @@ const libraryData = {
                     "Weasley After Class": {
                         type: B,
                         split: true,
-                        after: ["Quest - Main - Defense Against the Dark Arts Class", "Quest - Main - Charms Class"]
+                        after: [
+                            "Quest - Main - Defense Against the Dark Arts Class",
+                            "Quest - Main - Charms Class"
+                        ]
+                    },
+                    "Welcome to Hogsmeade": {
+                        type: B,
+                        split: true,
+                        after: ["Quest - Assignment - Professor Ronen's Assignment"]
+                    },
+                    "The Locket's Secret": {
+                        type: B,
+                        split: true,
+                        after: ["Quest - Main - Welcome to Hogsmeade"]
+                    },
+                    "Secrets of the Restricted Section": {
+                        type: B,
+                        split: true,
+                        after: [
+                            "Quest - Main - The Locket's Secret",
+                            "Quest - Assignment - Professor Hecat's Assignment 1"
+                        ]
+                    },
+                    "Tomes and Tribulations": {
+                        type: B,
+                        split: true,
+                        after: ["Quest - Main - Secrets of the Restricted Section"]
+                    },
+                    "Herbology Class": {
+                        type: B,
+                        split: true,
+                        after: ["Quest - Main - Tomes and Tribulations"]
+                    },
+                    "Potions Class": {
+                        type: B,
+                        split: true,
+                        after: ["Quest - Main - Herbology Class"]
+                    },
+                    "The Girl from Ouagadou": {
+                        type: B,
+                        split: true,
+                        after: ["Quest - Main - Tomes and Tribulations"]
+                    },
+                    "Trials of Merlin": {
+                        type: B,
+                        split: true,
+                        after: ["Quest - Main - The Girl from Ouagadou"]
+                    },
+                    "Ollivander's Heirloom": {
+                        type: B,
+                        split: true,
+                        after: [
+                            "Quest - Main - Potions Class",
+                            "Quest - Main - Trials of Merlin"
+                        ]
+                    },
+                    "Jackdaw's Rest": {
+                        type: B,
+                        split: true,
+                        after: [
+                            "Quest - Assignment - Professor Hecat's Assignment 2",
+                            "Quest - Main - Ollivander's Heirloom"
+                        ]
+                    },
+                    "Flying Class": {
+                        type: B,
+                        split: true,
+                        after: ["Quest - Main - Jackdaw's Rest"]
+                    },
+                    "In the Shadow of the Undercroft": {
+                        type: B,
+                        split: true,
+                        after: ["Quest - Main - Flying Class"]
+                    },
+                    "The Room of Requirement": {
+                        type: B,
+                        split: true,
+                        after: ["Quest - Main - Flying Class"]
+                    },
+                    "The Map Chamber": {
+                        type: B,
+                        split: true,
+                        after: [
+                            "Quest - Main - In the Shadow of the Undercroft",
+                            "Quest - Main - The Room of Requirement"
+                        ]
+                    },
+                    "Percival Rackham's Trial": {
+                        type: B,
+                        split: true,
+                        after: ["Quest - Main - The Map Chamber"]
+                    },
+                    "The Helm of Urtkot": {
+                        type: F,
+                        items: {
+                            "Sirona": {
+                                type: B,
+                                split: true,
+                                after: [
+                                    "Quest - Main - Percival Rackham's Trial",
+                                    "Quest - Assignment - Professor Sharp's Assignment 1"
+                                ]
+                            },
+                            "Lodgok and Walk": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Main - The Helm of Urtkot - Sirona"]
+                            },
+                            "Collector's Cave": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Main - The Helm of Urtkot - Lodgok and Walk"]
+                            },
+                            "Tell Lodgok": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Main - The Helm of Urtkot - Collector's Cave"]
+                            },
+                            "Collect Helm": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Main - The Helm of Urtkot - Tell Lodgok"]
+                            },
+                            "Deliver Helm": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Main - The Helm of Urtkot - Collect Helm"]
+                            }
+                        }
+                    },
+                    "Beasts Class": {
+                        type: B,
+                        split: true,
+                        after: ["Quest - Main - Percival Rackham's Trial"]
+                    },
+                    "The Caretaker's Lunar Lament": {
+                        type: B,
+                        split: true,
+                        after: ["Quest - Main - Percival Rackham's Trial"]
+                    },
+                    "The Elf, the Nab-Sack, and the Loom": {
+                        type: F,
+                        items: {
+                            "Deek in RoR": {
+                                type: B,
+                                split: true,
+                                after: [
+                                    "Quest - Main - The Helm of Urtkot - Deliver Helm",
+                                    "Quest - Main - Beasts Class",
+                                    "Quest - Main - The Caretaker's Lunar Lament"
+                                ]
+                            },
+                            "Deek at Puffskein Den": {
+                                type: B,
+                                split: true,
+                                after: [
+                                    "Quest - Main - The Elf, the Nab-Sack, and the Loom - Deek in RoR",
+                                    "Collect - Beast - Puffskein"
+                                ]
+                            },
+                            "Deek at Jobberknoll Den": {
+                                type: B,
+                                split: true,
+                                after: [
+                                    "Quest - Main - The Elf, the Nab-Sack, and the Loom - Deek at Puffskein",
+                                    "Collect - Beast - Puffskein"
+                                ]
+                            },
+                        }
                     }
                 }
             },
@@ -45,7 +213,30 @@ const libraryData = {
             "Sebby": {
                 type: F,
                 items: {
-
+                    "In the Shadow of the Bloodline": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                after: [
+                                    "Quest - Main - The Elf, the Nab-Sack, and the Loom",
+                                    "In the Shadow of the Estate"
+                                ]
+                            },
+                            "Finish": {
+                                type: B,
+                                after: ["Quest - Sebby - In the Shadow of the Bloodline - Start"]
+                            }
+                        }
+                    },
+                    "In the Shadow of the Study": {
+                        type: B,
+                        after: [
+                            "Quest - Main - The High Keep",
+                            "Quest - Main - Astronomy Class",
+                            "Quest - Sebby - In the Shadow of the Bloodline - Finish"
+                        ]
+                    }
                 }
             },
             "Natty": {
