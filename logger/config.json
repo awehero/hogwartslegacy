@@ -6,5 +6,5 @@
     "height": 70
   },
   "interval": 300,
-  "minDistance": 5
+  "minDistance": 200
 }
