@@ -46,20 +46,32 @@ new Sortable(trashZone, {
     group: {
         name: "blocks",
         pull: false,
-        put: true
+        put: function(to, from) {
+            return from.el === routeContainer;
+        }
     },
     animation: 150,
 
     onAdd: function(evt) {
         evt.item.remove();
 
-        updateLibraryBlocks();
-        validateRoute();
-
         if (selectedRouteBlock === evt.item) {
             selectedRouteBlock = null;
             blockEditor.innerHTML = "Select a route block";
         }
+
+        updateLibraryBlocks();
+        validateRoute();
+
+        trashZone.classList.remove("hovering");
+    },
+
+    onOver: function() {
+        trashZone.classList.add("hovering");
+    },
+
+    onOut: function() {
+        trashZone.classList.remove("hovering");
     }
 });
 
