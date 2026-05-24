@@ -2,7 +2,7 @@ const screenshot = require("screenshot-desktop");
 const sharp = require("sharp");
 const Tesseract = require("tesseract.js");
 const fs = require("fs");
-
+const path = require("path");
 const config = require("./config.json");
 
 let route = [];
@@ -43,8 +43,8 @@ function saveMarker(name, point) {
     });
 
     fs.writeFileSync(
-        "./markers.json",
-        JSON.stringify(markers, null, 2)
+        path.join(__dirname, "..", "visualizer", "markers.json"),
+        JSON.stringify(route, null, 2)
     );
 
     console.log(`📍 Saved marker: ${name}`);
@@ -125,7 +125,7 @@ async function capture() {
         route.push(point);
 
         fs.writeFileSync(
-            "./route.json",
+            path.join(__dirname, "..", "visualizer", "route.json"),
             JSON.stringify(route, null, 2)
         );
 
