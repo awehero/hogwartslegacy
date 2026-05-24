@@ -32,8 +32,10 @@ async function capture() {
 
         const cropped = await sharp(img)
             .extract(config.capture)
+            .resize(3000)
             .grayscale()
-            .threshold(180)
+            .normalize()
+            .sharpen()
             .png()
             .toBuffer();
 
@@ -42,29 +44,36 @@ async function capture() {
             cropped
         );
 
-        const result = await Tesseract.recognize(
-            cropped,
-            "eng"
-        );
+        const result = await Tesseract.recognize(cropped, "eng", {
+            tessedit_char_whitelist: "0123456789.-,LocRot: "
+        });
 
         let text = result.data.text;
 
         console.log(text);
 
-        let match = text.match(
-            /X[: ]*(-?\d+).*?Y[: ]*(-?\d+).*?Z[: ]*(-?\d+)/is
+        let locMatch = text.match(
+            /Loc:\s*([-0-9.,\s]+)/i
         );
 
-        if (!match) {
+        if (!locMatch) {
             console.log("No coordinates detected");
+            return;
+        }
+
+        let nums = locMatch[1]
+            .replace(/,/g, ".")
+            .match(/-?\d+\.?\d*/g);
+
+        if (!nums || nums.length < 2) {
+            console.log("Could not parse numbers");
             return;
         }
 
         let point = {
             t: Date.now(),
-            x: Number(match[1]),
-            y: Number(match[2]),
-            z: Number(match[3])
+            x: Number(nums[0]),
+            y: Number(nums[1])
         };
 
         let last = route[route.length - 1];
