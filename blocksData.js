@@ -682,12 +682,138 @@ const libraryData = {
                             },
                         }
                     },
-                    "": {
+                    "Carted Away": {
                         type: F,
                         items: {
                             "Start": {
                                 type: B,
                                 after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                        }
+                    },
+                    "The Lost Astrolabe": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                        }
+                    },
+                    "Well, Well, Well": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                        }
+                    },
+                    "Breaking Camp": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                        }
+                    },
+                    "Brother's Keeper": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                        }
+                    },
+                    "Kidnapped Cabbage": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                        }
+                    },
+                    "Troll Control": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                        }
+                    },
+                    "E-vase-ive Maneuver": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                        }
+                    },
+                    "The Hippogriff Marks the Spot": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                        }
+                    },
+                    "Birds of a Feather": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                        }
+                    },
+                    "Sacking Selwyn": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                        }
+                    },
+                    "Solved by the Bell": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                        }
+                    },
+                    "Cursed Tomb Treasure": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                        }
+                    },
+                    "Absconder Encounter": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                        }
+                    },
+                    "Venomous Valour": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                after: ["Quest - Assignment - Professor Hecat's Assignment 1 - Learn Incendio"]
                             },
                         }
                     },
