@@ -4,7 +4,12 @@ function clearRouteErrors() {
 		el.classList.remove("routeBlockError");
 	});
 }
-
+function shortPath(path) {
+	if (path.split(" - ")[0] == "Quest") {
+		return path.split(" - ").slice(2).join(" - ");
+	}
+	return path;
+}
 function validateRoute() {
 	errorPanel.innerHTML = "";
 	clearRouteErrors();
@@ -24,7 +29,9 @@ function validateRoute() {
 						el.classList.add("routeBlockError");
 						const error = document.createElement("div");
 						error.className = "errorItem";
-						error.textContent = `"${path}" requires ONE OF: ${required.join(" OR ")}`;
+                        let pathText = shortPath(path);
+                        let requiredText = required.map(item => shortPath(item));
+                        error.textContent = `"${pathText}" requires ONE OF: ${requiredText.join(" OR ")}`;
 						error.onclick = () => {
 							let target = null;
 							for (const option of required) {
@@ -57,10 +64,12 @@ function validateRoute() {
 						el.classList.add("routeBlockError");
 						const error = document.createElement("div");
 						error.className = "errorItem";
-						if (appearsLater) {
-							error.textContent = `"${required}" appears after "${path}"`;
+                        let pathText = shortPath(path);
+                        let requiredText = shortPath(required);
+                        if (appearsLater) {
+							error.textContent = `"${requiredText}" appears after "${pathText}"`;
 						} else {
-							error.textContent = `"${path}" requires "${required}" before it`;
+							error.textContent = `"${pathText}" requires "${requiredText}" before it`;
 						}
 						error.onclick = () => {
 							let target = route.find(x => x.dataset.path === required);
