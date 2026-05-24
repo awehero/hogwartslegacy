@@ -19,7 +19,7 @@ let lineMesh = null;
 
 async function load() {
 
-    let res1 = await fetch("route.json");
+    let res1 = await fetch("points.json");
     let data = await res1.json();
 
     let res2 = await fetch("markers.json");
