@@ -654,7 +654,41 @@ const libraryData = {
                             "Start": {
                                 type: B,
                                 after: ["Quest - Main - Welcome to Hogsmeade"]
-                            }
+                            },
+                            "Dinosaur": {
+                                type: B,
+                                after: ["Quest - Other - Cache in the Castle - Start"]
+                            },
+                            "Fountain": {
+                                type: B,
+                                after: ["Quest - Other - Cache in the Castle - Dinosaur"]
+                            },
+                            "Portrait": {
+                                type: B,
+                                after: ["Quest - Other - Cache in the Castle - Fountain"]
+                            },
+                            "Redeem": {
+                                type: B,
+                                after: ["Quest - Other - Cache in the Castle - Portrait"]
+                            },
+                        }
+                    },
+                    "The Daedalian Keys": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                        }
+                    },
+                    "": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
                         }
                     },
                 }
