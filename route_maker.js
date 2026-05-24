@@ -42,6 +42,27 @@ new Sortable(routeContainer, {
     }
 });
 
+new Sortable(trashZone, {
+    group: {
+        name: "blocks",
+        pull: false,
+        put: true
+    },
+    animation: 150,
+
+    onAdd: function(evt) {
+        evt.item.remove();
+
+        updateLibraryBlocks();
+        validateRoute();
+
+        if (selectedRouteBlock === evt.item) {
+            selectedRouteBlock = null;
+            blockEditor.innerHTML = "Select a route block";
+        }
+    }
+});
+
 function updateLibraryBlocks(){
     const used={};
 
