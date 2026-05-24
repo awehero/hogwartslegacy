@@ -5,6 +5,6 @@
     "width": 600,
     "height": 100
   },
-  "interval": 500,
+  "interval": 1000,
   "minDistance": 5
 }
