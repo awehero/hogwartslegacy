@@ -24,7 +24,7 @@ function openBlockEditor(block){
     };
 
     document.getElementById("splitBtn").onclick=function(){
-        if(block.dataset.split!=="true")return;
+        //if(block.dataset.split!=="true")return;
 
         const clone=block.cloneNode(true);
 

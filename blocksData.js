@@ -8,16 +8,13 @@ const libraryData = {
                 items: {
                     "The Path to Hogwarts": {
                         type: B,
-                        split: true,
                     },
                     "Welcome to Hogwarts": {
                         type: B,
-                        split: true,
                         after: ["Quest - Main - The Path to Hogwarts"]
                     },
                     "Defense Against the Dark Arts Class": {
                         type: B,
-                        split: true,
                         after: ["Quest - Main - Welcome to Hogwarts"]
                     },
                     "Charms Class": {
@@ -408,7 +405,7 @@ const libraryData = {
                             "Cast Depulso on a Levitated Enemy": {
                                 type: B,
                                 split: true,
-                                after: ["Quest - Assignment - Madam Kogawa's Assignment 1 - Learn Glacius"]
+                                after: ["Quest - Main - Percival Rackham's Trial"]
                             },
                             "Learn Descendo": {
                                 type: B,
@@ -416,6 +413,52 @@ const libraryData = {
                                 after: [
                                     "Quest - Assignment - Professor Onai's Assignment - Collect Troll Bogeys",
                                     "Quest - Assignment - Professor Onai's Assignment - Cast Depulso on a Levitated Enemy"
+                                ]
+                            },
+                        }
+                    },
+                    "Professor Howin's Assignment": {
+                        type: F,
+                        items: {
+                            "Have a Diricawl": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Main - Charles Rookwood's Trial"]
+                            },
+                            "Have a Giant Purple Toad": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Main - Charles Rookwood's Trial"]
+                            },
+                            "Learn Bombarda": {
+                                type: B,
+                                split: true,
+                                after: [
+                                    "Quest - Assignment - Professor Howin's Assignment - Have a Diricawl",
+                                    "Quest - Assignment - Professor Howin's Assignment - Have a Giant Purple Toad"
+                                ]
+                            },
+                        }
+                    },
+                    "Professor Weasley's Assignment": {
+                        type: F,
+                        items: {
+                            "Collect Underground Harbor Page": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Main - Fire and Vice"]
+                            },
+                            "Collect Library Page": {
+                                type: B,
+                                split: true,
+                                after: ["Quest - Main - Fire and Vice"]
+                            },
+                            "Learn Bombarda": {
+                                type: B,
+                                split: true,
+                                after: [
+                                    "Quest - Assignment - Professor Weasley's Assignment - Collect Underground Harbor Page",
+                                    "Quest - Assignment - Professor Weasley's Assignment - Collect Collect Harbor Page"
                                 ]
                             },
                         }
@@ -602,6 +645,15 @@ const libraryData = {
                             "Redeem": {
                                 type: B,
                                 after: ["Quest - Other - Follow the Butterflies - Follow Butterflies"]
+                            }
+                        }
+                    },
+                    "Cache in the Castle": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                                after: ["Quest - Main - Welcome to Hogsmeade"]
                             }
                         }
                     },
