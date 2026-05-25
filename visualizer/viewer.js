@@ -1,4 +1,4 @@
-const SCALE = 1000;
+let SCALE = 1000;
 
 let scene = new THREE.Scene();
 
