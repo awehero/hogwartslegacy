@@ -184,8 +184,8 @@ async function load() {
 
         positions.push(
             p.x / SCALE,
-            p.y / SCALE,
-            p.z / SCALE
+            p.z / SCALE,
+            p.y / SCALE
         );
 
     }
@@ -273,8 +273,8 @@ async function load() {
 
         sphere.position.set(
             m.x / SCALE,
-            m.y / SCALE,
-            m.z / SCALE
+            m.z / SCALE,
+            m.y / SCALE
         );
 
         scene.add(sphere);
