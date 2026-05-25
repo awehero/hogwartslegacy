@@ -1,4 +1,4 @@
-let SCALE = 1000;
+let SCALE = 1;
 let speed = 10;
 
 let scene = new THREE.Scene();
