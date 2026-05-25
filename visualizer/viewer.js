@@ -1,4 +1,5 @@
 let SCALE = 1000;
+let speed = 10;
 
 let scene = new THREE.Scene();
 
@@ -290,8 +291,6 @@ load();
 
 function updateMovement() {
 
-    let speed = 0.5;
-
     let forward =
         new THREE.Vector3();
 
@@ -332,7 +331,7 @@ function updateMovement() {
 
         camera.position.add(
             right.clone()
-                .multiplyScalar(speed)
+                .multiplyScalar(-speed)
         );
 
     }
@@ -341,7 +340,7 @@ function updateMovement() {
 
         camera.position.add(
             right.clone()
-                .multiplyScalar(-speed)
+                .multiplyScalar(speed)
         );
 
     }
