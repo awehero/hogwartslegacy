@@ -207,7 +207,7 @@ async function load() {
 
     let material =
         new THREE.PointsMaterial({
-            size: 0.5,
+            size: 2,
             color: 0x00ffcc
         });
 
@@ -218,34 +218,6 @@ async function load() {
         );
 
     scene.add(pointsMesh);
-
-    // -------------------------
-    // ROUTE LINE
-    // -------------------------
-
-    let lineGeo =
-        new THREE.BufferGeometry();
-
-    lineGeo.setAttribute(
-        "position",
-        new THREE.Float32BufferAttribute(
-            positions,
-            3
-        )
-    );
-
-    let lineMat =
-        new THREE.LineBasicMaterial({
-            color: 0xffaa00
-        });
-
-    let lineMesh =
-        new THREE.Line(
-            lineGeo,
-            lineMat
-        );
-
-    scene.add(lineMesh);
 
     // -------------------------
     // MARKERS
