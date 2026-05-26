@@ -689,6 +689,14 @@ const libraryData = {
                                 type: B,
                                 after: ["Quest - Main - Welcome to Hogsmeade"]
                             },
+                            "Return Carts": {
+                                type: B,
+                                after: ["Quest - Other - Carted Away - Start"]
+                            },
+                            "Redeem": {
+                                type: B,
+                                after: ["Quest - Other - Carted Away - Return Carts"]
+                            }
                         }
                     },
                     "The Lost Astrolabe": {
