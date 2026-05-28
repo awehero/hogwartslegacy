@@ -742,6 +742,10 @@ const libraryData = {
                                 type: B,
                                 after: ["Quest - Main - Welcome to Hogsmeade"]
                             },
+                            "Cabbage Crate 1": {
+                                type: B,
+                                after: ["Quest - Other - Kidnapped Cabbage"]
+                            }
                         }
                     },
                     "Troll Control": {
@@ -751,6 +755,14 @@ const libraryData = {
                                 type: B,
                                 after: ["Quest - Main - Welcome to Hogsmeade"]
                             },
+                            "Troll": {
+                                type: B,
+                                after: ["Quest - Other - Troll Control - Start"]
+                            },
+                            "Redeem": {
+                                type: B,
+                                after: ["Quest - Other - Troll Control - Troll"]
+                            }
                         }
                     },
                     "E-vase-ive Maneuver": {
@@ -760,6 +772,14 @@ const libraryData = {
                                 type: B,
                                 after: ["Quest - Main - Welcome to Hogsmeade"]
                             },
+                            "Vases": {
+                                type: B,
+                                after: ["Quest - Other - E-vase-ive Maneuver - Start"]
+                            },
+                            "Redeem": {
+                                type: B,
+                                after: ["Quest - Other - E-vase-ive Maneuver - Vases"]
+                            }
                         }
                     },
                     "The Hippogriff Marks the Spot": {
@@ -778,6 +798,14 @@ const libraryData = {
                                 type: B,
                                 after: ["Quest - Main - Welcome to Hogsmeade"]
                             },
+                            "Capture": {
+                                type: B,
+                                after: ["Quest - Other - Birds of a Feather - Start"]
+                            },
+                            "Redeem": {
+                                type: B,
+                                after: ["Quest - Other - Birds of a Feather - Capture"]
+                            }
                         }
                     },
                     "Sacking Selwyn": {
@@ -787,6 +815,14 @@ const libraryData = {
                                 type: B,
                                 after: ["Quest - Main - Welcome to Hogsmeade"]
                             },
+                            "Selwyn": {
+                                type: B,
+                                after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                            "Redeem": {
+                                type: B,
+                                after: ["Quest - Other - Sacking Selwyn - Selwyn"]
+                            }
                         }
                     },
                     "Solved by the Bell": {
@@ -813,6 +849,14 @@ const libraryData = {
                             "Start": {
                                 type: B,
                                 after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                            "Trigger": {
+                                type: B,
+                                after: ["Quest - Other - Absconder Encounter - Start"]
+                            },
+                            "Absconder/Heirloom": {
+                                type: B,
+                                after: ["Quest - Other - Absconder Encounter - Absconder/Heirloom"]
                             },
                         }
                     },
@@ -1081,10 +1125,19 @@ const libraryData = {
             "Beast": {
                 type: F,
                 items: {
-                    "Puffskein": {type: B, repeatable: true},
-                    "Jobberknoll": {type: B, repeatable: true},
-                    "Mooncalf": {type: B, repeatable: true},
                     "Diricawl": {type: B, repeatable: true},
+                    "Fwooper": {type: B, repeatable: true},
+                    "Giant Purple Toad": {type: B, repeatable: true},
+                    "Graphorn": {type: B, repeatable: true},
+                    "Hippogriff": {type: B, repeatable: true},
+                    "Jobberknoll": {type: B, repeatable: true},
+                    "Kneazle": {type: B, repeatable: true},
+                    "Mooncalf": {type: B, repeatable: true},
+                    "Niffler": {type: B, repeatable: true},
+                    "Phoenix": {type: B},
+                    "Puffskein": {type: B, repeatable: true},
+                    "Unicorn": {type: B, repeatable: true},
+                    "Thestral": {type: B, repeatable: true},
                 }
             },
             "Item": {
