@@ -63,7 +63,7 @@ const libraryData = {
                         split: true,
                         after: ["Quest - Main - Herbology Class"]
                     },
-                    "The Girl from Ouagadou": {
+                    "The Girl from Uagadou": {
                         type: B,
                         split: true,
                         after: ["Quest - Main - Tomes and Tribulations"]
@@ -71,7 +71,7 @@ const libraryData = {
                     "Trials of Merlin": {
                         type: B,
                         split: true,
-                        after: ["Quest - Main - The Girl from Ouagadou"]
+                        after: ["Quest - Main - The Girl from Uagadou"]
                     },
                     "Ollivander's Heirloom": {
                         type: B,

@@ -129,14 +129,15 @@ function buildRouteSnapshot() {
 
     routeContainer.querySelectorAll(".libraryBlock").forEach((el, index) => {
 
-        route.push({
-            position: index,
-            path: el.dataset.path,
-            notes: el.dataset.notes || "",
-            custom: el.dataset.custom || "",
-            instanceId: el.dataset.instanceId || "",
-            splitParent: el.dataset.splitParent || ""
-        });
+        const item = {
+            position: index
+        };
+
+        for (const key in el.dataset) {
+            item[key] = el.dataset[key];
+        }
+
+        route.push(item);
 
     });
 
@@ -214,11 +215,14 @@ function importRoute(save) {
 
         el.className = "libraryBlock";
 
-        el.dataset.path = item.path;
-        el.dataset.notes = item.notes || "";
-        el.dataset.custom = item.custom || "";
-        el.dataset.instanceId = item.instanceId || crypto.randomUUID();
-        el.dataset.splitParent = item.splitParent || "";
+        // copy EVERYTHING dynamically
+        for (const key in item) {
+
+            if (key === "position") continue;
+
+            el.dataset[key] = item[key];
+
+        }
 
         el.textContent = item.custom || item.path;
 
@@ -231,7 +235,6 @@ function importRoute(save) {
 
     updateLibraryBlocks();
     validateRoute();
-
     autosave();
 }
 
