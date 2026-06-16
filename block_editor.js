@@ -3,11 +3,10 @@ function openBlockEditor(block){
     blockEditor.innerHTML=`
     <div>${block.dataset.path}</div>
     <label>Notes</label>
-    <textarea id="notes"></textarea>
     <label>Custom name</label>
     <input id="custom">
+    <textarea id="notes"></textarea>
     <button id="splitBtn">Split</button>
-    <button id="deleteBtn" style="margin-top:10px;background:#a33;color:white;">Delete</button>
     `;
 
     const notes=document.getElementById("notes");
