@@ -5,4 +5,5 @@ const routeContainer = document.getElementById("routeContainer");
 const errorPanel = document.getElementById("errorPanel");
 const blockEditor = document.getElementById("blockEditor");
 const librarySearch = document.getElementById("librarySearch");
+const routeTitle = document.getElementById("routeTitle");
 let selectedRouteBlock = null;

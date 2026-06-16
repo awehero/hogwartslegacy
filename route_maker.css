@@ -230,7 +230,7 @@ button {
     margin-bottom: 15px;
     box-sizing: border-box;
 }
-#imports {
+#fileMenu {
     position: absolute;
     height: 50vh;
     width: 50vw;

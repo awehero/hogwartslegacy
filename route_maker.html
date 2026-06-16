@@ -9,6 +9,7 @@
 </head>
 <body>
     <div id="app">
+        <input id="routeTitle" placeholder="Untitled Route">
         <div id="sidebar">
             <h2>Blocks</h2>
             <input id="librarySearch" placeholder="Search blocks...">
@@ -26,15 +27,24 @@
         <div id="rightPanel">
             <div id="fileEditor">
                 Import
-                <button id="importButton">Import</button>
-                <div id="imports"></div>
+                <button id="openImport">Import</button>
                 Export
-                <div id="exports"></div>
+                <div id="exportButtons">
+                    <button data-export="json">Save Route (.json)</button>
+                    <button data-export="txt">Export Notes (.txt)</button>
+                    <button data-export="copy">Copy Notes</button>
+                </div>
             </div>
             <div id="blockEditor">
                 Select a route block
             </div>
             <div id="errorPanel"></div>
+        </div>
+        <div id="fileMenu">
+            <div id="importMenu"></div>
+            <div id="exportMenu">
+
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
@@ -44,5 +54,6 @@
     <script src="build_library.js"></script>
     <script src="route_maker.js"></script>
     <script src="block_editor.js"></script>
+    <script src="file_manager.js"></script>
 </body>
 </html>
