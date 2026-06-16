@@ -1,9 +1,8 @@
-//file_manager.js
+// file_manager.js
 
 function downloadFile(content, filename, type) {
-    const blob = new Blob([content], {
-        type: type
-    });
+
+    const blob = new Blob([content], { type: type });
 
     const url = URL.createObjectURL(blob);
 
@@ -18,6 +17,7 @@ function downloadFile(content, filename, type) {
 }
 
 function exportRoute() {
+
     const route = [];
 
     routeContainer.querySelectorAll(".libraryBlock").forEach((el, index) => {
@@ -35,10 +35,9 @@ function exportRoute() {
 
     const save = {
         version: 1,
-
-        title: routeTitle.value,
-
-        route: route
+        title: routeTitle.value || "Untitled Route",
+        route: route,
+        timestamp: Date.now()
     };
 
     downloadFile(
@@ -49,22 +48,18 @@ function exportRoute() {
 }
 
 function buildNotes() {
+
     let text = "";
 
-    const title = routeTitle.value.trim();
+    const title = (routeTitle.value || "").trim();
 
     if (title) {
-        text += title;
-        text += "\n\n";
+        text += title + "\n\n";
     }
 
     routeContainer.querySelectorAll(".libraryBlock").forEach((el, index) => {
 
-        text += `${index + 1}. `;
-
-        text += el.dataset.custom || el.dataset.path;
-
-        text += "\n";
+        text += `${index + 1}. ${el.dataset.custom || el.dataset.path}\n`;
 
         if (el.dataset.notes) {
             text += `Notes: ${el.dataset.notes}\n`;
@@ -78,6 +73,7 @@ function buildNotes() {
 }
 
 function exportNotes() {
+
     downloadFile(
         buildNotes(),
         "route_notes.txt",
@@ -86,11 +82,10 @@ function exportNotes() {
 }
 
 async function copyNotes() {
+
     try {
 
-        await navigator.clipboard.writeText(
-            buildNotes()
-        );
+        await navigator.clipboard.writeText(buildNotes());
 
         alert("Copied!");
 
@@ -117,3 +112,159 @@ document.querySelectorAll("#exportButtons button").forEach(button => {
     });
 
 });
+
+function getSaveId() {
+
+    const title = (routeTitle.value || "untitled route")
+        .trim()
+        .toLowerCase()
+        .replaceAll(" ", "_");
+
+    return "route_" + title;
+}
+
+function buildRouteSnapshot() {
+
+    const route = [];
+
+    routeContainer.querySelectorAll(".libraryBlock").forEach((el, index) => {
+
+        route.push({
+            position: index,
+            path: el.dataset.path,
+            notes: el.dataset.notes || "",
+            custom: el.dataset.custom || "",
+            instanceId: el.dataset.instanceId || "",
+            splitParent: el.dataset.splitParent || ""
+        });
+
+    });
+
+    return {
+        id: getSaveId(),
+        title: routeTitle.value || "Untitled Route",
+        route: route,
+        timestamp: Date.now()
+    };
+}
+
+function autosave() {
+
+    const save = buildRouteSnapshot();
+
+    localStorage.setItem(
+        save.id,
+        JSON.stringify(save)
+    );
+
+    localStorage.setItem(
+        "route_latest",
+        save.id
+    );
+}
+
+function loadLatest() {
+
+    const id = localStorage.getItem("route_latest");
+
+    if (!id) return;
+
+    const raw = localStorage.getItem(id);
+
+    if (!raw) return;
+
+    importRoute(JSON.parse(raw));
+}
+
+function findSaveByTitle(title) {
+
+    const target = title.toLowerCase().trim();
+
+    for (let key in localStorage) {
+
+        if (!key.startsWith("route_")) continue;
+
+        try {
+
+            const data = JSON.parse(localStorage.getItem(key));
+
+            if ((data.title || "").toLowerCase().trim() === target) {
+                return data;
+            }
+
+        } catch (e) {
+            continue;
+        }
+    }
+
+    return null;
+}
+
+function importRoute(save) {
+
+    routeContainer.innerHTML = "";
+
+    routeTitle.value = save.title || "";
+
+    const route = save.route || [];
+
+    route.forEach(item => {
+
+        const el = document.createElement("div");
+
+        el.className = "libraryBlock";
+
+        el.dataset.path = item.path;
+        el.dataset.notes = item.notes || "";
+        el.dataset.custom = item.custom || "";
+        el.dataset.instanceId = item.instanceId || crypto.randomUUID();
+        el.dataset.splitParent = item.splitParent || "";
+
+        el.textContent = item.custom || item.path;
+
+        routeContainer.appendChild(el);
+
+    });
+
+    selectedRouteBlock = null;
+    blockEditor.innerHTML = "Select a route block";
+
+    updateLibraryBlocks();
+    validateRoute();
+
+    autosave();
+}
+
+const importBtn = document.getElementById("importBtn");
+const importFile = document.getElementById("importFile");
+
+importBtn.onclick = () => importFile.click();
+
+importFile.addEventListener("change", async () => {
+
+    const file = importFile.files[0];
+    if (!file) return;
+
+    const text = await file.text();
+    const data = JSON.parse(text);
+
+    importRoute(data);
+
+    importFile.value = "";
+});
+
+document.getElementById("loadRecentBtn").onclick = () => {
+
+    const id = localStorage.getItem("route_latest");
+
+    if (!id) {
+        alert("No recent route found");
+        return;
+    }
+
+    const raw = localStorage.getItem(id);
+
+    if (!raw) return;
+
+    importRoute(JSON.parse(raw));
+};
