@@ -7,6 +7,7 @@ function openBlockEditor(block){
     <input id="custom">
     <textarea id="notes"></textarea>
     <button id="splitBtn">Split</button>
+    <button id="deleteBtn" style="margin-top:10px;background:#a33;color:white;">Delete</button>
     `;
 
     const notes=document.getElementById("notes");
@@ -22,8 +23,7 @@ function openBlockEditor(block){
         block.textContent=custom.value||block.dataset.path;
     };
 
-    document.getElementById("splitBtn").onclick=function(){
-        //if(block.dataset.split!=="true")return;
+    document.getElementById("splitBtn").onclick = function() {
 
         const clone=block.cloneNode(true);
 
@@ -35,12 +35,11 @@ function openBlockEditor(block){
         openBlockEditor(block);
     };
 
-    document.getElementById("deleteBtn").onclick=function(){
+    document.getElementById("deleteBtn").onclick = function() {
         block.remove();
         selectedRouteBlock=null;
         blockEditor.innerHTML="Select a route block";
-        updateLibraryBlocks();
-        validateRoute();
+        somethingChanged();
     };
 }
 

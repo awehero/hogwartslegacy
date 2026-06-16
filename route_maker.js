@@ -23,22 +23,19 @@ new Sortable(routeContainer, {
     animation: 150,
 
     onAdd: function(evt){
-        const el=evt.item;
-        el.dataset.instanceId=makeId();
-        el.dataset.splitParent=el.dataset.splitParent||"";
-        el.dataset.splitIndex=el.dataset.splitIndex||"0";
-        updateLibraryBlocks();
-        validateRoute();
+        const el = evt.item;
+        el.dataset.instanceId = makeId();
+        el.dataset.splitParent = el.dataset.splitParent || "";
+        el.dataset.splitIndex = el.dataset.splitIndex || "0";
+        somethingChanged();
     },
 
     onRemove() {
-        updateLibraryBlocks();
-        validateRoute();
+        somethingChanged();
     },
 
     onSort() {
-        updateLibraryBlocks();
-        validateRoute();
+        somethingChanged();
     }
 });
 
@@ -59,10 +56,7 @@ new Sortable(trashZone, {
             selectedRouteBlock = null;
             blockEditor.innerHTML = "Select a route block";
         }
-
-        updateLibraryBlocks();
-        validateRoute();
-
+        somethingChanged();
         trashZone.classList.remove("hovering");
     },
 
@@ -131,7 +125,7 @@ function renderSearchResults(search){
         animation: 150
     });
 
-    updateLibraryBlocks();
+    somethingChanged();
 }
 librarySearch.addEventListener("input",()=>{
     const value=librarySearch.value.trim();
@@ -150,10 +144,9 @@ librarySearch.addEventListener("input",()=>{
                 animation:150
             });
         });
-        updateLibraryBlocks();
+        somethingChanged();
         return;
     }
     renderSearchResults(value);
 });
-updateLibraryBlocks();
-validateRoute();
+somethingChanged();

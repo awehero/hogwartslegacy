@@ -1,51 +1,106 @@
 // file_manager.js
 
-function getStore() {
-    return JSON.parse(localStorage.getItem("route_system") || '{"saves":{}, "lastOpened":"", "settings":{}}');
-}
+store = JSON.parse(localStorage.getItem("route_system") || '{}');
+store.settings = store.settings || {};
+store.lastActiveId = store.lastActiveId || null;
+store.saves = store.saves || {};
+//store.settings.numbered = store.settings.numbered || true;
+localStorage.setItem("route_system", store);
 
-function setStore(store) {
-    localStorage.setItem("route_system", JSON.stringify(store));
+function importRoute(save) {
+    routeContainer.innerHTML = "";
+    routeTitle.value = save.title || "";
+    const route = save.route || [];
+    route.forEach(item => {
+        const el = document.createElement("div");
+        el.className = "libraryBlock";
+        for (const key in item) {
+            if (key === "position") continue;
+            el.dataset[key] = item[key];
+        }
+        el.textContent = item.custom || item.path;
+        routeContainer.appendChild(el);
+    });
+    selectedRouteBlock = null;
+    blockEditor.innerHTML = "Select a route block";
+    somethingChanged();
 }
-
 function newRoute() {
-    const store = getStore();
-
     const id = crypto.randomUUID();
-
-    store.activeId = id;
-
+    store.lastActiveId = id;
     store.saves[id] = {
         id: id,
         title: "Untitled Route",
         route: [],
         timestamp: Date.now()
     };
-
-    setStore(store);
-
     routeContainer.innerHTML = "";
     routeTitle.value = "Untitled Route";
-
     selectedRouteBlock = null;
     blockEditor.innerHTML = "Select a route block";
-
+    somethingChanged();
+}
+function buildRouteSnapshot() {
+    const route = [];
+    routeContainer.querySelectorAll(".libraryBlock").forEach((el, index) => {
+        const item = {
+            position: index
+        };
+        for (const key in el.dataset) {
+            item[key] = el.dataset[key];
+        }
+        route.push(item);
+    });
+    return {
+        id: lastActiveId,
+        title: routeTitle.value.trim() || "Untitled Route",
+        route: route,
+        timestamp: Date.now()
+    };
+}
+function autosave() {
+    const save = buildRouteSnapshot();
+    store.saves[lastActiveId] = save;
+    localStorage.setItem("route_system", store);
+}
+function somethingChanged() {
+    updateLibraryBlocks();
     validateRoute();
+    autosave();
+}
+
+routeTitle.onchange=()=>{
+    somethingChanged();
+};
+
+if (store.lastActiveId != null && store.saves != {} && store.saves[lastActiveId]) {
+    importRoute(store.saves[lastActiveId]);
+} else {
+    newRoute();
+}
+
+
+
+
+
+
+
+
+function getStore() {
+    return JSON.parse(localStorage.getItem("route_system") || '{"saves":{}, "lastActiveId":"", "settings":{}}');
+}
+
+function setStore(store) {
+    localStorage.setItem("route_system", JSON.stringify(store));
 }
 
 function downloadFile(content, filename, type) {
-
     const blob = new Blob([content], { type: type });
-
     const url = URL.createObjectURL(blob);
-
     const a = document.createElement("a");
-
     a.href = url;
     a.download = filename;
-
     a.click();
-
     URL.revokeObjectURL(url);
 }
 
@@ -57,10 +112,13 @@ function exportRoute() {
 
         route.push({
             position: index,
-            path: el.dataset.path,
-            notes: el.dataset.notes || "",
             custom: el.dataset.custom || "",
             instanceId: el.dataset.instanceId || "",
+            name: el.dataset.name || "",
+            notes: el.dataset.notes || "",
+            path: el.dataset.path,
+            repeatable: el.dataset.repeatable || "",
+            splitIndex: el.dataset.splitIndex || "",
             splitParent: el.dataset.splitParent || ""
         });
 
@@ -74,7 +132,7 @@ function exportRoute() {
     };
 
     downloadFile(
-        JSON.stringify(save, null, 2),
+        JSON.stringify(save, null, 4),
         "route.json",
         "application/json"
     );
@@ -146,60 +204,6 @@ document.querySelectorAll("#exportButtons button").forEach(button => {
 
 });
 
-function buildRouteSnapshot() {
-
-    const route = [];
-
-    routeContainer.querySelectorAll(".libraryBlock").forEach((el, index) => {
-
-        const item = {
-            position: index
-        };
-
-        for (const key in el.dataset) {
-            item[key] = el.dataset[key];
-        }
-
-        route.push(item);
-
-    });
-
-    return {
-        id: crypto.randomUUID(),
-        title: routeTitle.value.trim() || "Untitled Route",
-        route: route,
-        timestamp: Date.now()
-    };
-}
-
-function autosave() {
-
-    const save = buildRouteSnapshot();
-
-    localStorage.setItem(
-        save.id,
-        JSON.stringify(save)
-    );
-
-    localStorage.setItem(
-        "route_latest",
-        save.id
-    );
-}
-
-function loadLatest() {
-
-    const id = localStorage.getItem("route_latest");
-
-    if (!id) return;
-
-    const raw = localStorage.getItem(id);
-
-    if (!raw) return;
-
-    importRoute(JSON.parse(raw));
-}
-
 function findSaveByTitle(title) {
 
     const target = title.toLowerCase().trim();
@@ -222,43 +226,6 @@ function findSaveByTitle(title) {
     }
 
     return null;
-}
-
-function importRoute(save) {
-
-    routeContainer.innerHTML = "";
-
-    routeTitle.value = save.title || "";
-
-    const route = save.route || [];
-
-    route.forEach(item => {
-
-        const el = document.createElement("div");
-
-        el.className = "libraryBlock";
-
-        // copy EVERYTHING dynamically
-        for (const key in item) {
-
-            if (key === "position") continue;
-
-            el.dataset[key] = item[key];
-
-        }
-
-        el.textContent = item.custom || item.path;
-
-        routeContainer.appendChild(el);
-
-    });
-
-    selectedRouteBlock = null;
-    blockEditor.innerHTML = "Select a route block";
-
-    updateLibraryBlocks();
-    validateRoute();
-    autosave();
 }
 
 const importBtn = document.getElementById("importBtn");
