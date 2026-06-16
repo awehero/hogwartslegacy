@@ -24,26 +24,15 @@
             <div id="routeContainer"></div>
         </div>
         <div id="rightPanel">
-            <div id="fileEditor">
-                Import
-                <button id="importBtn">Import Route</button>
-                <button id="loadRecentBtn">Load Recent</button>
-                <input type="file" id="importFile" accept=".json" style="display:none">
-                Export
-                <div id="exportButtons">
-                    <button data-export="json">Save Route (.json)</button>
-                    <button data-export="txt">Export Notes (.txt)</button>
-                    <button data-export="copy">Copy Notes</button>
-                </div>
-            </div>
             <div id="blockEditor">
                 Select a route block
             </div>
             <div id="errorPanel"></div>
         </div>
         <div id="popup">
+            <div id="loadMenu"></div>
+            <div id="saveMenu"></div>
             <div id="settings"></div>
-            <div id="savesMenu"></div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>

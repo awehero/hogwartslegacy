@@ -1,5 +1,38 @@
 // file_manager.js
 
+function getStore() {
+    return JSON.parse(localStorage.getItem("route_system") || '{"saves":{}, "lastOpened":"", "settings":{}}');
+}
+
+function setStore(store) {
+    localStorage.setItem("route_system", JSON.stringify(store));
+}
+
+function newRoute() {
+    const store = getStore();
+
+    const id = crypto.randomUUID();
+
+    store.activeId = id;
+
+    store.saves[id] = {
+        id: id,
+        title: "Untitled Route",
+        route: [],
+        timestamp: Date.now()
+    };
+
+    setStore(store);
+
+    routeContainer.innerHTML = "";
+    routeTitle.value = "Untitled Route";
+
+    selectedRouteBlock = null;
+    blockEditor.innerHTML = "Select a route block";
+
+    validateRoute();
+}
+
 function downloadFile(content, filename, type) {
 
     const blob = new Blob([content], { type: type });
@@ -113,16 +146,6 @@ document.querySelectorAll("#exportButtons button").forEach(button => {
 
 });
 
-function getSaveId() {
-
-    const title = (routeTitle.value || "untitled route")
-        .trim()
-        .toLowerCase()
-        .replaceAll(" ", "_");
-
-    return "route_" + title;
-}
-
 function buildRouteSnapshot() {
 
     const route = [];
@@ -142,8 +165,8 @@ function buildRouteSnapshot() {
     });
 
     return {
-        id: getSaveId(),
-        title: routeTitle.value || "Untitled Route",
+        id: crypto.randomUUID(),
+        title: routeTitle.value.trim() || "Untitled Route",
         route: route,
         timestamp: Date.now()
     };
@@ -256,18 +279,29 @@ importFile.addEventListener("change", async () => {
     importFile.value = "";
 });
 
-document.getElementById("loadRecentBtn").onclick = () => {
+document.getElementById("loadRouteBtn").onclick = () => {
+    openPopup();
+    renderSaveList();
+};
 
-    const id = localStorage.getItem("route_latest");
+function getAllSaves() {
 
-    if (!id) {
-        alert("No recent route found");
-        return;
+    const saves = [];
+
+    for (let key in localStorage) {
+
+        if (!key.startsWith("route_")) continue;
+
+        try {
+
+            const data = JSON.parse(localStorage.getItem(key));
+
+            saves.push(data);
+
+        } catch (e) {
+            continue;
+        }
     }
 
-    const raw = localStorage.getItem(id);
-
-    if (!raw) return;
-
-    importRoute(JSON.parse(raw));
-};
+    return saves.sort((a, b) => b.timestamp - a.timestamp);
+}

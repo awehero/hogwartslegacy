@@ -11,6 +11,7 @@ function shortPath(path) {
 	return path;
 }
 function validateRoute() {
+	return;
 	errorPanel.innerHTML = "";
 	clearRouteErrors();
 	const route = [...routeContainer.querySelectorAll(".libraryBlock")];
