@@ -18,3 +18,4 @@ const permanentDelete = document.getElementById("permanentDelete");
 const cancelDelete = document.getElementById("cancelDelete");
 let selectedRouteBlock = null;
 let store = null;
+let scrollSpeed = 12;

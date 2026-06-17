@@ -3,3 +3,4 @@
 //keyboard shortcuts for spawning blocks?
 //blank lines after each note? slider?
 //display prefixes like quest - ?
+//scroll speed

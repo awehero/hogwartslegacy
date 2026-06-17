@@ -4,6 +4,28 @@ function makeId() {
     return Math.random().toString(36).slice(2);
 }
 
+let scrollInterval = null;
+function startAutoScroll(y) {
+    const rect = routeContainer.getBoundingClientRect();
+    const edge = 60;
+    scrollSpeed = 12;
+    clearInterval(scrollInterval);
+    if (y < rect.top + edge) {
+        scrollInterval = setInterval(() => {
+            routeContainer.scrollTop -= speed;
+        }, 16);
+    } else if (y > rect.bottom - edge) {
+        scrollInterval = setInterval(() => {
+            routeContainer.scrollTop += speed;
+        }, 16);
+    }
+}
+
+function stopAutoScroll() {
+    clearInterval(scrollInterval);
+    scrollInterval = null;
+}
+
 document.querySelectorAll(".folderContent").forEach(el => {
     new Sortable(el, {
         group: {
@@ -25,6 +47,14 @@ new Sortable(routeContainer, {
     scroll: true,
     scrollSensitivity: 80,
     scrollSpeed: 15,
+
+    onMove(evt, originalEvent) {
+        startAutoScroll(originalEvent.clientY);
+    },
+
+    onEnd() {
+        stopAutoScroll();
+    },
 
     onAdd: function(evt) {
         const el = evt.item;
