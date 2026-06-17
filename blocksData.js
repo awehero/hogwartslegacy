@@ -497,19 +497,193 @@ const libraryData = {
                             "Quest - Main - Astronomy Class",
                             "Quest - Sebby - In the Shadow of the Bloodline - Finish"
                         ]
-                    }
+                    },
+                    "In the Shadow of Discovery": {
+                        type: F,
+                        items: {
+                            "Complete": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "In the Shadow of Time": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "In the Shadow of Distance": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "In the Shadow of Hope": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "In the Shadow of the Relic": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "In the Shadow of Fate": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "In the Shadow of Friendship": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
                 }
             },
             "Natty": {
                 type: F,
                 items: {
-
+                    "The Lost Child": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Mum's the Word": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "A Basis for Blackmail": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Grief and Vengeance": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Finding Focus": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Harlow's Last Stand": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Acting on Instinct": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
                 }
             },
             "Poppy": {
                 type: F,
                 items: {
-
+                    "A Dragon Debrief": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Poached Egg": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "The Poachers' House Call": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Surprise Meeting": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "The Centaur and the Stone": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "It's in the Stars": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "A Bird in the Hand": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Poppy Blooms": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
                 }
             },
             "Dueling Club": {
@@ -540,19 +714,104 @@ const libraryData = {
             "Summoner's Court": {
                 type: F,
                 items: {
-
+                    "Summoner's Court: Match 1": {
+                        type: F,
+                        items: {
+                            "Win": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Summoner's Court: Match 2": {
+                        type: F,
+                        items: {
+                            "Win": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Summoner's Court: Match 3": {
+                        type: F,
+                        items: {
+                            "Win": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Summoner's Court: Match 4": {
+                        type: F,
+                        items: {
+                            "Win": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Summoner's Court: Match 5": {
+                        type: F,
+                        items: {
+                            "Win": {
+                                type: B,
+                            },
+                        }
+                    },
                 }
             },
             "Deek": {
                 type: F,
                 items: {
-
+                    "The Plight of the House-Elf": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Foal of the Dead": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Phoenix Rising": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
                 }
             },
             "Flying": {
                 type: F,
                 items: {
-
+                    "Flight Test": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Sweeping the Competition": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "The Sky is the Limit": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
                 }
             },
             "Other": {
@@ -872,6 +1131,174 @@ const libraryData = {
                             "Start": {
                                 type: B,
                                 after: ["Quest - Assignment - Professor Hecat's Assignment 1 - Learn Incendio"]
+                            },
+                        }
+                    },
+                    "'Dissending' for Sweets": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Ghost of Our Love": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Follow the Butterflies": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "A Demanding Delivery": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Interior Decorating": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Mer-ky Depths": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "The Man Behind the Moons": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "The Hall of Herodiana": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "A Friend in Deed": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Venomous Revenge": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "The Tale of Rowland Oakes": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Take the Biscuit": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Rescuing Rococo": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "A Thief in the Night": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Spot Removal": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "'Beeting' a Curse": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "All's Well that Ends Bell": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "History of Magic Class": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "The Unique Unicorn": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Portrait in a Pickle": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
                             },
                         }
                     },

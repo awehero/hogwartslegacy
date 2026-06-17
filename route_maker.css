@@ -336,3 +336,16 @@ button {
     height: 42px;
     pointer-events: none;
 }
+#routesMenuLeft {
+    width: 30%;
+    margin: 2%;
+    border: 2px solid orange;
+}
+.routeMenuBtn {
+    display: flex;
+}
+.routeMenuBtn svg {
+    width: 42px;
+    height: 42px;
+    pointer-events: none;
+}

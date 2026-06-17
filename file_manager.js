@@ -131,7 +131,7 @@ function exportNotes(save) {
 function exportRoute(save) {
     downloadFile(
         JSON.stringify(save, null, 4),
-        "route.json",
+        `${save.title}.json`,
         "application/json"
     );
 }
@@ -139,9 +139,9 @@ function deleteRoute(save) {
     let previousId = store.lastActiveId;
     importRoute(save);
     permanentDelete.style.display = "flex";
+    cancelDelete.style.display = "flex";
     permanentDelete.dataset.previousId = previousId;
     permanentDelete.dataset.deleteId = save.id;
-    cancelDelete.style.display = "flex";
     alert("Please double check that this is the route you want to delete.\nCancel - Yellow ⊗\nDelete - Red 🗑️");
 }
 permanentDelete.onclick = function() {
@@ -155,11 +155,19 @@ permanentDelete.onclick = function() {
         } else {
             newRoute();
         }
+        permanentDelete.dataset.previousId = "";
+        permanentDelete.dataset.deleteId = "";
+        permanentDelete.style.display = "none";
+        cancelDelete.style.display = "none";
     }
 };
 cancelDelete.onclick = function() {
     let previousId = permanentDelete.dataset.previousId;
+    permanentDelete.style.display = "none";
+    cancelDelete.style.display = "none";
     importRoute(store.saves[previousId]);
+    permanentDelete.dataset.previousId = "";
+    permanentDelete.dataset.deleteId = "";
 };
 function loadFiles(accept, maxFiles, callback) {
     const input = document.getElementById("fileLoader");
