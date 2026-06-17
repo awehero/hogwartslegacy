@@ -49,11 +49,11 @@ new Sortable(routeContainer, {
     scrollSpeed: 15,
 
     onMove(evt, originalEvent) {
-        startAutoScroll(originalEvent.clientY);
+        //startAutoScroll(originalEvent.clientY);
     },
 
     onEnd() {
-        stopAutoScroll();
+        //stopAutoScroll();
     },
 
     onAdd: function(evt) {
