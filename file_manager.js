@@ -41,6 +41,7 @@ function newRoute() {
     selectedRouteBlock = null;
     blockEditor.innerHTML = "Select a route block";
     somethingChanged();
+    closePopup();
 }
 function buildRouteSnapshot() {
     const route = [];
@@ -235,6 +236,13 @@ document.getElementById("importEverything").onclick = function() {
         };
         somethingChanged();
     });
+};
+document.getElementById("exportEverything").onclick = function() {
+    downloadFile(
+        JSON.stringify(store, null, 4),
+        "awehero_route_maker_data.json",
+        "application/json"
+    );
 };
 
 if (store.lastActiveId != "" && store.saves[store.lastActiveId]) {

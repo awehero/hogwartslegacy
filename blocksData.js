@@ -3,7 +3,7 @@ const libraryData = {
     "Custom": {
         type: F,
         items: {
-            "": {type: B, repeatable: true},
+            "Blank": {type: B, repeatable: true},
         }
     },
     "Quest": {

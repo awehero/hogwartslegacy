@@ -58,3 +58,9 @@ popupBtn.onclick = function() {
 closePopupBtn.onclick = function() {
     closePopup();
 };
+routesHeader.onclick = function() {
+    openRoutesMenu();
+};
+settingsHeader.onclick = function() {
+    openSettingsMenu();
+};
