@@ -23,10 +23,10 @@ function formatDate(string) {
     return new Date(number).toLocaleString();
 }
 function displayRoutes() {
+    routes.innerHTML = "";
     //store.saves
-    let html = "";
     sorted.forEach(save => {
-        html += `
+        routes.innerHTML += `
         <div class="routeDisplayContainer">
             <div class="routeDisplayLeft">
                 <div class="routeDisplayTitle>${save.title}</div>
@@ -37,9 +37,14 @@ function displayRoutes() {
                 <div class="routeDisplayId>${save.id}</div>
             </div>
             <div class="routeDisplayRight">
-                <button class="exportRoute"></button>
+                <button data-id=${save.id} class="exportRoute" onclick=""></button>
+                <button data-id=${save.id} class="exportNotes"></button>
+                <button data-id=${save.id} class="copyNotes"></button>
+                <button data-id=${save.id} class="deleteRoute"></button>
             </div>
         </div>
         `;
     });
+    //document.getElementsByClassName("exportRoute").for
 }
+

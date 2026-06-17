@@ -52,7 +52,7 @@ function buildRouteSnapshot() {
         route.push(item);
     });
     return {
-        id: lastActiveId,
+        id: store.lastActiveId,
         title: routeTitle.value.trim() || "Untitled Route",
         route: route,
         timestamp: Date.now()
