@@ -3,7 +3,14 @@ const libraryData = {
     "Custom": {
         type: F,
         items: {
-            "Blank": {type: B, repeatable: true},
+            "Custom": {type: B, repeatable: true},
+            "Reload From Last Save": {type: B, repeatable: true},
+            "Save": {type: B, repeatable: true},
+            "M/F Trick": {type: B, repeatable: true},
+            "P/F Trick": {type: B, repeatable: true},
+            "Page Glitch": {type: B, repeatable: true},
+            "Switch Difficulty to ": {type: B, repeatable: true},
+            "Switch FPS to ": {type: B, repeatable: true},
         }
     },
     "Quest": {
@@ -509,23 +516,24 @@ const libraryData = {
                     "In the Shadow of Time": {
                         type: F,
                         items: {
-                            "Start": {
+                            "Catacomb": {
+                                type: B,
+                            },
+                            "Feldcroft": {
                                 type: B,
                             },
                         }
                     },
                     "In the Shadow of Distance": {
-                        type: F,
-                        items: {
-                            "Start": {
-                                type: B,
-                            },
-                        }
+                        type: B,
                     },
                     "In the Shadow of Hope": {
                         type: F,
                         items: {
                             "Start": {
+                                type: B,
+                            },
+                            "Finish": {
                                 type: B,
                             },
                         }
@@ -536,23 +544,16 @@ const libraryData = {
                             "Start": {
                                 type: B,
                             },
+                            "Catacomb": {
+                                type: B,
+                            },
                         }
                     },
                     "In the Shadow of Fate": {
-                        type: F,
-                        items: {
-                            "Start": {
-                                type: B,
-                            },
-                        }
+                        type: B,
                     },
                     "In the Shadow of Friendship": {
-                        type: F,
-                        items: {
-                            "Start": {
-                                type: B,
-                            },
-                        }
+                        type: B,
                     },
                 }
             },
@@ -565,39 +566,69 @@ const libraryData = {
                             "Start": {
                                 type: B,
                             },
-                        }
-                    },
-                    "Mum's the Word": {
-                        type: F,
-                        items: {
-                            "Start": {
+                            "Revelio Hideout": {
+                                type: B,
+                            },
+                            "Defeat Dark Mongrels": {
+                                type: B,
+                            },
+                            "Ashwinder Camp": {
+                                type: B,
+                            },
+                            "Ashwinder Tent": {
+                                type: B,
+                            },
+                            "Free Archie": {
+                                type: B,
+                            },
+                            "Complete": {
                                 type: B,
                             },
                         }
                     },
+                    "Mum's the Word": {
+                        type: B,
+                    },
                     "A Basis for Blackmail": {
                         type: F,
                         items: {
-                            "Start": {
+                            "Talk to Natty": {
+                                type: B,
+                            },
+                            "Daisy Rabe": {
+                                type: B,
+                            },
+                            "Otto Dibble": {
+                                type: B,
+                            },
+                            "Agabus Philbert": {
+                                type: B,
+                            },
+                            "Natty Spot": {
+                                type: B,
+                            },
+                            "Dock": {
+                                type: B,
+                            },
+                            "Find Natty": {
+                                type: B,
+                            },
+                            "Optional: Find Book of Poems": {
+                                type: B,
+                            },
+                            "Optional: Find Love Letter": {
+                                type: B,
+                            },
+                            "Officer Singer": {
                                 type: B,
                             },
                         }
                     },
                     "Grief and Vengeance": {
-                        type: F,
-                        items: {
-                            "Start": {
-                                type: B,
-                            },
-                        }
+                        type: B,
                     },
                     "Finding Focus": {
-                        type: F,
-                        items: {
-                            "Start": {
-                                type: B,
-                            },
-                        }
+                        type: B,
                     },
                     "Harlow's Last Stand": {
                         type: F,
@@ -605,15 +636,13 @@ const libraryData = {
                             "Start": {
                                 type: B,
                             },
-                        }
-                    },
-                    "Acting on Instinct": {
-                        type: F,
-                        items: {
-                            "Start": {
+                            "Harlow": {
                                 type: B,
                             },
                         }
+                    },
+                    "Acting on Instinct": {
+                        type: B,
                     },
                 }
             },

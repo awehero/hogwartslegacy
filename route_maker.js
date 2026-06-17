@@ -22,6 +22,10 @@ new Sortable(routeContainer, {
     group: "blocks",
     animation: 150,
 
+    scroll: true,
+    scrollSensitivity: 80,
+    scrollSpeed: 15,
+
     onAdd: function(evt) {
         const el = evt.item;
         el.dataset.instanceId = makeId();
