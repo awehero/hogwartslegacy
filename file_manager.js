@@ -5,7 +5,7 @@ store.settings = store.settings || {};
 store.lastActiveId = store.lastActiveId || null;
 store.saves = store.saves || {};
 //store.settings.numbered = store.settings.numbered || true;
-localStorage.setItem("route_system", store);
+localStorage.setItem("route_system", JSON.stringify(store));
 
 function importRoute(save) {
     routeContainer.innerHTML = "";
@@ -61,7 +61,7 @@ function buildRouteSnapshot() {
 function autosave() {
     const save = buildRouteSnapshot();
     store.saves[lastActiveId] = save;
-    localStorage.setItem("route_system", store);
+    localStorage.setItem("route_system", JSON.stringify(store));
 }
 function somethingChanged() {
     updateLibraryBlocks();
@@ -78,7 +78,7 @@ if (store.lastActiveId != null && store.saves != {} && store.saves[lastActiveId]
 } else {
     newRoute();
 }
-
+somethingChanged();
 
 
 

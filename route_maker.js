@@ -149,4 +149,3 @@ librarySearch.addEventListener("input",()=>{
     }
     renderSearchResults(value);
 });
-somethingChanged();

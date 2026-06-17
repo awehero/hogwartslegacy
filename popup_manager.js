@@ -30,10 +30,14 @@ function displayRoutes() {
         <div class="routeDisplayContainer">
             <div class="routeDisplayLeft">
                 <div class="routeDisplayTitle>${save.title}</div>
-                <div class="routeDisplayId>${save.id}</div>
+                <div class="routeDisplayCount>${save.routes.length} Blocks</div>
             </div>
             <div class="routeDisplayMiddle">
                 <div class="routeDisplayDate>${formatDate(save.timestamp)}</div>
+                <div class="routeDisplayId>${save.id}</div>
+            </div>
+            <div class="routeDisplayRight">
+                <button class="exportRoute">
             </div>
         </div>
         `;
