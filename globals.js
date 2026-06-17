@@ -14,5 +14,7 @@ const closePopupBtn = document.getElementById("closePopupBtn");
 const routesDisplay = document.getElementById("routesDisplay");
 const routesMenu = document.getElementById("routesMenu");
 const settingsMenu = document.getElementById("settingsMenu");
+const permanentDelete = document.getElementById("permanentDelete");
+const cancelDelete = document.getElementById("cancelDelete");
 let selectedRouteBlock = null;
 let store = null;

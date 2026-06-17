@@ -16,11 +16,15 @@ function openBlockEditor(block) {
     notes.value = block.dataset.notes || "";
     custom.value = block.dataset.custom || "";
 
-    notes.oninput = () => block.dataset.notes = notes.value;
+    notes.oninput = () => {
+        block.dataset.notes = notes.value;
+        somethingChanged();
+    };
 
     custom.oninput = () => {
         block.dataset.custom = custom.value;
         block.textContent = custom.value || block.dataset.path;
+        somethingChanged();
     };
 
     document.getElementById("splitBtn").onclick = function() {
@@ -33,6 +37,7 @@ function openBlockEditor(block) {
         block.after(clone);
 
         openBlockEditor(block);
+        somethingChanged();
     };
 
     document.getElementById("deleteBtn").onclick = function() {

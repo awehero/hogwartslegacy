@@ -21,9 +21,11 @@ function importRoute(save) {
         el.textContent = item.custom || item.path;
         routeContainer.appendChild(el);
     });
+    store.lastActiveId = save.id;
     selectedRouteBlock = null;
     blockEditor.innerHTML = "Select a route block";
     somethingChanged();
+    closePopup();
 }
 function newRoute() {
     const id = crypto.randomUUID();
@@ -73,12 +75,12 @@ function somethingChanged() {
 }
 function buildNotes(save) {
     let text = "";
-    const title = (routeTitle.value || "").trim();
+    const title = (save.title || "").trim();
     text += title + "\n\n";
-    routeContainer.querySelectorAll(".libraryBlock").forEach((el, index) => {
-        text += `${index + 1}. ${el.dataset.custom || el.dataset.path}\n`;
-        if (el.dataset.notes) {
-            text += `Notes: ${el.dataset.notes}\n`;
+    save.route.forEach((itm, index) => {
+        text += `${index + 1}. ${itm.custom || itm.path}\n`;
+        if (itm.notes) {
+            text += `Notes: ${itm.notes}\n`;
         }
         text += "\n";
     });
@@ -127,11 +129,37 @@ function exportNotes(save) {
 }
 function exportRoute(save) {
     downloadFile(
-        JSON.stringify(save),
+        JSON.stringify(save, null, 4),
         "route.json",
         "application/json"
     );
 }
+function deleteRoute(save) {
+    let previousId = store.lastActiveId;
+    importRoute(save);
+    permanentDelete.style.display = "flex";
+    permanentDelete.dataset.previousId = previousId;
+    permanentDelete.dataset.deleteId = save.id;
+    cancelDelete.style.display = "flex";
+    alert("Please double check that this is the route you want to delete.\nCancel - Yellow ⊗\nDelete - Red 🗑️");
+}
+permanentDelete.onclick = function() {
+    let ans = prompt("Are you sure you want to delete? This cannot be undone.\nType y to delete.");
+    if ((ans || "").toLowerCase() === "y") {
+        let deleteId = permanentDelete.dataset.deleteId;
+        let previousId = permanentDelete.dataset.previousId;
+        delete store.saves[deleteId];
+        if (store.saves[previousId]) {
+            importRoute(store.saves[previousId]);
+        } else {
+            newRoute();
+        }
+    }
+};
+cancelDelete.onclick = function() {
+    let previousId = permanentDelete.dataset.previousId;
+    importRoute(store.saves[previousId]);
+};
 function loadFiles(accept, maxFiles, callback) {
     const input = document.getElementById("fileLoader");
     input.accept = accept;
@@ -163,6 +191,9 @@ function loadFiles(accept, maxFiles, callback) {
 function routeDisplayFunction(type, saveId) {
     let save = store.saves[saveId];
     switch (type) {
+        case "openRoute":
+            importRoute(save);
+            break;
         case "exportRoute":
             exportRoute(save)
             break;
@@ -173,7 +204,7 @@ function routeDisplayFunction(type, saveId) {
             copyNotes(save);
             break;
         case "deleteRoute":
-            //deleteRoute
+            deleteRoute(save);
             break;
         default:
             alert("Unknown route function!");
@@ -198,9 +229,10 @@ document.getElementById("importEverything").onclick = function() {
         let data = JSON.parse(text);
         store.settings = data.settings;
         store.lastActiveId = data.lastActiveId;
-        data.saves.forEach(save => {
-            store.saves[save.id] = save;
-        });
+        store.saves = {
+            ...store.saves,
+            ...data.saves
+        };
         somethingChanged();
     });
 };

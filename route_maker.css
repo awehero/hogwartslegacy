@@ -264,3 +264,43 @@ button {
     height: 42px;
     pointer-events: none;
 }
+#permanentDelete {
+    position: absolute;
+    bottom: 3vh;
+    right: 15vh;
+    height: 10vh;
+    width: 10vh;
+    border-radius: 24px;
+    border: 3px solid black;
+    background: #ff0000;
+    color: #000000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+#permanentDelete svg {
+    width: 42px;
+    height: 42px;
+    pointer-events: none;
+}
+#cancelDelete {
+    position: absolute;
+    bottom: 3vh;
+    right: 27vh;
+    height: 10vh;
+    width: 10vh;
+    border-radius: 24px;
+    border: 3px solid black;
+    background: #ffff00;
+    color: #000000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+#cancelDelete svg {
+    width: 42px;
+    height: 42px;
+    pointer-events: none;
+}
