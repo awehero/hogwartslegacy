@@ -888,23 +888,212 @@ const libraryData = {
                     "Hogwarts": {
                         type: F,
                         items: {
-
+                            "The Astronomy Wing": {
+                                type: F,
+                                items: {
+                                    "Astronomy Tower": {type: B, repeatable: true},
+                                    "Charms": {type: B, repeatable: true},
+                                    "Defense Against the Dark Arts Tower": {type: B, repeatable: true},
+                                    "Defense Against the Dark Arts Classroom": {type: B, repeatable: true},
+                                    "Professor Fig's Classroom": {type: B, repeatable: true},
+                                    "Transfiguration Classroom": {type: B, repeatable: true},
+                                    "Transfiguration Courtyard": {type: B, repeatable: true},
+                                }
+                            },
+                            "The Bell Tower Wing": {
+                                type: F,
+                                items: {
+                                    "Bell Tower Courtyard": {type: B, repeatable: true},
+                                    "Flying Class Lawn": {type: B, repeatable: true},
+                                    "Beasts Classroom": {type: B, repeatable: true},
+                                    "Hogwarts North Exit": {type: B, repeatable: true},
+                                    "West Tower": {type: B, repeatable: true},
+                                }
+                            },
+                            "The Grand Staircase": {
+                                type: F,
+                                items: {
+                                    "Grand Staircase": {type: B, repeatable: true},
+                                    "Grand Staircase Tower": {type: B, repeatable: true},
+                                    "Lower Grand Staircase": {type: B, repeatable: true},
+                                    "Quad Courtyard": {type: B, repeatable: true},
+                                    "Ravenclaw Common Room": {type: B, repeatable: true},
+                                    "Ravenclaw Tower": {type: B, repeatable: true},
+                                    "Slytherin Common Room": {type: B, repeatable: true},
+                                    "Trophy Room": {type: B, repeatable: true},
+                                }
+                            },
+                            "The Great Hall": {
+                                type: F,
+                                items: {
+                                    "Boathouse": {type: B, repeatable: true},
+                                    "Great Hall": {type: B, repeatable: true},
+                                    "Hufflepuff Common Room": {type: B, repeatable: true},
+                                    "Viaduct Courtyard": {type: B, repeatable: true},
+                                }
+                            },
+                            "The Library Annex": {
+                                type: F,
+                                items: {
+                                    "Central Hall": {type: B, repeatable: true},
+                                    "Divination Classroom": {type: B, repeatable: true},
+                                    "Greenhouses": {type: B, repeatable: true},
+                                    "Library": {type: B, repeatable: true},
+                                    "Potions Classroom": {type: B, repeatable: true},
+                                }
+                            },
+                            "Secret Rooms": {
+                                type: F,
+                                items: {
+                                    "Map Chamber": {type: B, repeatable: true},
+                                    "Room of Requirement": {type: B, repeatable: true},
+                                }
+                            },
+                            "The South Wing": {
+                                type: F,
+                                items: {
+                                    "Clock Tower Courtyard": {type: B, repeatable: true},
+                                    "Faculty Tower": {type: B, repeatable: true},
+                                    "Gryffindor Common Room": {type: B, repeatable: true},
+                                    "Hospital Wing": {type: B, repeatable: true},
+                                    "Hogwarts South Exit": {type: B, repeatable: true},
+                                }
+                            },
                         }
                     },
                     "Hogsmeade": {
                         type: F,
                         items: {
-
+                            "North Hogsmeade": {type: B, repeatable: true},
+                            "West Hogsmeade": {type: B, repeatable: true},
+                            "South Hogsmeade": {type: B, repeatable: true},
                         }
                     },
                     "Highlands": {
                         type: F,
                         items: {
-
+                            "North Ford Bog": {
+                                type: F,
+                                items: {
+                                    "East North Ford Bog": {type: B, repeatable: true},
+                                    "North Ford Bog": {type: B, repeatable: true},
+                                    "Pitt-Upon-Ford": {type: B, repeatable: true},
+                                    "San Bakar's Tower": {type: B, repeatable: true},
+                                }
+                            },
+                            "Forbidden Forest": {
+                                type: F,
+                                items: {
+                                    "Jackdaw's Tomb": {type: B, repeatable: true},
+                                    "North Ford Bog Entrance": {type: B, repeatable: true},
+                                    "West Forbidden Forest": {type: B, repeatable: true},
+                                }
+                            },
+                            "Hogsmeade Valley": {
+                                type: F,
+                                items: {
+                                    "East Hosgmeade Valley": {type: B, repeatable: true},
+                                    "Falbarton Castle": {type: B, repeatable: true},
+                                    "Upper Hogsfield": {type: B, repeatable: true},
+                                }
+                            },
+                            "North Hogwarts Region": {
+                                type: F,
+                                items: {
+                                    "East North Hogwarts Region": {type: B, repeatable: true},
+                                    "Korrow Ruins": {type: B, repeatable: true},
+                                    "The Collector's Cave": {type: B, repeatable: true},
+                                }
+                            },
+                            "South Hogwarts Region": {
+                                type: F,
+                                items: {
+                                    "Aranshire": {type: B, repeatable: true},
+                                    "Forbidden Forest": {type: B, repeatable: true},
+                                    "Lower Hogsfield": {type: B, repeatable: true},
+                                    "Mooncalf Den": {type: B, repeatable: true},
+                                }
+                            },
+                            "Hogwarts Valley": {
+                                type: F,
+                                items: {
+                                    "Brocburrow": {type: B, repeatable: true},
+                                    "Central Hogwarts Valley": {type: B, repeatable: true},
+                                    "Keenbridge": {type: B, repeatable: true},
+                                    "The Mine's Eye": {type: B, repeatable: true},
+                                }
+                            },
+                            "Feldcroft Region": {
+                                type: F,
+                                items: {
+                                    "Feldcroft": {type: B, repeatable: true},
+                                    "Feldcroft Catacomb": {type: B, repeatable: true},
+                                    "Irondale": {type: B, repeatable: true},
+                                    "North Feldcroft": {type: B, repeatable: true},
+                                    "Rookwood Castle": {type: B, repeatable: true},
+                                    "South Feldcroft": {type: B, repeatable: true},
+                                    "West Hogwarts Valley": {type: B, repeatable: true},
+                                }
+                            },
+                            "South Sea Bog": {
+                                type: F,
+                                items: {
+                                    "Northern South Sea Bog": {type: B, repeatable: true},
+                                }
+                            },
+                            "Coastal Cavern": {
+                                type: F,
+                                items: {
+                                    "East South Sea Bog?": {type: B, repeatable: true},
+                                    "North Poidsear Coast": {type: B, repeatable: true},
+                                }
+                            },
+                            "Poidsear Coast": {
+                                type: F,
+                                items: {
+                                    "Marunweem Bridge": {type: B, repeatable: true},
+                                    "Phoenix Mountain Cave": {type: B, repeatable: true},
+                                    "Poidsear Castle": {type: B, repeatable: true},
+                                    "South Poidsear Coast": {type: B, repeatable: true},
+                                    "Tomb of Treachery": {type: B, repeatable: true},
+                                }
+                            },
+                            "Marunweem Lake": {
+                                type: F,
+                                items: {
+                                    "Coastal Mine": {type: B, repeatable: true},
+                                    "Marunweem": {type: B, repeatable: true},
+                                    "Marunweem Lake": {type: B, repeatable: true},
+                                    "Marunweem Ruins": {type: B, repeatable: true},
+                                    "Tower Tunnel": {type: B, repeatable: true},
+                                }
+                            },
+                            "Manor Cape": {
+                                type: F,
+                                items: {
+                                    "Bainburgh": {type: B, repeatable: true},
+                                    "West Manor Cape": {type: B, repeatable: true},
+                                }
+                            },
+                            "Cragcroftshire": {
+                                type: F,
+                                items: {
+                                    "Cragcroft": {type: B, repeatable: true},
+                                    "Cragcroft Shore": {type: B, repeatable: true},
+                                }
+                            },
+                            "Clagmar Coast": {
+                                type: F,
+                                items: {
+                                    "Clagmar Castle": {type: B, repeatable: true},
+                                    "South Clagmar Coast": {type: B, repeatable: true},
+                                }
+                            },
                         }
                     },
                 }
             },
+
             "Point": {
 
             }
