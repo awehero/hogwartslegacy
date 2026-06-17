@@ -1,7 +1,10 @@
 //blocksData.js
 const libraryData = {
     "Custom": {
-        type: B,
+        type: F,
+        items: {
+            "": {type: B, repeatable: true},
+        }
     },
     "Quest": {
         type: F,
