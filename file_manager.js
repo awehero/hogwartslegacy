@@ -1,8 +1,10 @@
 // file_manager.js
 
+const { AmariBot } = require("amaribot.js");
+
 store = JSON.parse(localStorage.getItem("route_system") || '{}');
 store.settings = store.settings || {};
-store.lastActiveId = store.lastActiveId || null;
+store.lastActiveId = store.lastActiveId || "";
 store.saves = store.saves || {};
 //store.settings.numbered = store.settings.numbered || true;
 localStorage.setItem("route_system", JSON.stringify(store));
@@ -67,33 +69,48 @@ function somethingChanged() {
     updateLibraryBlocks();
     validateRoute();
     autosave();
+    if (routesMenu.style.display == "flex") {
+        displayRoutes();
+    }
 }
-
-routeTitle.onchange=()=>{
-    somethingChanged();
-};
-
-if (store.lastActiveId != null && store.saves != {} && store.saves[store.lastActiveId]) {
-    importRoute(store.saves[store.lastActiveId]);
-} else {
-    newRoute();
+function buildNotes(save) {
+    let text = "";
+    const title = (routeTitle.value || "").trim();
+    text += title + "\n\n";
+    routeContainer.querySelectorAll(".libraryBlock").forEach((el, index) => {
+        text += `${index + 1}. ${el.dataset.custom || el.dataset.path}\n`;
+        if (el.dataset.notes) {
+            text += `Notes: ${el.dataset.notes}\n`;
+        }
+        text += "\n";
+    });
+    return text;
 }
-somethingChanged();
-
-
-
-
-
-
-
-function getStore() {
-    return JSON.parse(localStorage.getItem("route_system") || '{"saves":{}, "lastActiveId":"", "settings":{}}');
+async function copyNotes(save) {
+    const text = buildNotes(save);
+    try {
+        await navigator.clipboard.writeText(text);
+        alert("Copied!");
+    } catch (error) {
+        try {
+            const textarea = document.createElement("textarea");
+            textarea.value = text;
+            textarea.style.position = "fixed";
+            textarea.style.left = "-9999px";
+            document.body.appendChild(textarea);
+            textarea.select();
+            const success = document.execCommand("copy");
+            document.body.removeChild(textarea);
+            if (success) {
+                alert("Copied!");
+            } else {
+                throw new Error();
+            }
+        } catch {
+            alert("Failed to copy.");
+        }
+    }
 }
-
-function setStore(store) {
-    localStorage.setItem("route_system", JSON.stringify(store));
-}
-
 function downloadFile(content, filename, type) {
     const blob = new Blob([content], { type: type });
     const url = URL.createObjectURL(blob);
@@ -103,172 +120,96 @@ function downloadFile(content, filename, type) {
     a.click();
     URL.revokeObjectURL(url);
 }
-
-function exportRoute() {
-
-    const route = [];
-
-    routeContainer.querySelectorAll(".libraryBlock").forEach((el, index) => {
-
-        route.push({
-            position: index,
-            custom: el.dataset.custom || "",
-            instanceId: el.dataset.instanceId || "",
-            name: el.dataset.name || "",
-            notes: el.dataset.notes || "",
-            path: el.dataset.path,
-            repeatable: el.dataset.repeatable || "",
-            splitIndex: el.dataset.splitIndex || "",
-            splitParent: el.dataset.splitParent || ""
-        });
-
-    });
-
-    const save = {
-        version: 1,
-        title: routeTitle.value || "Untitled Route",
-        route: route,
-        timestamp: Date.now()
-    };
-
+function exportNotes(save) {
     downloadFile(
-        JSON.stringify(save, null, 4),
+        buildNotes(save),
+        `${save.title}.txt`,
+        "text/plain"
+    );
+}
+function exportRoute(save) {
+    downloadFile(
+        JSON.stringify(save),
         "route.json",
         "application/json"
     );
 }
-
-function buildNotes() {
-
-    let text = "";
-
-    const title = (routeTitle.value || "").trim();
-
-    if (title) {
-        text += title + "\n\n";
-    }
-
-    routeContainer.querySelectorAll(".libraryBlock").forEach((el, index) => {
-
-        text += `${index + 1}. ${el.dataset.custom || el.dataset.path}\n`;
-
-        if (el.dataset.notes) {
-            text += `Notes: ${el.dataset.notes}\n`;
+function loadFiles(accept, maxFiles, callback) {
+    const input = document.getElementById("fileLoader");
+    input.accept = accept;
+    input.multiple = maxFiles > 1;
+    input.onchange = async () => {
+        const files = [...input.files];
+        if (files.length === 0) {
+            return;
         }
-
-        text += "\n";
-
-    });
-
-    return text;
+        if (files.length > maxFiles) {
+            alert(`Select at most ${maxFiles} JSON file(s).`);
+            input.value = "";
+            return;
+        }
+        try {
+            const data = await Promise.all(
+                files.map(file => file.text())
+            );
+            callback(maxFiles === 1 ? data[0] : data);
+        } catch (error) {
+            console.error(error);
+            alert("Failed to read file(s).");
+        }
+        input.value = "";
+    };
+    input.click();
 }
 
-function exportNotes() {
-
-    downloadFile(
-        buildNotes(),
-        "route_notes.txt",
-        "text/plain"
-    );
-}
-
-async function copyNotes() {
-
-    try {
-
-        await navigator.clipboard.writeText(buildNotes());
-
-        alert("Copied!");
-
-    } catch {
-
-        alert("Failed to copy.");
+function routeDisplayFunction(type, saveId) {
+    let save = store.saves[saveId];
+    switch (type) {
+        case "exportRoute":
+            exportRoute(save)
+            break;
+        case "exportNotes":
+            exportNotes(save);
+            break;
+        case "copyNotes":
+            copyNotes(save);
+            break;
+        case "deleteRoute":
+            //deleteRoute
+            break;
+        default:
+            alert("Unknown route function!");
+            break;
     }
 }
 
-const exportFunctions = {
-    route: exportRoute,
-    notes: exportNotes,
-    copy: copyNotes
+routeTitle.onchange=()=>{
+    somethingChanged();
+};
+document.getElementById("importRouteBtn").onclick = function() {
+    loadFiles(".json", 79, text => {
+        let routes = JSON.parse(text);
+        routes.forEach(save=>{
+            store.saves[save.id] = save;
+        });
+    });
+    somethingChanged();
+};
+document.getElementById("importEverything").onclick = function() {
+    loadFiles(".json", 1, text => {
+        let data = JSON.parse(text);
+        store.settings = data.settings;
+        store.lastActiveId = data.lastActiveId;
+        data.saves.forEach(save=>{
+            store.saves[save.id] = save;
+        });
+    });
+    somethingChanged();
 };
 
-document.querySelectorAll("#exportButtons button").forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        const type = button.dataset.export;
-
-        exportFunctions[type]?.();
-
-    });
-
-});
-
-function findSaveByTitle(title) {
-
-    const target = title.toLowerCase().trim();
-
-    for (let key in localStorage) {
-
-        if (!key.startsWith("route_")) continue;
-
-        try {
-
-            const data = JSON.parse(localStorage.getItem(key));
-
-            if ((data.title || "").toLowerCase().trim() === target) {
-                return data;
-            }
-
-        } catch (e) {
-            continue;
-        }
-    }
-
-    return null;
+if (store.lastActiveId != "" && store.saves != {} && store.saves[store.lastActiveId]) {
+    importRoute(store.saves[store.lastActiveId]);
+} else {
+    newRoute();
 }
-
-const importBtn = document.getElementById("importBtn");
-const importFile = document.getElementById("importFile");
-
-importBtn.onclick = () => importFile.click();
-
-importFile.addEventListener("change", async () => {
-
-    const file = importFile.files[0];
-    if (!file) return;
-
-    const text = await file.text();
-    const data = JSON.parse(text);
-
-    importRoute(data);
-
-    importFile.value = "";
-});
-
-document.getElementById("loadRouteBtn").onclick = () => {
-    openPopup();
-    renderSaveList();
-};
-
-function getAllSaves() {
-
-    const saves = [];
-
-    for (let key in localStorage) {
-
-        if (!key.startsWith("route_")) continue;
-
-        try {
-
-            const data = JSON.parse(localStorage.getItem(key));
-
-            saves.push(data);
-
-        } catch (e) {
-            continue;
-        }
-    }
-
-    return saves.sort((a, b) => b.timestamp - a.timestamp);
-}
+somethingChanged();

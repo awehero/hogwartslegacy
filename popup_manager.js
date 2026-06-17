@@ -23,24 +23,24 @@ function formatDate(string) {
     return new Date(number).toLocaleString();
 }
 function displayRoutes() {
-    routes.innerHTML = "";
+    routesDisplay.innerHTML = "";
     //store.saves
     sorted.forEach(save => {
-        routes.innerHTML += `
+        routesDisplay.innerHTML += `
         <div class="routeDisplayContainer">
             <div class="routeDisplayLeft">
-                <div class="routeDisplayTitle>${save.title}</div>
-                <div class="routeDisplayCount>${save.routes.length} Blocks</div>
+                <div class="routeDisplayTitle">${save.title}</div>
+                <div class="routeDisplayCount">${save.route.length} Blocks</div>
             </div>
             <div class="routeDisplayMiddle">
-                <div class="routeDisplayDate>${formatDate(save.timestamp)}</div>
-                <div class="routeDisplayId>${save.id}</div>
+                <div class="routeDisplayDate">${formatDate(save.timestamp)}</div>
+                <div class="routeDisplayId">${save.id}</div>
             </div>
             <div class="routeDisplayRight">
-                <button data-id=${save.id} class="exportRoute" onclick="exportRoute(${save.id})"></button>
-                <button data-id=${save.id} class="exportNotes" onclick="exportNotes(${save.id})></button>
-                <button data-id=${save.id} class="copyNotes" onclick="copyNotes(${save.id})></button>
-                <button data-id=${save.id} class="deleteRoute" onclick="deleteRoute(${save.id})></button>
+                <button data-id=${save.id} class="exportRoute" onclick="routeDisplayFunction('exportRoute', ${save.id})"></button>
+                <button data-id=${save.id} class="exportNotes" onclick="routeDisplayFunction('exportNotes', ${save.id})"></button>
+                <button data-id=${save.id} class="copyNotes" onclick="routeDisplayFunction('copyNotes', ${save.id})"></button>
+                <button data-id=${save.id} class="deleteRoute" onclick="routeDisplayFunction('deleteRoute', ${save.id})"></button>
             </div>
         </div>
         `;
