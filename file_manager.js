@@ -60,7 +60,7 @@ function buildRouteSnapshot() {
 }
 function autosave() {
     const save = buildRouteSnapshot();
-    store.saves[lastActiveId] = save;
+    store.saves[store.lastActiveId] = save;
     localStorage.setItem("route_system", JSON.stringify(store));
 }
 function somethingChanged() {
@@ -73,8 +73,8 @@ routeTitle.onchange=()=>{
     somethingChanged();
 };
 
-if (store.lastActiveId != null && store.saves != {} && store.saves[lastActiveId]) {
-    importRoute(store.saves[lastActiveId]);
+if (store.lastActiveId != null && store.saves != {} && store.saves[store.lastActiveId]) {
+    importRoute(store.saves[store.lastActiveId]);
 } else {
     newRoute();
 }

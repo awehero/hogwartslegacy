@@ -37,14 +37,13 @@ function displayRoutes() {
                 <div class="routeDisplayId>${save.id}</div>
             </div>
             <div class="routeDisplayRight">
-                <button data-id=${save.id} class="exportRoute" onclick=""></button>
-                <button data-id=${save.id} class="exportNotes"></button>
-                <button data-id=${save.id} class="copyNotes"></button>
-                <button data-id=${save.id} class="deleteRoute"></button>
+                <button data-id=${save.id} class="exportRoute" onclick="exportRoute(${save.id})"></button>
+                <button data-id=${save.id} class="exportNotes" onclick="exportNotes(${save.id})></button>
+                <button data-id=${save.id} class="copyNotes" onclick="copyNotes(${save.id})></button>
+                <button data-id=${save.id} class="deleteRoute" onclick="deleteRoute(${save.id})></button>
             </div>
         </div>
         `;
     });
-    //document.getElementsByClassName("exportRoute").for
 }
 
