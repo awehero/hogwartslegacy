@@ -9,6 +9,7 @@ const routeTitle = document.getElementById("routeTitle");
 const popup = document.getElementById("popup");
 const routesHeader = document.getElementById("routesHeader");
 const settingsHeader = document.getElementById("settingsHeader");
+const popupBtn = document.getElementById("popupBtn");
 const closePopupBtn = document.getElementById("closePopupBtn");
 const routesDisplay = document.getElementById("routesDisplay");
 const routesMenu = document.getElementById("routesMenu");

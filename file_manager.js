@@ -1,7 +1,5 @@
 // file_manager.js
 
-const { AmariBot } = require("amaribot.js");
-
 store = JSON.parse(localStorage.getItem("route_system") || '{}');
 store.settings = store.settings || {};
 store.lastActiveId = store.lastActiveId || "";
@@ -187,27 +185,27 @@ routeTitle.onchange=()=>{
     somethingChanged();
 };
 document.getElementById("importRouteBtn").onclick = function() {
-    loadFiles(".json", 79, text => {
-        let routes = JSON.parse(text);
-        routes.forEach(save=>{
+    loadFiles(".json", 79, texts => {
+        texts.forEach(text => {
+            let save = JSON.parse(text);
             store.saves[save.id] = save;
         });
+        somethingChanged();
     });
-    somethingChanged();
 };
 document.getElementById("importEverything").onclick = function() {
     loadFiles(".json", 1, text => {
         let data = JSON.parse(text);
         store.settings = data.settings;
         store.lastActiveId = data.lastActiveId;
-        data.saves.forEach(save=>{
+        data.saves.forEach(save => {
             store.saves[save.id] = save;
         });
+        somethingChanged();
     });
-    somethingChanged();
 };
 
-if (store.lastActiveId != "" && store.saves != {} && store.saves[store.lastActiveId]) {
+if (store.lastActiveId != "" && store.saves[store.lastActiveId]) {
     importRoute(store.saves[store.lastActiveId]);
 } else {
     newRoute();

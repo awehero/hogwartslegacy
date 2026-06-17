@@ -1,6 +1,6 @@
 //block_editor.js
-function openBlockEditor(block){
-    blockEditor.innerHTML=`
+function openBlockEditor(block) {
+    blockEditor.innerHTML = `
     <div>${block.dataset.path}</div>
     <label>Notes</label>
     <label>Custom name</label>
@@ -10,25 +10,25 @@ function openBlockEditor(block){
     <button id="deleteBtn" style="margin-top:10px;background:#a33;color:white;">Delete</button>
     `;
 
-    const notes=document.getElementById("notes");
-    const custom=document.getElementById("custom");
+    const notes = document.getElementById("notes");
+    const custom = document.getElementById("custom");
 
-    notes.value=block.dataset.notes||"";
-    custom.value=block.dataset.custom||"";
+    notes.value = block.dataset.notes || "";
+    custom.value = block.dataset.custom || "";
 
-    notes.oninput=()=>block.dataset.notes=notes.value;
+    notes.oninput = () => block.dataset.notes = notes.value;
 
-    custom.oninput=()=>{
-        block.dataset.custom=custom.value;
-        block.textContent=custom.value||block.dataset.path;
+    custom.oninput = () => {
+        block.dataset.custom = custom.value;
+        block.textContent = custom.value || block.dataset.path;
     };
 
     document.getElementById("splitBtn").onclick = function() {
 
-        const clone=block.cloneNode(true);
+        const clone = block.cloneNode(true);
 
-        clone.dataset.instanceId=makeId();
-        clone.dataset.splitParent=block.dataset.instanceId;
+        clone.dataset.instanceId = makeId();
+        clone.dataset.splitParent = block.dataset.instanceId;
 
         block.after(clone);
 
@@ -37,19 +37,19 @@ function openBlockEditor(block){
 
     document.getElementById("deleteBtn").onclick = function() {
         block.remove();
-        selectedRouteBlock=null;
-        blockEditor.innerHTML="Select a route block";
+        selectedRouteBlock = null;
+        blockEditor.innerHTML = "Select a route block";
         somethingChanged();
     };
 }
 
-routeContainer.addEventListener("click",e=>{
-    const block=e.target.closest(".libraryBlock");
-    if(!block)return;
+routeContainer.addEventListener("click", e => {
+    const block = e.target.closest(".libraryBlock");
+    if (!block) return;
 
-    selectedRouteBlock=block;
+    selectedRouteBlock = block;
 
-    document.querySelectorAll(".routeSelected").forEach(el=>{
+    document.querySelectorAll(".routeSelected").forEach(el => {
         el.classList.remove("routeSelected");
     });
 

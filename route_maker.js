@@ -1,6 +1,6 @@
 //route_maker.js
 
-function makeId(){
+function makeId() {
     return Math.random().toString(36).slice(2);
 }
 
@@ -22,7 +22,7 @@ new Sortable(routeContainer, {
     group: "blocks",
     animation: 150,
 
-    onAdd: function(evt){
+    onAdd: function(evt) {
         const el = evt.item;
         el.dataset.instanceId = makeId();
         el.dataset.splitParent = el.dataset.splitParent || "";
@@ -69,35 +69,36 @@ new Sortable(trashZone, {
     }
 });
 
-function updateLibraryBlocks(){
-    const used={};
+function updateLibraryBlocks() {
+    const used = {};
 
-    routeContainer.querySelectorAll(".libraryBlock").forEach(el=>{
-        const path=el.dataset.path;
-        used[path]=true;
+    routeContainer.querySelectorAll(".libraryBlock").forEach(el => {
+        const path = el.dataset.path;
+        used[path] = true;
     });
 
-    libraryRoot.querySelectorAll(".libraryBlock").forEach(el=>{
-        const path=el.dataset.path;
-        const repeatable=el.dataset.repeatable==="true";
+    libraryRoot.querySelectorAll(".libraryBlock").forEach(el => {
+        const path = el.dataset.path;
+        const repeatable = el.dataset.repeatable === "true";
 
-        if(repeatable){
+        if (repeatable) {
             el.classList.remove("disabled");
             return;
         }
 
-        if(used[path]){
+        if (used[path]) {
             el.classList.add("disabled");
-        }else{
+        } else {
             el.classList.remove("disabled");
         }
     });
 }
-function renderSearchResults(search){
-    let html="";
-    Object.keys(blockLookup).forEach(path=>{
-        if(!path.toLowerCase().includes(search.toLowerCase()))return;
-        const data=blockLookup[path];
+
+function renderSearchResults(search) {
+    let html = "";
+    Object.keys(blockLookup).forEach(path => {
+        if (!path.toLowerCase().includes(search.toLowerCase())) return;
+        const data = blockLookup[path];
         html += `
         <button
             class="libraryBlock"
@@ -113,11 +114,11 @@ function renderSearchResults(search){
 
     libraryRoot.innerHTML = html;
 
-    new Sortable(libraryRoot,{
-        group:{
-            name:"blocks",
-            pull:"clone",
-            put:false
+    new Sortable(libraryRoot, {
+        group: {
+            name: "blocks",
+            pull: "clone",
+            put: false
         },
         draggable: ".libraryBlock",
         filter: ".disabled",
@@ -127,21 +128,21 @@ function renderSearchResults(search){
 
     somethingChanged();
 }
-librarySearch.addEventListener("input",()=>{
-    const value=librarySearch.value.trim();
-    if(value===""){
-        libraryRoot.innerHTML=finalHTML;
-        document.querySelectorAll(".folderContent").forEach(el=>{
-            new Sortable(el,{
-                group:{
-                    name:"blocks",
-                    pull:"clone",
-                    put:false
+librarySearch.addEventListener("input", () => {
+    const value = librarySearch.value.trim();
+    if (value === "") {
+        libraryRoot.innerHTML = finalHTML;
+        document.querySelectorAll(".folderContent").forEach(el => {
+            new Sortable(el, {
+                group: {
+                    name: "blocks",
+                    pull: "clone",
+                    put: false
                 },
-                draggable:".libraryBlock",
-                filter:".disabled",
-                sort:false,
-                animation:150
+                draggable: ".libraryBlock",
+                filter: ".disabled",
+                sort: false,
+                animation: 150
             });
         });
         somethingChanged();
