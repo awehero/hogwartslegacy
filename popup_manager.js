@@ -37,7 +37,7 @@ function displayRoutes() {
                 <div class="routeDisplayId>${save.id}</div>
             </div>
             <div class="routeDisplayRight">
-                <button class="exportRoute">
+                <button class="exportRoute"></button>
             </div>
         </div>
         `;
