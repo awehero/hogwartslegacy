@@ -292,6 +292,10 @@ button {
     margin: 2%;
     margin-top: 0%;
 }
+.popupTab {
+    height: 100%;
+    width: 100%;
+}
 #permanentDelete {
     position: absolute;
     bottom: 3vh;
