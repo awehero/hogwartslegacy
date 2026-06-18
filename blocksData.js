@@ -206,6 +206,18 @@ const libraryData = {
                                     "Collect - Beast - Puffskein"
                                 ]
                             },
+                            "Deek at Mooncalf Den": {
+                                type: B,
+                            },
+                            "Collect Beast Items": {
+                                type: B,
+                            },
+                            "Upgrade Gear": {
+                                type: B,
+                            },
+                            "Complete": {
+                                type: B,
+                            },
                         }
                     }
                 }
@@ -650,68 +662,28 @@ const libraryData = {
                 type: F,
                 items: {
                     "A Dragon Debrief": {
-                        type: F,
-                        items: {
-                            "Start": {
-                                type: B,
-                            },
-                        }
+                        type: B,
                     },
                     "Poached Egg": {
-                        type: F,
-                        items: {
-                            "Start": {
-                                type: B,
-                            },
-                        }
+                        type: B,
                     },
                     "The Poachers' House Call": {
-                        type: F,
-                        items: {
-                            "Start": {
-                                type: B,
-                            },
-                        }
+                        type: B,
                     },
                     "Surprise Meeting": {
-                        type: F,
-                        items: {
-                            "Start": {
-                                type: B,
-                            },
-                        }
+                        type: B,
                     },
                     "The Centaur and the Stone": {
-                        type: F,
-                        items: {
-                            "Start": {
-                                type: B,
-                            },
-                        }
+                        type: B,
                     },
                     "It's in the Stars": {
-                        type: F,
-                        items: {
-                            "Start": {
-                                type: B,
-                            },
-                        }
+                        type: B,
                     },
                     "A Bird in the Hand": {
-                        type: F,
-                        items: {
-                            "Start": {
-                                type: B,
-                            },
-                        }
+                        type: B,
                     },
                     "Poppy Blooms": {
-                        type: F,
-                        items: {
-                            "Start": {
-                                type: B,
-                            },
-                        }
+                        type: B,
                     },
                 }
             },
@@ -794,12 +766,24 @@ const libraryData = {
                             "Start": {
                                 type: B,
                             },
+                            "Cave": {
+                                type: B,
+                            },
+                            "Redeem": {
+                                type: B,
+                            },
                         }
                     },
                     "Foal of the Dead": {
                         type: F,
                         items: {
                             "Start": {
+                                type: B,
+                            },
+                            "Buy Breeding Pen": {
+                                type: B,
+                            },
+                            "Place and Start Thestrals": {
                                 type: B,
                             },
                         }
@@ -1008,6 +992,9 @@ const libraryData = {
                             "Start": {
                                 type: B,
                                 after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                            "Finish": {
+                                type: B,
                             },
                         }
                     },
@@ -1323,10 +1310,16 @@ const libraryData = {
                             },
                         }
                     },
-                    "": {
+                    "Tangled Web": {
                         type: F,
                         items: {
                             "Start": {
+                                type: B,
+                            },
+                            "Cellar": {
+                                type: B,
+                            },
+                            "Redeem": {
                                 type: B,
                             },
                         }
