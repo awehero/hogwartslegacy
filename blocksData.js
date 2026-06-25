@@ -1439,6 +1439,12 @@ const libraryData = {
                             "Start": {
                                 type: B,
                             },
+                            "Campsite": {
+                                type: B,
+                            },
+                            "Complete": {
+                                type: B,
+                            },
                         }
                     },
                     "Take the Biscuit": {
@@ -1508,7 +1514,13 @@ const libraryData = {
                     "All's Well that Ends Bell": {
                         type: F,
                         items: {
+                            "Bells": {
+                                type: B,
+                            },
                             "Start": {
+                                type: B,
+                            },
+                            "Redeem": {
                                 type: B,
                             },
                         }

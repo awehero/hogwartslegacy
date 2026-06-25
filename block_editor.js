@@ -7,7 +7,7 @@ function openBlockEditor(block) {
     <label>Notes</label>
     <textarea id="notes"></textarea>
     <label>Duration (s)</label>
-    <input id="duration" type="text">
+    <input id="duration" type="number">
     <button id="splitBtn">Split</button>
     <button id="deleteBtn" style="margin-top:10px;background:#a33;color:white;">Delete</button>
     `;

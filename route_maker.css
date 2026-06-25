@@ -341,8 +341,27 @@ button {
     margin: 2%;
     border: 2px solid orange;
 }
+#routesMenuRight {
+    width: 70%;
+    margin: 2%;
+    margin-left: 0%;
+    border: 2px solid green;
+}
 .routeMenuBtn {
-    display: flex;
+    display: inline-block;
+    height: 15%;
+    font-size: xx-large;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: cursive;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    margin: 1%;
+}
+.routeMenuBtn:hover {
+    background-color: rgba(0, 0, 0, 0.3);
 }
 .routeMenuBtn svg {
     width: 42px;
