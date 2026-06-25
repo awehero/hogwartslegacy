@@ -372,3 +372,14 @@ button {
     height: 42px;
     pointer-events: none;
 }
+#routesMenuTitle {
+    height: 10%;
+    font-size: xxx-large;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#routesDisplay {
+    height: 90%;
+    overflow-y: scroll;
+}
