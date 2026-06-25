@@ -292,16 +292,27 @@ button {
     height: 15%;
     width: 85%;
     /* border: 3px solid red; */
-    margin: 2%;
+    margin-top: 2%;
+    margin-left: 6%;
 }
 .popupHeader {
     font-family: "Hogwarts", serif;
     font-size: 10vh;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 50px;
+}
+.popupHeader.popupHeaderSelected {
+    background-color: #191919;
 }
 #popupTabs {
     height: 73%;
     width: 95%;
-    /* border: 3px solid red; */
+    border: 5px solid #191919;
+    border-radius: 50px;
     margin: 2%;
     margin-top: 0%;
 }

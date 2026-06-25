@@ -9,17 +9,21 @@ function closePopup() {
 function closeAllMenus() {
     routesMenu.style.display = "none";
     settingsMenu.style.display = "none";
+    routesHeader.classList.remove("popupHeaderSelected");
+    settingsHeader.classList.remove("popupHeaderSelected");
 }
 function openRoutesMenu() {
     openPopup();
     closeAllMenus();
     displayRoutes();
     routesMenu.style.display = "flex";
+    routesHeader.classList.add("popupHeaderSelected");
 }
 function openSettingsMenu() {
     openPopup();
     closeAllMenus();
     settingsMenu.style.display = "flex";
+    settingsHeader.classList.add("popupHeaderSelected");
 }
 function formatDate(string) {
     let number = parseInt(string, 10);
