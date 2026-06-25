@@ -291,7 +291,6 @@ button {
 #popupHeaders {
     height: 15%;
     width: 85%;
-    /* border: 3px solid red; */
     margin-top: 2%;
     margin-left: 6%;
 }
@@ -299,14 +298,14 @@ button {
     font-family: "Hogwarts", serif;
     font-size: 10vh;
     color: white;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #191919;
     cursor: pointer;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     border-top-left-radius: 20px;
     border-top-right-radius: 50px;
 }
 .popupHeader.popupHeaderSelected {
-    background-color: #191919;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 #popupTabs {
     height: 73%;
@@ -401,6 +400,7 @@ button {
 }
 #routesDisplay {
     height: 90%;
+    width: 100%;
     overflow-y: scroll;
 }
 .routeDisplayContainer {
@@ -412,4 +412,19 @@ button {
     cursor: pointer;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     font-family: cursive;
+    border: 2px solid black;
+    margin-top: 1%;
+    margin-left: 1%;
+    width: 96%;
+    border: 2px solid orange;
+    height: 18%;
+}
+.routeDisplayLeft {
+    display: inline-flex;
+}
+.routeDisplayMiddle {
+    display: inline-flex;
+}
+.routeDisplayRight {
+    display: inline-flex;
 }
