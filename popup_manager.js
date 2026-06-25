@@ -31,7 +31,7 @@ function displayRoutes() {
     let html = "";
     sorted.forEach(save => {
         html += `
-        <button class="routeDisplayContainer">
+        <div class="routeDisplayContainer">
             <div class="routeDisplayLeft">
                 <div class="routeDisplayTitle">${save.title}</div>
                 <div class="routeDisplayCount">${save.route.length == 1 ? "1 Block" : save.route.length + " Blocks"}</div>
@@ -47,7 +47,7 @@ function displayRoutes() {
                 <button data-id="${save.id}" class="copyNotes" onclick="routeDisplayFunction('copyNotes', '${save.id}')">Copy Notes</button>
                 <button data-id="${save.id}" class="deleteRoute" onclick="routeDisplayFunction('deleteRoute', '${save.id}')">Delete Route</button>
             </div>
-        </button>
+        </div>
         `;
     });
     routesDisplay.innerHTML = html;
