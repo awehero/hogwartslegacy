@@ -383,3 +383,13 @@ button {
     height: 90%;
     overflow-y: scroll;
 }
+.routeDisplayContainer {
+    display: inline-flex;
+    border-radius: 51px;
+    font-size: medium;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: cursive;
+}
