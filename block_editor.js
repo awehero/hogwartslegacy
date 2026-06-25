@@ -6,15 +6,19 @@ function openBlockEditor(block) {
     <input id="custom">
     <label>Notes</label>
     <textarea id="notes"></textarea>
+    <label>Duration (s)</label>
+    <input id="duration" type="text">
     <button id="splitBtn">Split</button>
     <button id="deleteBtn" style="margin-top:10px;background:#a33;color:white;">Delete</button>
     `;
 
     const notes = document.getElementById("notes");
     const custom = document.getElementById("custom");
+    const duration = document.getElementById("duration");
 
     notes.value = block.dataset.notes || "";
     custom.value = block.dataset.custom || "";
+    duration.value = block.dataset.duration || "";
 
     notes.oninput = () => {
         block.dataset.notes = notes.value;
@@ -24,6 +28,11 @@ function openBlockEditor(block) {
     custom.oninput = () => {
         block.dataset.custom = custom.value;
         block.textContent = custom.value || block.dataset.path;
+        somethingChanged();
+    };
+
+    duration.oninput = () => {
+        block.dataset.duration = duration.value;
         somethingChanged();
     };
 

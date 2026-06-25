@@ -3,7 +3,7 @@ const libraryData = {
     "Custom": {
         type: F,
         items: {
-            "Custom": {type: B, repeatable: true},
+            "Blank": {type: B, repeatable: true},
             "Reload From Last Save": {type: B, repeatable: true},
             "Save": {type: B, repeatable: true},
             "M/F Trick": {type: B, repeatable: true},
@@ -219,7 +219,86 @@ const libraryData = {
                                 type: B,
                             },
                         }
-                    }
+                    },
+                    "In the Shadow of the Estate": {
+                        type: B,
+                    },
+                    "The High Keep": {
+                        type: B,
+                    },
+                    "Astronomy Class": {
+                        type: B,
+                    },
+                    "Back on the Path": {
+                        type: B,
+                    },
+                    "Charles Rookwood's Trial": {
+                        type: B,
+                    },
+                    "Fire and Vice": {
+                        type: B,
+                    },
+                    "It's All Gobbledegook": {
+                        type: F,
+                        items: {
+                            "Amit": {
+                                type: B,
+                            },
+                            "The Mine's Eye": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "In the Shadow of the Mine": {
+                        type: B,
+                    },
+                    "The Headmistress Speaks": {
+                        type: B,
+                    },
+                    "The Polyjuice Plot": {
+                        type: B,
+                    },
+                    "Niamh Fitzgerald's Trial": {
+                        type: B,
+                    },
+                    "In the Shadow of the Mountain": {
+                        type: B,
+                    },
+                    "Lodgok's Loyalty": {
+                        type: B,
+                    },
+                    "San Bakar's Trial": {
+                        type: F,
+                        items: {
+                            "Map Chamber": {
+                                type: B,
+                            },
+                            "Cragcroft Shore": {
+                                type: B,
+                            },
+                            "Graphorn": {
+                                type: B,
+                            },
+                            "Complete": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Wand Mastery": {
+                        type: B,
+                    },
+                    "The Final Repository": {
+                        type: B,
+                    },
+                    "In the Shadow of Revelation": {
+                        type: B,
+                    },
+                    "Weasley's Watchful Eye": {
+                        type: B,
+                    },
+                    "The House Cup": {
+                        type: B,
+                    },
                 }
             },
             "Assignment": {
@@ -625,10 +704,10 @@ const libraryData = {
                             "Find Natty": {
                                 type: B,
                             },
-                            "Optional: Find Book of Poems": {
+                            "Find Book of Poems (Opt)": {
                                 type: B,
                             },
-                            "Optional: Find Love Letter": {
+                            "Find Love Letter (Opt)": {
                                 type: B,
                             },
                             "Officer Singer": {
@@ -786,12 +865,24 @@ const libraryData = {
                             "Place and Start Thestrals": {
                                 type: B,
                             },
+                            "Feed and Groom": {
+                                type: B,
+                            },
+                            "Complete": {
+                                type: B,
+                            },
                         }
                     },
                     "Phoenix Rising": {
                         type: F,
                         items: {
-                            "Start": {
+                            "Deek": {
+                                type: B,
+                            },
+                            "Phoenix": {
+                                type: B,
+                            },
+                            "Redeem": {
                                 type: B,
                             },
                         }
@@ -807,12 +898,24 @@ const libraryData = {
                             "Start": {
                                 type: B,
                             },
+                            "Quidditch Pitch Broom Trial": {
+                                type: B,
+                            },
+                            "Redeem": {
+                                type: B,
+                            },
                         }
                     },
                     "Sweeping the Competition": {
                         type: F,
                         items: {
-                            "Start": {
+                            "Broom Upgrade 1/Start": {
+                                type: B,
+                            },
+                            "Irondale Broom Trial": {
+                                type: B,
+                            },
+                            "Redeem": {
                                 type: B,
                             },
                         }
@@ -820,7 +923,16 @@ const libraryData = {
                     "The Sky is the Limit": {
                         type: F,
                         items: {
-                            "Start": {
+                            "Broom Upgrade 2/Start": {
+                                type: B,
+                            },
+                            "South Coast Broom Trial": {
+                                type: B,
+                            },
+                            "Redeem": {
+                                type: B,
+                            },
+                            "Broom Upgrade 3": {
                                 type: B,
                             },
                         }
@@ -830,51 +942,6 @@ const libraryData = {
             "Other": {
                 type: F,
                 items: {
-                    "Gobs of Gobstones": {
-                        type: F,
-                        items: {
-                            "Start": {
-                                type: B,
-                                after: ["Quest - Main - Weasley After Class"]
-                            },
-
-                            "Transfiguration Courtyard": {
-                                type: B,
-                                after: ["Quest - Other - Gobs of Gobstones - Start"]
-                            },
-
-                            "Ravenclaw Tower": {
-                                type: B,
-                                after: ["Quest - Other - Gobs of Gobstones - Start"]
-                            },
-
-                            "Central Hall Rafters": {
-                                type: B,
-                                after: ["Quest - Other - Gobs of Gobstones - Start"]
-                            },
-
-                            "Divination Classroom": {
-                                type: B,
-                                after: ["Quest - Other - Gobs of Gobstones - Start"]
-                            },
-
-                            "Trophy Room (2)": {
-                                type: B,
-                                after: ["Quest - Other - Gobs of Gobstones - Start"]
-                            },
-
-                            "Redeem": {
-                                type: B,
-                                after: [
-                                    "Quest - Other - Gobs of Gobstones - Transfiguration Courtyard",
-                                    "Quest - Other - Gobs of Gobstones - Ravenclaw Tower",
-                                    "Quest - Other - Gobs of Gobstones - Central Hall Rafters",
-                                    "Quest - Other - Gobs of Gobstones - Divination Classroom",
-                                    "Quest - Other - Gobs of Gobstones - Trophy Room (2)"
-                                ]
-                            }
-                        }
-                    },
                     "Like a Moth to a Frame": {
                         type: F,
                         items: {
@@ -909,20 +976,42 @@ const libraryData = {
                             }
                         }
                     },
-                    "Follow the Butterflies": {
+                    "Gobs of Gobstones": {
                         type: F,
                         items: {
                             "Start": {
                                 type: B,
-                                after: ["Quest - Main - Jackdaw's Rest"]
+                                after: ["Quest - Main - Weasley After Class"]
                             },
-                            "Follow Butterflies": {
+                            "Transfiguration Courtyard": {
                                 type: B,
-                                after: ["Quest - Other - Follow the Butterflies - Start"]
+                                after: ["Quest - Other - Gobs of Gobstones - Start"]
+                            },
+                            "Ravenclaw Tower": {
+                                type: B,
+                                after: ["Quest - Other - Gobs of Gobstones - Start"]
+                            },
+                            "Central Hall Rafters": {
+                                type: B,
+                                after: ["Quest - Other - Gobs of Gobstones - Start"]
+                            },
+                            "Divination Classroom": {
+                                type: B,
+                                after: ["Quest - Other - Gobs of Gobstones - Start"]
+                            },
+                            "Trophy Room (2)": {
+                                type: B,
+                                after: ["Quest - Other - Gobs of Gobstones - Start"]
                             },
                             "Redeem": {
                                 type: B,
-                                after: ["Quest - Other - Follow the Butterflies - Follow Butterflies"]
+                                after: [
+                                    "Quest - Other - Gobs of Gobstones - Transfiguration Courtyard",
+                                    "Quest - Other - Gobs of Gobstones - Ravenclaw Tower",
+                                    "Quest - Other - Gobs of Gobstones - Central Hall Rafters",
+                                    "Quest - Other - Gobs of Gobstones - Divination Classroom",
+                                    "Quest - Other - Gobs of Gobstones - Trophy Room (2)"
+                                ]
                             }
                         }
                     },
@@ -984,6 +1073,12 @@ const libraryData = {
                                 type: B,
                                 after: ["Quest - Main - Welcome to Hogsmeade"]
                             },
+                            "Astrolabe": {
+                                type: B,
+                            },
+                            "Redeem": {
+                                type: B,
+                            },
                         }
                     },
                     "Well, Well, Well": {
@@ -1005,6 +1100,15 @@ const libraryData = {
                                 type: B,
                                 after: ["Quest - Main - Welcome to Hogsmeade"]
                             },
+                            "Camp 1?": {
+                                type: B,
+                            },
+                            "Camp 2?": {
+                                type: B,
+                            },
+                            "Redeem": {
+                                type: B,
+                            },
                         }
                     },
                     "Brother's Keeper": {
@@ -1013,6 +1117,12 @@ const libraryData = {
                             "Start": {
                                 type: B,
                                 after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                            "Bardolph Beaumont": {
+                                type: B,
+                            },
+                            "Redeem": {
+                                type: B,
                             },
                         }
                     },
@@ -1026,7 +1136,13 @@ const libraryData = {
                             "Cabbage Crate 1": {
                                 type: B,
                                 after: ["Quest - Other - Kidnapped Cabbage"]
-                            }
+                            },
+                            "Cabbage Crate 2": {
+                                type: B,
+                            },
+                            "Deliver": {
+                                type: B,
+                            },
                         }
                     },
                     "Troll Control": {
@@ -1066,9 +1182,12 @@ const libraryData = {
                     "The Hippogriff Marks the Spot": {
                         type: F,
                         items: {
-                            "Start": {
+                            "Map": {
                                 type: B,
                                 after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                            "Hippogriff Puzzle": {
+                                type: B,
                             },
                         }
                     },
@@ -1109,18 +1228,24 @@ const libraryData = {
                     "Solved by the Bell": {
                         type: F,
                         items: {
-                            "Start": {
+                            "Map": {
                                 type: B,
                                 after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                            "Ding Ding Ding": {
+                                type: B,
                             },
                         }
                     },
                     "Cursed Tomb Treasure": {
                         type: F,
                         items: {
-                            "Start": {
+                            "Map": {
                                 type: B,
                                 after: ["Quest - Main - Welcome to Hogsmeade"]
+                            },
+                            "Tomb of Treachery": {
+                                type: B,
                             },
                         }
                     },
@@ -1139,6 +1264,23 @@ const libraryData = {
                                 type: B,
                                 after: ["Quest - Other - Absconder Encounter - Absconder/Heirloom"]
                             },
+                            "Redeem at the Guilt Tripper": {
+                                type: B,
+                            },
+                        }
+                    },
+                    "Tangled Web": {
+                        type: F,
+                        items: {
+                            "Start": {
+                                type: B,
+                            },
+                            "Cellar": {
+                                type: B,
+                            },
+                            "Redeem": {
+                                type: B,
+                            },
                         }
                     },
                     "Venomous Valour": {
@@ -1148,12 +1290,24 @@ const libraryData = {
                                 type: B,
                                 after: ["Quest - Assignment - Professor Hecat's Assignment 1 - Learn Incendio"]
                             },
+                            "Corridor": {
+                                type: B,
+                            },
+                            "Redeem": {
+                                type: B,
+                            },
                         }
                     },
                     "'Dissending' for Sweets": {
                         type: F,
                         items: {
-                            "Start": {
+                            "Start (2x)": {
+                                type: B,
+                            },
+                            "Billywig Stings": {
+                                type: B,
+                            },
+                            "Redeem": {
                                 type: B,
                             },
                         }
@@ -1161,7 +1315,13 @@ const libraryData = {
                     "Ghost of Our Love": {
                         type: F,
                         items: {
-                            "Start": {
+                            "Map": {
+                                type: B,
+                            },
+                            "Candles": {
+                                type: B,
+                            },
+                            "Chest": {
                                 type: B,
                             },
                         }
@@ -1171,7 +1331,16 @@ const libraryData = {
                         items: {
                             "Start": {
                                 type: B,
+                                after: ["Quest - Main - Jackdaw's Rest"]
                             },
+                            "Follow Butterflies": {
+                                type: B,
+                                after: ["Quest - Other - Follow the Butterflies - Start"]
+                            },
+                            "Redeem": {
+                                type: B,
+                                after: ["Quest - Other - Follow the Butterflies - Follow Butterflies"]
+                            }
                         }
                     },
                     "A Demanding Delivery": {
@@ -1180,20 +1349,27 @@ const libraryData = {
                             "Start": {
                                 type: B,
                             },
+                            "Deliver": {
+                                type: B,
+                            },
+                            "Redeem": {
+                                type: B,
+                            },
                         }
                     },
                     "Interior Decorating": {
+                        type: B,
+                    },
+                    "'Mer-ky' Depths": {
                         type: F,
                         items: {
                             "Start": {
                                 type: B,
                             },
-                        }
-                    },
-                    "Mer-ky Depths": {
-                        type: F,
-                        items: {
-                            "Start": {
+                            "Artifact": {
+                                type: B,
+                            },
+                            "Redeem": {
                                 type: B,
                             },
                         }
@@ -1201,7 +1377,10 @@ const libraryData = {
                     "The Man Behind the Moons": {
                         type: F,
                         items: {
-                            "Start": {
+                            "Alohomora 2": {
+                                type: B,
+                            },
+                            "Alohomora 3": {
                                 type: B,
                             },
                         }
@@ -1212,6 +1391,12 @@ const libraryData = {
                             "Start": {
                                 type: B,
                             },
+                            "Hall": {
+                                type: B,
+                            },
+                            "Redeem": {
+                                type: B,
+                            },
                         }
                     },
                     "A Friend in Deed": {
@@ -1220,12 +1405,30 @@ const libraryData = {
                             "Start": {
                                 type: B,
                             },
+                            "Dorothy": {
+                                type: B,
+                            },
+                            "Letters": {
+                                type: B,
+                            },
+                            "Dorothy": {
+                                type: B,
+                            },
+                            "Redeem": {
+                                type: B,
+                            },
                         }
                     },
                     "Venomous Revenge": {
                         type: F,
                         items: {
                             "Start": {
+                                type: B,
+                            },
+                            "Cellar (Opt)": {
+                                type: B,
+                            },
+                            "Deliver Tentacula": {
                                 type: B,
                             },
                         }
@@ -1244,12 +1447,24 @@ const libraryData = {
                             "Start": {
                                 type: B,
                             },
+                            "Biscuit": {
+                                type: B,
+                            },
+                            "Redeem": {
+                                type: B,
+                            },
                         }
                     },
                     "Rescuing Rococo": {
                         type: F,
                         items: {
                             "Start": {
+                                type: B,
+                            },
+                            "Niffler": {
+                                type: B,
+                            },
+                            "Redeem": {
                                 type: B,
                             },
                         }
@@ -1260,12 +1475,24 @@ const libraryData = {
                             "Start": {
                                 type: B,
                             },
+                            "Niffler/Heirloom": {
+                                type: B,
+                            },
+                            "Redeem": {
+                                type: B,
+                            },
                         }
                     },
                     "Spot Removal": {
                         type: F,
                         items: {
                             "Start": {
+                                type: B,
+                            },
+                            "Bubotubers": {
+                                type: B,
+                            },
+                            "Redeem": {
                                 type: B,
                             },
                         }
@@ -1287,17 +1514,18 @@ const libraryData = {
                         }
                     },
                     "History of Magic Class": {
-                        type: F,
-                        items: {
-                            "Start": {
-                                type: B,
-                            },
-                        }
+                        type: B,
                     },
                     "The Unique Unicorn": {
                         type: F,
                         items: {
                             "Start": {
+                                type: B,
+                            },
+                            "Hazel": {
+                                type: B,
+                            },
+                            "Redeem": {
                                 type: B,
                             },
                         }
@@ -1306,20 +1534,6 @@ const libraryData = {
                         type: F,
                         items: {
                             "Start": {
-                                type: B,
-                            },
-                        }
-                    },
-                    "Tangled Web": {
-                        type: F,
-                        items: {
-                            "Start": {
-                                type: B,
-                            },
-                            "Cellar": {
-                                type: B,
-                            },
-                            "Redeem": {
                                 type: B,
                             },
                         }
@@ -1542,7 +1756,6 @@ const libraryData = {
                     },
                 }
             },
-
             "Point": {
 
             }

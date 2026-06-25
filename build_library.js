@@ -1,10 +1,15 @@
 //build_library.js
 function buildLibrary(data, name, path = "") {
     let html = "";
-    const fullPath =
-        path === ""
-        ? name
-        : `${path} - ${name}`;
+    let fullPath = "";
+    switch (path) {
+        case "":
+        case "Custom":
+            fullPath = name;
+            break;
+        default:
+            fullPath = `${path} - ${name}`;
+    }
     if (data.type === F) {
         html += `
         <div class="libraryFolder">
