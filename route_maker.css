@@ -5,6 +5,8 @@
 }
 #hogwartsFont {
     font-family: "Hogwarts";
+    display: none;
+    position: absolute;
 }
 body {
     margin: 0;
@@ -289,13 +291,17 @@ button {
 #popupHeaders {
     height: 15%;
     width: 85%;
-    border: 3px solid red;
+    /* border: 3px solid red; */
     margin: 2%;
+}
+.popupHeader {
+    font-family: "Hogwarts", serif;
+    font-size: 10vh;
 }
 #popupTabs {
     height: 73%;
     width: 95%;
-    border: 3px solid red;
+    /* border: 3px solid red; */
     margin: 2%;
     margin-top: 0%;
 }
@@ -346,13 +352,13 @@ button {
 #routesMenuLeft {
     width: 30%;
     margin: 2%;
-    border: 2px solid orange;
+    /* border: 2px solid orange; */
 }
 #routesMenuRight {
     width: 70%;
     margin: 2%;
     margin-left: 0%;
-    border: 2px solid green;
+    /* border: 2px solid green; */
 }
 .routeMenuBtn {
     display: inline-block;
