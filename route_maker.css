@@ -3,6 +3,9 @@
     font-family: "Hogwarts";
     src: url("fonts/Hogwarts.ttf") format("truetype");
 }
+#hogwartsFont {
+    font-family: "Hogwarts";
+}
 body {
     margin: 0;
     background: #1a1a1a;
