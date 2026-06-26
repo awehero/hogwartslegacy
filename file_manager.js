@@ -5,13 +5,26 @@ function importRoute(save) {
     routeTitle.value = save.title || "";
     const route = save.route || [];
     route.forEach(item => {
-        const el = document.createElement("div");
+        const el = document.createElement("button");
         el.className = "libraryBlock";
         for (const key in item) {
             if (key === "position") continue;
             el.dataset[key] = item[key];
         }
-        el.textContent = item.custom || item.path;
+        //el.textContent = item.custom || item.path;
+        const nameEl = document.createElement("div");
+        nameEl.className = "routeBlockName";
+        nameEl.textContent = item.name || item.path || "";
+
+        const notesEl = document.createElement("div");
+        notesEl.className = "routeBlockNotes";
+        notesEl.textContent = item.notes || "";
+
+        const durationEl = document.createElement("div");
+        durationEl.className = "routeBlockDuration";
+        durationEl.textContent = item.duration || "";
+
+        el.append(nameEl, notesEl, durationEl);
         routeContainer.appendChild(el);
     });
     store.lastActiveId = save.id;
