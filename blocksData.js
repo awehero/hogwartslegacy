@@ -1989,7 +1989,14 @@ const libraryData = {
             },
             "Chest": {
                 type: F,
-                items: {}
+                items: {
+                    "Item Chest": {type: B, repeatable: true},
+                    "Legendary Gear Chest": {type: B, repeatable: true},
+                    "Eye Chest": {type: B, repeatable: true},
+                    "Collection Chest": {type: B, repeatable: true},
+                    "Trait Chest": {type: B, repeatable: true},
+                    "Other Chest ()": {type: B, repeatable: true},
+                }
             },
             "Beast": {
                 type: F,
@@ -2009,10 +2016,7 @@ const libraryData = {
                     "Thestral": {type: B, repeatable: true},
                 }
             },
-            "Item": {
-                type: F,
-                items: {}
-            }
+            "Item": {type: B, repeatable: true},
         }
     }
 };

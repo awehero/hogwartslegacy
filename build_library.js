@@ -2,6 +2,9 @@
 function buildLibrary(data, name, path = "") {
     let html = "";
     let fullPath = `${path} - ${name}`;
+    if (fullPath.startsWith(" - ")) {
+        fullPath = fullPath.slice(3);
+    }
     let displayName = fullPath;
     if (path == "Custom") {
         displayName = name;
@@ -19,9 +22,6 @@ function buildLibrary(data, name, path = "") {
             <div class="folderContent">
         `;
         for (const k in data.items) {
-            if (fullPath.startsWith(" - ")) {
-                fullPath = fullPath.slice(3);
-            }
             html += buildLibrary(
                 data.items[k],
                 k,
