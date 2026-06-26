@@ -38,7 +38,7 @@ function buildLibrary(data, name, path = "") {
             data-repeatable="${data.repeatable === true}"
             data-split="${data.split === true}"
         >
-            ${fullPath}
+            <div class="routeBlockName">${fullPath}</div>
             <div class="routeBlockNotes"></div>
             <div class="routeBlockDuration"></div>
         </button>

@@ -141,7 +141,7 @@ function renderSearchResults(search) {
             data-repeatable="${data.repeatable===true}"
             data-split="${data.split===true}"
         >
-            ${path}
+            <div class="routeBlockName">${path}</div>
             <div class="routeBlockNotes"></div>
             <div class="routeBlockDuration"></div>
         </button>

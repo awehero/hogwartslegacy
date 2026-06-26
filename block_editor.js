@@ -5,7 +5,7 @@ function openBlockEditor(block) {
     <label>Custom name</label>
     <input id="custom">
     <label>Notes</label>
-    <textarea id="notes"></textarea>
+    <textarea id="notes" rows="4" resize="none"></textarea>
     <label>Duration (s)</label>
     <input id="duration" type="number">
     <button id="splitBtn">Split</button>
@@ -22,17 +22,19 @@ function openBlockEditor(block) {
 
     notes.oninput = () => {
         block.dataset.notes = notes.value;
+        [...block.children].find(el => el.classList.contains("routeBlockNotes")).innerText = notes.value
         somethingChanged();
     };
 
     custom.oninput = () => {
         block.dataset.custom = custom.value;
-        block.textContent = custom.value || block.dataset.path;
+        [...block.children].find(el => el.classList.contains("routeBlockName")).innerText = custom.value || block.dataset.path;
         somethingChanged();
     };
 
     duration.oninput = () => {
         block.dataset.duration = duration.value;
+        //[...block.children].find(el => el.classList.contains("routeBlockDuration")).innerText = formatDuration(duration.value)
         somethingChanged();
     };
 
