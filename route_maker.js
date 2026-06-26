@@ -181,18 +181,18 @@ librarySearch.addEventListener("input", () => {
                 animation: 150
             });
         });
+        document.querySelectorAll(".folderButton").forEach(button => {
+            button.addEventListener("click", () => {
+                const content = button.nextElementSibling;
+                content.style.display =
+                    content.style.display === "none"
+                    ? "block"
+                    : "none";
+            });
+        });
+        libraryRoot.querySelectorAll("button").forEach(btn=>btn.click());
         somethingChanged();
         return;
     }
     renderSearchResults(value);
-    document.querySelectorAll(".folderButton").forEach(button => {
-        button.addEventListener("click", () => {
-            const content = button.nextElementSibling;
-            content.style.display =
-                content.style.display === "none"
-                ? "block"
-                : "none";
-        });
-    });
-    libraryRoot.querySelectorAll("button").forEach(btn=>btn.click());
 });
