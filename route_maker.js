@@ -142,6 +142,8 @@ function renderSearchResults(search) {
             data-split="${data.split===true}"
         >
             ${path}
+            <div class="routeBlockNotes"></div>
+            <div class="routeBlockDuration"></div>
         </button>
         `;
     });

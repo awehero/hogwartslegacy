@@ -458,12 +458,13 @@ button {
     font-size: x-small;
 }
 .openRoute {
-    height: 60.5vh;
+    height: 6.5vh;
 }
 #settingsComingSoon {
     font-family: "Hogwarts";
     font-size: x-large;
     color: white;
+    margin-left: 10vw;
 }
 #routeTitleDiv {
     position: absolute;

@@ -39,6 +39,8 @@ function buildLibrary(data, name, path = "") {
             data-split="${data.split === true}"
         >
             ${fullPath}
+            <div class="routeBlockNotes"></div>
+            <div class="routeBlockDuration"></div>
         </button>
         `;
     }
