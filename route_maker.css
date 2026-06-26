@@ -420,7 +420,13 @@ button {
     height: 18%;
 }
 .routeDisplayLeft {
-    display: inline-flex;
+    height: 100%;
+    border: 2px dashed red;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    margin-left: 25px;
 }
 .routeDisplayMiddle {
     display: inline-flex;
