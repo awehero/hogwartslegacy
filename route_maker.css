@@ -462,3 +462,21 @@ button {
     font-size: x-large;
     color: white;
 }
+#routeTitleDiv {
+    position: absolute;
+    height: 5vh;
+    width: 33vw;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5vh;
+}
+#routeTitle {
+    position: absolute;
+    height: 5vh;
+    width: 33vw;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5vh;
+}
