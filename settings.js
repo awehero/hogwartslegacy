@@ -33,6 +33,7 @@ setting(["editor", "scrollSpeed"], false);
 setting(["editor", "showDurations"], true);
 setting(["editor", "showNotes"], true);
 setting(["editor", "displayPrefixes"], true);
+setting(["editor", "durationDisplayStyle"], true);
 setting(["notes", "pathStyle"], " - ");
 setting(["notes", "pathOptions"], "Full");
 setting(["shortcuts", "jumpToSearchKey"], "/");
