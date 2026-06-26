@@ -405,7 +405,7 @@ button {
 }
 .routeDisplayContainer {
     display: inline-flex;
-    border-radius: 50px;
+    border-radius: 50vh;
     font-size: medium;
     color: white;
     background-color: rgba(0, 0, 0, 0.1);
@@ -433,4 +433,10 @@ button {
 }
 .routeDisplayRight {
     display: inline-flex;
+}
+.routeDisplayButton {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
