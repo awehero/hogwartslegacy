@@ -35,6 +35,26 @@ setting(["editor", "showNotes"], true);
 setting(["editor", "displayPrefixes"], true);
 setting(["notes", "pathStyle"], " - ");
 setting(["notes", "pathOptions"], "Full");
-//setting(["shortcuts", "displayPrefixes"], true);
+setting(["shortcuts", "jumpToSearchKey"], "/");
+setting(["shortcuts", "emptySearchOnJump"], true);
 
 localStorage.setItem("route_system", JSON.stringify(store));
+
+document.addEventListener("keydown", (e) => {
+    const active = document.activeElement;
+    const isTyping =
+        active &&
+        (active.tagName === "INPUT" ||
+         active.tagName === "TEXTAREA" ||
+         active.isContentEditable);
+
+    if (isTyping) return;
+
+    if (e.key === store.settings.shortcuts.jumpToSearchKey) {
+        e.preventDefault();
+        librarySearch.focus();
+        if (store.settings.shortcuts.emptySearchOnJump == true) {
+            librarySearch.value = "";
+        }
+    }
+});
