@@ -49,6 +49,7 @@ button {
     box-sizing: border-box;
     background: rgba(255,255,255,0.03);
     overflow-y: auto;
+    margin-top: 9vh;
 }
 #errorPanel {
     width: 260px;
