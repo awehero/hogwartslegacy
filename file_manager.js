@@ -252,7 +252,7 @@ document.getElementById("importEverything").onclick = function() {
     loadFiles(".json", 1, text => {
         let data = JSON.parse(text);
         store.settings = data.settings;
-        store.lastActiveId = data.lastActiveId;
+        //store.lastActiveId = data.lastActiveId;
         store.saves = {
             ...store.saves,
             ...data.saves
