@@ -397,6 +397,9 @@ button {
     width: 100%;
     display: flex;
     justify-content: center;
+    font-family: 'Hogwarts';
+    margin-top: -3%;
+    margin-bottom: 2%;
 }
 #routesDisplay {
     height: 90%;
@@ -438,6 +441,7 @@ button {
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin-right: 5%;
+    margin-top: 1%;
 }
 .routeDisplayButton {
     color: white;

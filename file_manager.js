@@ -1,12 +1,5 @@
 // file_manager.js
 
-store = JSON.parse(localStorage.getItem("route_system") || '{}');
-store.settings = store.settings || {};
-store.lastActiveId = store.lastActiveId || "";
-store.saves = store.saves || {};
-//store.settings.numbered = store.settings.numbered || true;
-localStorage.setItem("route_system", JSON.stringify(store));
-
 function importRoute(save) {
     routeContainer.innerHTML = "";
     routeTitle.value = save.title || "";
@@ -75,15 +68,24 @@ function somethingChanged() {
     }
 }
 function buildNotes(save) {
+    const s = store.settings.notes;
     let text = "";
-    const title = (save.title || "").trim();
-    text += title + "\n\n";
+    text += save.title.trim();
+    text += "\n".repeat(s.titleSpacing);
     save.route.forEach((itm, index) => {
-        text += `${index + 1}. ${itm.custom || itm.path}\n`;
-        if (itm.notes) {
-            text += `Notes: ${itm.notes}\n`;
+        let line = "";
+        if (s.numbered) {
+            line += `${index + 1}. `;
         }
-        text += "\n";
+        line += itm.custom || itm.path;
+        text += line + "\n";
+        if (itm.notes) {
+            if (s.showNotesLabel) {
+                text += "Notes: ";
+            }
+            text += itm.notes + "\n";
+        }
+        text += "\n".repeat(s.blockSpacing);
     });
     return text;
 }
