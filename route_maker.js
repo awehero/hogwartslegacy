@@ -171,6 +171,7 @@ function renderSearchResults(search) {
                 : "none";
         });
     });
+    libraryRoot.querySelectorAll("button").forEach(btn=>btn.click());
 
     somethingChanged();
 }
