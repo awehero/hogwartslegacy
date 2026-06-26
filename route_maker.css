@@ -405,7 +405,7 @@ button {
 }
 .routeDisplayContainer {
     display: inline-flex;
-    border-radius: 51px;
+    border-radius: 50px;
     font-size: medium;
     color: white;
     background-color: rgba(0, 0, 0, 0.1);
