@@ -457,3 +457,8 @@ button {
 .openRoute {
     height: 60%;
 }
+#settingsComingSoon {
+    font-family: "Hogwarts";
+    font-size: x-large;
+    color: white;
+}
