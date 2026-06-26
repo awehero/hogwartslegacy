@@ -45,11 +45,11 @@ function displayRoutes() {
                 <div class="routeDisplayId">${save.id}</div>
             </div>
             <div class="routeDisplayRight">
-                <button data-id="${save.id}" class="openRoute" onclick="routeDisplayFunction('openRoute', '${save.id}')">Open Route</button>
-                <button data-id="${save.id}" class="exportRoute" onclick="routeDisplayFunction('exportRoute', '${save.id}')">Export Route</button>
-                <button data-id="${save.id}" class="exportNotes" onclick="routeDisplayFunction('exportNotes', '${save.id}')">Export Notes</button>
-                <button data-id="${save.id}" class="copyNotes" onclick="routeDisplayFunction('copyNotes', '${save.id}')">Copy Notes</button>
-                <button data-id="${save.id}" class="deleteRoute" onclick="routeDisplayFunction('deleteRoute', '${save.id}')">Delete Route</button>
+                <button data-id="${save.id}" class="routeDisplayButton openRoute" onclick="routeDisplayFunction('openRoute', '${save.id}')">Open Route</button>
+                <button data-id="${save.id}" class="routeDisplayButton exportRoute" onclick="routeDisplayFunction('exportRoute', '${save.id}')">Export Route</button>
+                <button data-id="${save.id}" class="routeDisplayButton exportNotes" onclick="routeDisplayFunction('exportNotes', '${save.id}')">Export Notes</button>
+                <button data-id="${save.id}" class="routeDisplayButton copyNotes" onclick="routeDisplayFunction('copyNotes', '${save.id}')">Copy Notes</button>
+                <button data-id="${save.id}" class="routeDisplayButton deleteRoute" onclick="routeDisplayFunction('deleteRoute', '${save.id}')">Delete Route</button>
             </div>
         </div>
         `;

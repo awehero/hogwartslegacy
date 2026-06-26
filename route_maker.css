@@ -298,14 +298,14 @@ button {
     font-family: "Hogwarts", serif;
     font-size: 10vh;
     color: white;
-    background-color: #191919;
+    background-color: rgba(0, 0, 0, 0.1);
     cursor: pointer;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     border-top-left-radius: 20px;
     border-top-right-radius: 50px;
 }
 .popupHeader.popupHeaderSelected {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #191919;
 }
 #popupTabs {
     height: 73%;
