@@ -420,7 +420,7 @@ button {
     margin-top: 1%;
     margin-left: 1%;
     width: 96%;
-    height: 18%;
+    min-height: 18%;
 }
 .routeDisplayLeft {
     height: 100%;
@@ -431,16 +431,18 @@ button {
     margin-left: 5vh;
 }
 .routeDisplayMiddle {
-    display: inline-flex;
+    display: flex;
     width: 25%;
-    height: 100%;
     flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
     justify-content: center;
 }
 .routeDisplayRight {
     display: inline-flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    align-content: stretch;
     margin-right: 5%;
     margin-top: 1%;
 }
@@ -449,14 +451,14 @@ button {
     background-color: rgba(0, 0, 0, 0.1);
     cursor: pointer;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    height: 45%;
+    height: 4.3vh;
     border-radius: 5vh;
 }
 .routeDisplayId {
     font-size: x-small;
 }
 .openRoute {
-    height: 60%;
+    height: 60.5vh;
 }
 #settingsComingSoon {
     font-family: "Hogwarts";
@@ -483,4 +485,8 @@ button {
     margin-left: 1vw;
     border: none;
     outline: none;
+}
+.routeDisplayTitle {
+    max-width: 100%;
+    overflow-x: clip;
 }

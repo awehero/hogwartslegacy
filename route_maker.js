@@ -45,8 +45,8 @@ new Sortable(routeContainer, {
     animation: 150,
 
     scroll: true,
-    scrollSensitivity: 80,
-    scrollSpeed: 15,
+    scrollSensitivity: 120,
+    scrollSpeed: 10,
 
     onMove(evt, originalEvent) {
         //startAutoScroll(originalEvent.clientY);
