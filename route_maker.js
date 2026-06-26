@@ -162,17 +162,6 @@ function renderSearchResults(search) {
         animation: 150
     });
 
-    document.querySelectorAll(".folderButton").forEach(button => {
-        button.addEventListener("click", () => {
-            const content = button.nextElementSibling;
-            content.style.display =
-                content.style.display === "none"
-                ? "block"
-                : "none";
-        });
-    });
-    libraryRoot.querySelectorAll("button").forEach(btn=>btn.click());
-
     somethingChanged();
 }
 librarySearch.addEventListener("input", () => {
@@ -196,4 +185,14 @@ librarySearch.addEventListener("input", () => {
         return;
     }
     renderSearchResults(value);
+    document.querySelectorAll(".folderButton").forEach(button => {
+        button.addEventListener("click", () => {
+            const content = button.nextElementSibling;
+            content.style.display =
+                content.style.display === "none"
+                ? "block"
+                : "none";
+        });
+    });
+    libraryRoot.querySelectorAll("button").forEach(btn=>btn.click());
 });
