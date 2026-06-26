@@ -38,8 +38,8 @@ function displayRoutes() {
         <div class="routeDisplayContainer">
             <div class="routeDisplayLeft">
                 <div class="routeDisplayTitle">${save.title}</div>
-                <div class="routeDisplayCount">${save.route.length == 1 ? "1 Block" : save.route.length + " Blocks"}</div>
                 <div class="routeDisplayDate">${formatDate(save.timestamp)}</div>
+                <div class="routeDisplayCount">${save.route.length == 1 ? "1 Block" : save.route.length + " Blocks"}</div>
                 <div class="routeDisplayId">${save.id}</div>
             </div>
             <div class="routeDisplayMiddle">

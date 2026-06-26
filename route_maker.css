@@ -421,22 +421,28 @@ button {
 }
 .routeDisplayLeft {
     height: 100%;
-    border: 2px dashed red;
-    width: 40%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     align-content: flex-end;
-    margin-left: 25px;
+    margin-left: 5vh;
 }
 .routeDisplayMiddle {
     display: inline-flex;
+    width: 25%;
 }
 .routeDisplayRight {
     display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-right: 5%;
 }
 .routeDisplayButton {
     color: white;
     background-color: rgba(0, 0, 0, 0.1);
     cursor: pointer;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.routeDisplayId {
+    font-size: x-small;
 }
