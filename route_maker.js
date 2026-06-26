@@ -162,6 +162,16 @@ function renderSearchResults(search) {
         animation: 150
     });
 
+    document.querySelectorAll(".folderButton").forEach(button => {
+        button.addEventListener("click", () => {
+            const content = button.nextElementSibling;
+            content.style.display =
+                content.style.display === "none"
+                ? "block"
+                : "none";
+        });
+    });
+
     somethingChanged();
 }
 librarySearch.addEventListener("input", () => {
