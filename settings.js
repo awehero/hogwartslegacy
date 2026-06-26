@@ -37,6 +37,7 @@ setting(["notes", "pathStyle"], " - ");
 setting(["notes", "pathOptions"], "Full");
 setting(["shortcuts", "jumpToSearchKey"], "/");
 setting(["shortcuts", "emptySearchOnJump"], true);
+setting(["shortcuts", "emptySearchKey"], ".");
 
 localStorage.setItem("route_system", JSON.stringify(store));
 
@@ -56,5 +57,9 @@ document.addEventListener("keydown", (e) => {
         if (store.settings.shortcuts.emptySearchOnJump == true) {
             librarySearch.value = "";
         }
+    }
+    if (e.key === store.settings.shortcuts.emptySearchKey) {
+        e.preventDefault();
+        librarySearch.value = "";
     }
 });
