@@ -1,15 +1,15 @@
 //build_library.js
 function buildLibrary(data, name, path = "") {
     let html = "";
-    let fullPath = "";
-    switch (path) {
-        case "":
-        case "Custom":
-            fullPath = name;
-            break;
-        default:
-            fullPath = `${path} - ${name}`;
+    let fullPath = `${path} - ${name}`;
+    let displayName = fullPath;
+    if (path == "Custom") {
+        displayName = name;
+        if (displayName == "Blank") {
+            displayName = "";
+        }
     }
+
     if (data.type === F) {
         html += `
         <div class="libraryFolder">
@@ -38,7 +38,7 @@ function buildLibrary(data, name, path = "") {
             data-repeatable="${data.repeatable === true}"
             data-split="${data.split === true}"
         >
-            <div class="routeBlockName">${fullPath}</div>
+            <div class="routeBlockName">${displayName}</div>
             <div class="routeBlockNotes"></div>
             <div class="routeBlockDuration"></div>
         </button>

@@ -492,10 +492,13 @@ button {
     overflow-x: clip;
 }
 .routeBlockNotes {
-    padding-left: 2vw;
+    padding-left: 1vw;
     font-size: small;
 }
 .routeBlockDuration {
-    padding-left: 2vw;
+    padding-left: 1vw;
     font-size: small;
+}
+#notes {
+    resize: none;
 }
