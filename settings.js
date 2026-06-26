@@ -60,6 +60,8 @@ document.addEventListener("keydown", (e) => {
     }
     if (e.key === store.settings.shortcuts.emptySearchKey) {
         e.preventDefault();
+        librarySearch.focus();
         librarySearch.value = "";
+        librarySearch.blur();
     }
 });
