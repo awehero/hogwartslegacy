@@ -76,10 +76,8 @@ function somethingChanged() {
     updateLibraryBlocks();
     validateRoute();
     autosave();
-    updateOverview();
-    if (routesMenu.style.display == "flex") {
-        displayRoutes();
-    }
+    if (typeof updateOverview == "function") updateOverview();
+    if (routesMenu.style.display == "flex") displayRoutes();
 }
 function buildNotes(save) {
     const s = store.settings.notes;
