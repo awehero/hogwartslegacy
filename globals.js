@@ -16,6 +16,7 @@ const routesMenu = document.getElementById("routesMenu");
 const settingsMenu = document.getElementById("settingsMenu");
 const permanentDelete = document.getElementById("permanentDelete");
 const cancelDelete = document.getElementById("cancelDelete");
+const totalDuration = document.getElementById("totalDuration");
 let selectedRouteBlock = null;
 let store = null;
 let scrollSpeed = 12;

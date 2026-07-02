@@ -22,7 +22,7 @@ function importRoute(save) {
 
         const durationEl = document.createElement("div");
         durationEl.className = "routeBlockDuration";
-        durationEl.textContent = item.duration == "" ? "" : formatDuration(item.duration);
+        durationEl.textContent = item.duration ? formatDuration(item.duration) : "";
 
         el.append(nameEl, notesEl, durationEl);
         routeContainer.appendChild(el);
@@ -76,6 +76,7 @@ function somethingChanged() {
     updateLibraryBlocks();
     validateRoute();
     autosave();
+    updateOverview();
     if (routesMenu.style.display == "flex") {
         displayRoutes();
     }
