@@ -22,7 +22,7 @@ function importRoute(save) {
 
         const durationEl = document.createElement("div");
         durationEl.className = "routeBlockDuration";
-        durationEl.textContent = item.duration || "";
+        durationEl.textContent = formatDuration(item.duration);
 
         el.append(nameEl, notesEl, durationEl);
         routeContainer.appendChild(el);

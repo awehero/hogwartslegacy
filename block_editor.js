@@ -74,19 +74,3 @@ routeContainer.addEventListener("click", e => {
 
     openBlockEditor(block);
 });
-
-function formatDuration(s) {
-    let h = Math.floor(s/3600);
-    s = s - (h*3600);
-    let m = Math.floor(s/60);
-    s = s - (m*60);
-    let a = [h, m, s];
-    let text = ["h", "m", "s"];
-    let t = "";
-    for (var i = 0; i < a.length; i++) {
-        if (a[i] != 0) {
-            t += `${a[i]}${text[i]} `;
-        }
-    }
-    return t;
-}
