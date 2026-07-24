@@ -3,8 +3,8 @@ function openBlockEditor(block) {
     blockEditor.innerHTML = `
     <div>${block.dataset.path}</div>
     <br>
-    <label>Custom Name</label>
-    <input id="custom">
+    <label>Name</label>
+    <input id="name">
     <label>Notes</label>
     <textarea id="notes" rows="4"></textarea>
     <label>Duration (s)</label>
@@ -14,11 +14,11 @@ function openBlockEditor(block) {
     `;
 
     const notes = document.getElementById("notes");
-    const custom = document.getElementById("custom");
+    const name = document.getElementById("name");
     const duration = document.getElementById("duration");
 
     notes.value = block.dataset.notes || "";
-    custom.value = [...block.children].find(el => el.classList.contains("routeBlockName")).innerText;
+    name.value = [...block.children].find(el => el.classList.contains("routeBlockName")).innerText;
     duration.value = block.dataset.duration || "";
 
     notes.oninput = () => {
@@ -27,9 +27,9 @@ function openBlockEditor(block) {
         somethingChanged();
     };
 
-    custom.oninput = () => {
-        block.dataset.custom = custom.value;
-        [...block.children].find(el => el.classList.contains("routeBlockName")).innerText = custom.value;
+    name.oninput = () => {
+        block.dataset.name = name.value;
+        [...block.children].find(el => el.classList.contains("routeBlockName")).innerText = name.value;
         somethingChanged();
     };
 
