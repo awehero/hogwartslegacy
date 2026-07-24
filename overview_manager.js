@@ -10,6 +10,7 @@ function updateOverview() {
     });
     totalDuration.innerText = formatDuration(total);
 }
+updateOverview();
 function openBlockEditr(block) {
     blockEditor.innerHTML = `
     <div>${block.dataset.path}</div>
