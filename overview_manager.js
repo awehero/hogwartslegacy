@@ -1,7 +1,7 @@
 // overview_manager.js
 
 function updateOverview() {
-    let route = store.saves[store.lastActiveId].route;
+    let route = store.saves[store.currentId].route;
     let total = 0;
     route.forEach(itm => {
         if (itm.duration) {

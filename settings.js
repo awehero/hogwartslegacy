@@ -5,9 +5,12 @@
 //display prefixes like quest - ?
 //scroll speed
 //display time on block?
+//newBlankBlock code
+//redo route system to make each route a separate thing in localStorage and phase out store (maybe)?
+//make each route in localStorage start with a keyword
 
 store = JSON.parse(localStorage.getItem("route_system") || '{}');
-store.lastActiveId ??= "";
+store.currentId ??= "";
 store.saves ??= {};
 store.settings ??= {};
 
@@ -39,6 +42,8 @@ setting(["notes", "pathOptions"], "Full");
 setting(["shortcuts", "jumpToSearchKey"], "/");
 setting(["shortcuts", "emptySearchOnJump"], true);
 setting(["shortcuts", "emptySearchKey"], ".");
+setting(["shortcuts", "newBlankBlockKey"], "b");
+setting(["shortcuts", "deleteBlockKey"], "Delete");
 
 localStorage.setItem("route_system", JSON.stringify(store));
 
@@ -63,5 +68,15 @@ document.addEventListener("keydown", (e) => {
         e.preventDefault();
         librarySearch.value = "";
         librarySearch.dispatchEvent(new Event("input", { bubbles: true }));
+    }
+    if (e.key === store.settings.shortcuts.newBlankBlockKey) {
+        e.preventDefault();
+        //somethingChanged();
+    }
+    if (e.key === store.settings.shortcuts.deleteBlockKey) {
+        e.preventDefault();
+        if (selectedRouteBlock != null) {
+            document.getElementById("deleteBtn").click();
+        }
     }
 });

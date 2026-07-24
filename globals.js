@@ -19,6 +19,8 @@ const cancelDelete = document.getElementById("cancelDelete");
 const totalDuration = document.getElementById("totalDuration");
 let selectedRouteBlock = null;
 let store = null;
+let currentId = null;
+let saves = [];
 let scrollSpeed = 12;
 
 function formatDuration(s) {

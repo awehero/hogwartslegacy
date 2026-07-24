@@ -27,7 +27,7 @@ function importRoute(save) {
         el.append(nameEl, notesEl, durationEl);
         routeContainer.appendChild(el);
     });
-    store.lastActiveId = save.id;
+    store.currentId = save.id;
     selectedRouteBlock = null;
     blockEditor.innerHTML = "Select a route block";
     somethingChanged();
@@ -35,7 +35,7 @@ function importRoute(save) {
 }
 function newRoute() {
     const id = crypto.randomUUID();
-    store.lastActiveId = id;
+    store.currentId = id;
     store.saves[id] = {
         id: id,
         title: "Untitled Route",
@@ -61,7 +61,7 @@ function buildRouteSnapshot() {
         route.push(item);
     });
     return {
-        id: store.lastActiveId,
+        id: store.currentId,
         title: routeTitle.value.trim() || "Untitled Route",
         route: route,
         timestamp: Date.now()
@@ -69,7 +69,7 @@ function buildRouteSnapshot() {
 }
 function autosave() {
     const save = buildRouteSnapshot();
-    store.saves[store.lastActiveId] = save;
+    store.saves[store.currentId] = save;
     localStorage.setItem("route_system", JSON.stringify(store));
 }
 function somethingChanged() {
@@ -150,7 +150,7 @@ function exportRoute(save) {
     );
 }
 function deleteRoute(save) {
-    let previousId = store.lastActiveId;
+    let previousId = store.currentId;
     importRoute(save);
     permanentDelete.style.display = "flex";
     cancelDelete.style.display = "flex";
@@ -251,7 +251,7 @@ document.getElementById("importEverything").onclick = function() {
     loadFiles(".json", 1, text => {
         let data = JSON.parse(text);
         store.settings = data.settings;
-        //store.lastActiveId = data.lastActiveId;
+        //store.currentId = data.currentId;
         store.saves = {
             ...store.saves,
             ...data.saves
@@ -267,8 +267,8 @@ document.getElementById("exportEverything").onclick = function() {
     );
 };
 
-if (store.lastActiveId != "" && store.saves[store.lastActiveId]) {
-    importRoute(store.saves[store.lastActiveId]);
+if (store.currentId != "" && store.saves[store.currentId]) {
+    importRoute(store.saves[store.currentId]);
 } else {
     newRoute();
 }
