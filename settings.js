@@ -6,16 +6,12 @@
 //scroll speed
 //display time on block?
 //newBlankBlock code
-//redo route system to make each route a separate thing in localStorage and phase out store (maybe)?
-//make each route in localStorage start with a keyword
 
-store = JSON.parse(localStorage.getItem("route_system") || '{}');
-store.currentId ??= "";
-store.saves ??= {};
-store.settings ??= {};
+
+settings = JSON.parse(localStorage.getItem("routeSettings") || '{}');
 
 function setting(path, defaultValue) {
-    let obj = store.settings;
+    let obj = settings;
     for (let i = 0; i < path.length - 1; i++) {
         obj[path[i]] ??= {};
         obj = obj[path[i]];
@@ -45,8 +41,6 @@ setting(["shortcuts", "emptySearchKey"], ".");
 setting(["shortcuts", "newBlankBlockKey"], "b");
 setting(["shortcuts", "deleteBlockKey"], "Delete");
 
-localStorage.setItem("route_system", JSON.stringify(store));
-
 document.addEventListener("keydown", (e) => {
     const active = document.activeElement;
     const isTyping =
@@ -57,23 +51,23 @@ document.addEventListener("keydown", (e) => {
 
     if (isTyping) return;
 
-    if (e.key === store.settings.shortcuts.jumpToSearchKey) {
+    if (e.key === settings.shortcuts.jumpToSearchKey) {
         e.preventDefault();
         librarySearch.focus();
-        if (store.settings.shortcuts.emptySearchOnJump == true) {
+        if (settings.shortcuts.emptySearchOnJump == true) {
             librarySearch.value = "";
         }
     }
-    if (e.key === store.settings.shortcuts.emptySearchKey) {
+    if (e.key === settings.shortcuts.emptySearchKey) {
         e.preventDefault();
         librarySearch.value = "";
         librarySearch.dispatchEvent(new Event("input", { bubbles: true }));
     }
-    if (e.key === store.settings.shortcuts.newBlankBlockKey) {
+    if (e.key === settings.shortcuts.newBlankBlockKey) {
         e.preventDefault();
         //somethingChanged();
     }
-    if (e.key === store.settings.shortcuts.deleteBlockKey) {
+    if (e.key === settings.shortcuts.deleteBlockKey) {
         e.preventDefault();
         if (selectedRouteBlock != null) {
             document.getElementById("deleteBtn").click();

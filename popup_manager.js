@@ -12,12 +12,16 @@ function closeAllMenus() {
     routesHeader.classList.remove("popupHeaderSelected");
     settingsHeader.classList.remove("popupHeaderSelected");
 }
-function openRoutesMenu() {
+function openRoutesMenu(start=false) {
     openPopup();
     closeAllMenus();
     displayRoutes();
     routesMenu.style.display = "flex";
+    closePopupBtn.style.display = "inline-block";
     routesHeader.classList.add("popupHeaderSelected");
+    if (start) {
+        closePopupBtn.style.display = "none";
+    }
 }
 function openSettingsMenu() {
     openPopup();
@@ -29,9 +33,18 @@ function formatDate(string) {
     let number = parseInt(string, 10);
     return new Date(number).toLocaleString();
 }
+function getAllSaves() {
+    const keys = Object.keys(localStorage).filter(key => key.startsWith("route_"));
+    const allSaves = {};
+    keys.forEach(key => {
+        const parsed = JSON.parse(localStorage.getItem(key));
+        allSaves[parsed.id] = parsed;
+    });
+    return allSaves;
+}
 function displayRoutes() {
     routesDisplay.innerHTML = "";
-    let sorted = Object.values(store.saves).sort((a, b) => b.timestamp - a.timestamp);
+    let sorted = Object.values(getAllSaves()).sort((a, b) => b.timestamp - a.timestamp);
     let html = "";
     sorted.forEach(save => {
         html += `

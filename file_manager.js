@@ -27,7 +27,8 @@ function importRoute(save) {
         el.append(nameEl, notesEl, durationEl);
         routeContainer.appendChild(el);
     });
-    store.currentId = save.id;
+    currentId = save.id;
+    currentSave = save;
     selectedRouteBlock = null;
     blockEditor.innerHTML = "Select a route block";
     somethingChanged();
@@ -35,8 +36,8 @@ function importRoute(save) {
 }
 function newRoute() {
     const id = crypto.randomUUID();
-    store.currentId = id;
-    store.saves[id] = {
+    currentId = id;
+    currentSave = {
         id: id,
         title: "Untitled Route",
         route: [],
@@ -61,16 +62,15 @@ function buildRouteSnapshot() {
         route.push(item);
     });
     return {
-        id: store.currentId,
+        id: currentId,
         title: routeTitle.value.trim() || "Untitled Route",
         route: route,
         timestamp: Date.now()
     };
 }
 function autosave() {
-    const save = buildRouteSnapshot();
-    store.saves[store.currentId] = save;
-    localStorage.setItem("route_system", JSON.stringify(store));
+    currentSave = buildRouteSnapshot();
+    localStorage.setItem("route_" + currentId, JSON.stringify(currentSave));
 }
 function somethingChanged() {
     updateLibraryBlocks();
@@ -80,7 +80,7 @@ function somethingChanged() {
     if (routesMenu.style.display == "flex") displayRoutes();
 }
 function buildNotes(save) {
-    const s = store.settings.notes;
+    const s = settings.notes;
     let text = "";
     text += save.title.trim();
     text += "\n".repeat(s.titleSpacing);
@@ -150,7 +150,7 @@ function exportRoute(save) {
     );
 }
 function deleteRoute(save) {
-    let previousId = store.currentId;
+    let previousId = currentId;
     importRoute(save);
     permanentDelete.style.display = "flex";
     cancelDelete.style.display = "flex";
@@ -163,9 +163,10 @@ permanentDelete.onclick = function() {
     if ((ans || "").toLowerCase() === "y") {
         let deleteId = permanentDelete.dataset.deleteId;
         let previousId = permanentDelete.dataset.previousId;
-        delete store.saves[deleteId];
-        if (store.saves[previousId]) {
-            importRoute(store.saves[previousId]);
+        localStorage.removeItem("route_" + deleteId);
+        let saves = getAllSaves();
+        if (saves[previousId]) {
+            importRoute(saves[previousId]);
         } else {
             newRoute();
         }
@@ -179,7 +180,8 @@ cancelDelete.onclick = function() {
     let previousId = permanentDelete.dataset.previousId;
     permanentDelete.style.display = "none";
     cancelDelete.style.display = "none";
-    importRoute(store.saves[previousId]);
+    let saves = getAllSaves();
+    importRoute(saves[previousId]);
     permanentDelete.dataset.previousId = "";
     permanentDelete.dataset.deleteId = "";
 };
@@ -212,7 +214,8 @@ function loadFiles(accept, maxFiles, callback) {
 }
 
 function routeDisplayFunction(type, saveId) {
-    let save = store.saves[saveId];
+    let saves = getAllSaves();
+    let save = saves[saveId];
     switch (type) {
         case "openRoute":
             importRoute(save);
@@ -242,7 +245,7 @@ document.getElementById("importRouteBtn").onclick = function() {
     loadFiles(".json", 79, texts => {
         texts.forEach(text => {
             let save = JSON.parse(text);
-            store.saves[save.id] = save;
+            localStorage.setItem("route_" + save.id, JSON.stringify(save));
         });
         somethingChanged();
     });
@@ -250,26 +253,24 @@ document.getElementById("importRouteBtn").onclick = function() {
 document.getElementById("importEverything").onclick = function() {
     loadFiles(".json", 1, text => {
         let data = JSON.parse(text);
-        store.settings = data.settings;
-        //store.currentId = data.currentId;
-        store.saves = {
-            ...store.saves,
-            ...data.saves
-        };
+        settings = data.settings;
+        let saves = data.saves;
+        localStorage.setItem("routeSettings", JSON.stringify(settings));
+        for (const id in saves) {
+            const route = saves[id];
+            localStorage.setItem("route_" + id, JSON.stringify(route));
+        }
         somethingChanged();
     });
 };
 document.getElementById("exportEverything").onclick = function() {
+    let store = {};
+    store.settings = JSON.parse(localStorage.getItem("routeSettings"));
+    store.saves = getAllSaves();
     downloadFile(
         JSON.stringify(store, null, 4),
         "awehero_route_maker_data.json",
         "application/json"
     );
 };
-
-if (store.currentId != "" && store.saves[store.currentId]) {
-    importRoute(store.saves[store.currentId]);
-} else {
-    newRoute();
-}
-somethingChanged();
+openRoutesMenu(true);

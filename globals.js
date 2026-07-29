@@ -18,23 +18,21 @@ const permanentDelete = document.getElementById("permanentDelete");
 const cancelDelete = document.getElementById("cancelDelete");
 const totalDuration = document.getElementById("totalDuration");
 let selectedRouteBlock = null;
-let store = null;
 let currentId = null;
-let saves = [];
+let currentSave = null;
+let settings = {};
 let scrollSpeed = 12;
 
 function formatDuration(s) {
+    s = Number(s);
+    if (!s) return "";
     let h = Math.floor(s/3600);
-    s = s - (h*3600);
+    s -= h*3600;
     let m = Math.floor(s/60);
-    s = s - (m*60);
-    let a = [h, m, s];
-    let text = ["h", "m", "s"];
-    let t = "";
-    for (var i = 0; i < a.length; i++) {
-        if (a[i] != 0) {
-            t += `${a[i]}${text[i]} `;
-        }
-    }
-    return t;
+    s -= m*60;
+    let parts = [];
+    if (h) parts.push(`${h}h`);
+    if (m) parts.push(`${m}m`);
+    if (s) parts.push(`${s}s`);
+    return parts.join(" ");
 }

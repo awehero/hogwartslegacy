@@ -12,11 +12,11 @@ function startAutoScroll(y) {
     clearInterval(scrollInterval);
     if (y < rect.top + edge) {
         scrollInterval = setInterval(() => {
-            routeContainer.scrollTop -= speed;
+            routeContainer.scrollTop -= scrollSpeed;
         }, 16);
     } else if (y > rect.bottom - edge) {
         scrollInterval = setInterval(() => {
-            routeContainer.scrollTop += speed;
+            routeContainer.scrollTop += scrollSpeed;
         }, 16);
     }
 }
