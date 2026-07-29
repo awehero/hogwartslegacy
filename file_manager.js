@@ -97,7 +97,7 @@ function buildNotes(save) {
         if (s.numbered) {
             line += `${index + 1}. `;
         }
-        line += itm.custom || itm.path;
+        line += itm.name || itm.path;
         text += line + "\n";
         if (itm.notes) {
             if (s.showNotesLabel) {
