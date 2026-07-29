@@ -44,6 +44,8 @@ function buildLibrary(data, name, path = "") {
             <div class="routeBlockName">${displayName}</div>
             <div class="routeBlockNotes"></div>
             <div class="routeBlockDuration"></div>
+            <div class="routeBlockXp"></div>
+            <div class="routeBlockGold"></div>
         </button>
         `;
     }

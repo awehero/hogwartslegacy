@@ -2,12 +2,22 @@
 
 function updateOverview() {
     let route = currentSave.route;
-    let total = 0;
+    let totalD = 0;
+    let totalX = 0;
+    let totalG = 0;
     route.forEach(itm => {
         if (itm.duration) {
-            total += Number(itm.duration);
+            totalD += Number(itm.duration);
+        }
+        if (itm.xp) {
+            totalX += Number(itm.xp);
+        }
+        if (itm.gold) {
+            totalG += Number(itm.gold);
         }
     });
-    totalDuration.innerText = formatDuration(total);
+    totalDuration.innerText = formatDuration(totalD);
+    totalXp.innerText = totalX;
+    totalGold.innerText = totalG;
 }
 updateOverview();

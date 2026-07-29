@@ -24,7 +24,15 @@ function importRoute(save) {
         durationEl.className = "routeBlockDuration";
         durationEl.textContent = item.duration ? formatDuration(item.duration) : "";
 
-        el.append(nameEl, notesEl, durationEl);
+        const xpEl = document.createElement("div");
+        xpEl.className = "routeBlockXp";
+        xpEl.textContent = item.xp ? item.xp : "";
+
+        const goldEl = document.createElement("div");
+        goldEl.className = "routeBlockGold";
+        goldEl.textContent = item.gold ? item.gold : "";
+
+        el.append(nameEl, notesEl, durationEl, xpEl, goldEl);
         routeContainer.appendChild(el);
     });
     currentId = save.id;

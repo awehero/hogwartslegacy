@@ -488,6 +488,14 @@ button {
     padding-left: 1vw;
     font-size: small;
 }
+.routeBlockXp {
+    padding-left: 1vw;
+    font-size: small;
+}
+.routeBlockGold {
+    padding-left: 1vw;
+    font-size: small;
+}
 #notes {
     resize: none;
 }

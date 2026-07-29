@@ -4,7 +4,6 @@
 //blank lines after each note? slider?
 //display prefixes like quest - ?
 //scroll speed
-//display time on block?
 //newBlankBlock code
 
 

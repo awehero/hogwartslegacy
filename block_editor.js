@@ -9,6 +9,10 @@ function openBlockEditor(block) {
     <textarea id="notes" rows="4"></textarea>
     <label>Duration (s)</label>
     <input id="duration" type="number">
+    <label>XP</label>
+    <input id="xp" type="number">
+    <label>Gold</label>
+    <input id="gold" type="number">
     <button id="splitBtn">Split</button>
     <button id="deleteBtn" style="margin-top:10px;background:#a33;color:white;">Delete</button>
     `;
@@ -16,10 +20,14 @@ function openBlockEditor(block) {
     const notes = document.getElementById("notes");
     const name = document.getElementById("name");
     const duration = document.getElementById("duration");
+    const xp = document.getElementById("xp");
+    const gold = document.getElementById("gold");
 
     notes.value = block.dataset.notes || "";
     name.value = [...block.children].find(el => el.classList.contains("routeBlockName")).innerText;
     duration.value = block.dataset.duration || "";
+    xp.value = block.dataset.xp || "";
+    gold.value = block.dataset.gold || "";
 
     notes.oninput = () => {
         block.dataset.notes = notes.value;
@@ -36,6 +44,18 @@ function openBlockEditor(block) {
     duration.oninput = () => {
         block.dataset.duration = duration.value;
         [...block.children].find(el => el.classList.contains("routeBlockDuration")).innerText = formatDuration(duration.value);
+        somethingChanged();
+    };
+
+    xp.oninput = () => {
+        block.dataset.xp = xp.value;
+        [...block.children].find(el => el.classList.contains("routeBlockXp")).innerText = xp.value;
+        somethingChanged();
+    };
+
+    gold.oninput = () => {
+        block.dataset.gold = gold.value;
+        [...block.children].find(el => el.classList.contains("routeBlockGold")).innerText = gold.value;
         somethingChanged();
     };
 

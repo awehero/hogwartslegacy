@@ -144,6 +144,8 @@ function renderSearchResults(search) {
             <div class="routeBlockName">${path}</div>
             <div class="routeBlockNotes"></div>
             <div class="routeBlockDuration"></div>
+            <div class="routeBlockXp"></div>
+            <div class="routeBlockGold"></div>
         </button>
         `;
     });
