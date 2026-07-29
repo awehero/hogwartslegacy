@@ -1,6 +1,7 @@
 // overview_manager.js
 
 function updateOverview() {
+    if (!currentSave) return;
     let route = currentSave.route;
     let totalD = 0;
     let totalX = 0;
