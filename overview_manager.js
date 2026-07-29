@@ -18,7 +18,7 @@ function updateOverview() {
         }
     });
     totalDuration.innerText = formatDuration(totalD);
-    totalXp.innerText = totalX;
-    totalGold.innerText = totalG;
+    totalXp.innerText = formatXp(totalX);
+    totalGold.innerText = formatGold(totalG);
 }
 updateOverview();

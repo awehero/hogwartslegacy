@@ -38,3 +38,11 @@ function formatDuration(s) {
     if (s) parts.push(`${s}s`);
     return parts.join(" ");
 }
+
+function formatXp(XP) {
+    return XP + " XP";
+}
+
+function formatGold(Gold) {
+    return Gold + " Gold";
+}

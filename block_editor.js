@@ -49,13 +49,13 @@ function openBlockEditor(block) {
 
     xp.oninput = () => {
         block.dataset.xp = xp.value;
-        [...block.children].find(el => el.classList.contains("routeBlockXp")).innerText = xp.value;
+        [...block.children].find(el => el.classList.contains("routeBlockXp")).innerText = formatXp(xp.value);
         somethingChanged();
     };
 
     gold.oninput = () => {
         block.dataset.gold = gold.value;
-        [...block.children].find(el => el.classList.contains("routeBlockGold")).innerText = gold.value;
+        [...block.children].find(el => el.classList.contains("routeBlockGold")).innerText = formatGold(gold.value);
         somethingChanged();
     };
 

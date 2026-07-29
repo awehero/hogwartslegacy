@@ -26,11 +26,11 @@ function importRoute(save) {
 
         const xpEl = document.createElement("div");
         xpEl.className = "routeBlockXp";
-        xpEl.textContent = item.xp ? item.xp : "";
+        xpEl.textContent = item.xp ? formatXp(item.xp) : "";
 
         const goldEl = document.createElement("div");
         goldEl.className = "routeBlockGold";
-        goldEl.textContent = item.gold ? item.gold : "";
+        goldEl.textContent = item.gold ? formatGold(item.gold) : "";
 
         el.append(nameEl, notesEl, durationEl, xpEl, goldEl);
         routeContainer.appendChild(el);
