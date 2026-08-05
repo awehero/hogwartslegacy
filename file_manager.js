@@ -176,7 +176,7 @@ permanentDelete.onclick = function() {
         if (saves[previousId]) {
             importRoute(saves[previousId]);
         } else {
-            newRoute();
+            openRoutesMenu(true);
         }
         permanentDelete.dataset.previousId = "";
         permanentDelete.dataset.deleteId = "";
