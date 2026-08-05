@@ -27,7 +27,7 @@ let scrollSpeed = 12;
 
 function formatDuration(s) {
     s = Number(s);
-    if (!s) return "";
+    if (!s) return "0s";
     let h = Math.floor(s/3600);
     s -= h*3600;
     let m = Math.floor(s/60);
