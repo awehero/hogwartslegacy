@@ -83,6 +83,7 @@ function autosave() {
 function somethingChanged() {
     updateLibraryBlocks();
     validateRoute();
+    saveSettings();
     autosave();
     if (typeof updateOverview == "function") updateOverview();
     if (routesMenu.style.display == "flex") displayRoutes();

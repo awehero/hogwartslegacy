@@ -73,3 +73,7 @@ document.addEventListener("keydown", (e) => {
         }
     }
 });
+
+function saveSettings() {
+    localStorage.setItem("routeSettings", JSON.stringify(settings));
+}
