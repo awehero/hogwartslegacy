@@ -64,7 +64,33 @@ document.addEventListener("keydown", (e) => {
     }
     if (e.key === settings.shortcuts.newBlankBlockKey) {
         e.preventDefault();
-        //somethingChanged();
+        let thing = document.createElement("button");
+        thing.className = "libraryBlock";
+        thing.setAttribute("data-name", "Blank");
+        thing.setAttribute("data-path", "Custom - Blank");
+        thing.setAttribute("data-repeatable", "true");
+        thing.setAttribute("data-split", "false");
+        thing.setAttribute("draggable", "false");
+        thing.setAttribute("data-instance-id", makeId());
+        thing.setAttribute("data-split-parent", "");
+        thing.setAttribute("data-split-index", "0");
+
+        // 3. Inject the inner HTML structure
+        thing.innerHTML = `
+            <div class="routeBlockName"></div>
+            <div class="routeBlockNotes"></div>
+            <div class="routeBlockDuration"></div>
+            <div class="routeBlockXp"></div>
+            <div class="routeBlockGold"></div>
+        `;
+        if (selectedRouteBlock != null) {
+            selectedRouteBlock.after(thing);
+        } else {
+            routeContainer.appendChild(thing);
+        }
+        somethingChanged();
+        thing.click();
+        document.getElementById("name").focus();
     }
     if (e.key === settings.shortcuts.deleteBlockKey) {
         e.preventDefault();
