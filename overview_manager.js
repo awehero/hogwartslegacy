@@ -22,3 +22,6 @@ function updateOverview() {
     totalGold.innerText = formatGold(totalG);
 }
 updateOverview();
+if (Object.values(getAllSaves()).length == 0) {
+    alert("New? Click the ? to watch the tutorial video.");
+}
