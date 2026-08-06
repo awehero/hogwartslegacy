@@ -12,7 +12,6 @@ const settingsHeader = document.getElementById("settingsHeader");
 const popupBtn = document.getElementById("popupBtn");
 const closePopupBtn = document.getElementById("closePopupBtn");
 const helpBtn = document.getElementById("helpBtn");
-const closeEditorBtn = document.getElementById("closeEditorBtn");
 const routesDisplay = document.getElementById("routesDisplay");
 const routesMenu = document.getElementById("routesMenu");
 const settingsMenu = document.getElementById("settingsMenu");

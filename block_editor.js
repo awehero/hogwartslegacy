@@ -15,6 +15,7 @@ function openBlockEditor(block) {
     <input id="gold" type="number">
     <button id="splitBtn">Split</button>
     <button id="deleteBtn" style="margin-top:10px;background:#a33;color:white;">Delete</button>
+    <button id="closeBtn">Close</button>
     `;
 
     const notes = document.getElementById("notes");
@@ -78,18 +79,16 @@ function openBlockEditor(block) {
         blockEditor.innerHTML = "Select a route block";
         somethingChanged();
     };
-    closeEditorBtn.style.display = "inline-block";
+    
+    document.getElementById("closeBtn").onclick = function() {
+        document.querySelectorAll(".routeSelected").forEach(el => {
+            el.classList.remove("routeSelected");
+        });
+        selectedRouteBlock = null;
+        blockEditor.innerHTML = "Select a route block";
+        somethingChanged();
+    };
 }
-
-closeEditorBtn.onclick = function() {
-    document.querySelectorAll(".routeSelected").forEach(el => {
-        el.classList.remove("routeSelected");
-    });
-    selectedRouteBlock = null;
-    blockEditor.innerHTML = "Select a route block";
-    closeEditorBtn.style.display = "none";
-    somethingChanged();
-};
 
 routeContainer.addEventListener("click", e => {
     const block = e.target.closest(".libraryBlock");
