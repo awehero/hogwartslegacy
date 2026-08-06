@@ -254,8 +254,48 @@ document.getElementById("importRouteBtn").onclick = function() {
     loadFiles(".json", 79, texts => {
         texts.forEach(text => {
             let save = JSON.parse(text);
+            if (!isValidRouteSave(save)) {
+                alert("Invalid route file.");
+                return;
+            }
             localStorage.setItem("route_" + save.id, JSON.stringify(save));
         });
+        somethingChanged();
+    });
+};
+document.getElementById("importEverything").onclick = function() {
+    loadFiles(".json", 1, text => {
+        let data;
+        try {
+            data = JSON.parse(text);
+        } catch {
+            alert("Invalid JSON file.");
+            return;
+        }
+        if (!isValidSettings(data.settings)) {
+            alert("Invalid settings data in file.");
+            return;
+        }
+        if (!data.saves || typeof data.saves !== "object") {
+            alert("Invalid saves data in file.");
+            return;
+        }
+        for (const id in data.saves) {
+            const save = data.saves[id];
+            if (!isValidRouteSave(save)) {
+                alert(`Invalid route save: ${id}`);
+                return;
+            }
+            if (!save.route.every(isValidRouteItem)) {
+                alert(`Invalid route items in save: ${id}`);
+                return;
+            }
+        }
+        settings = data.settings;
+        localStorage.setItem("routeSettings", JSON.stringify(settings));
+        for (const id in data.saves) {
+            localStorage.setItem("route_" + id, JSON.stringify(data.saves[id]));
+        }
         somethingChanged();
     });
 };
@@ -282,4 +322,22 @@ document.getElementById("exportEverything").onclick = function() {
         "application/json"
     );
 };
+function isValidRouteSave(obj) {
+    return obj &&
+        typeof obj.id === "string" &&
+        typeof obj.title === "string" &&
+        Array.isArray(obj.route);
+}
+function isValidSettings(obj) {
+    if (!obj || typeof obj !== "object") return false;
+    if (!obj.notes || typeof obj.notes !== "object") return false;
+
+    return true;
+}
+function isValidRouteItem(item) {
+    if (!item || typeof item !== "object") return false;
+    if (typeof item.position !== "number") return false;
+    if (!item.name && !item.path) return false;
+    return true;
+}
 openRoutesMenu(true);

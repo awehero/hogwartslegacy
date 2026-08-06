@@ -47,6 +47,10 @@ function displayRoutes() {
     let sorted = Object.values(getAllSaves()).sort((a, b) => b.timestamp - a.timestamp);
     let html = "";
     sorted.forEach(save => {
+        if (!save || !Array.isArray(save.route)) {
+            console.warn("Skipping corrupted save:", save);
+            return;
+        }
         html += `
         <div class="routeDisplayContainer">
             <div class="routeDisplayLeft">
