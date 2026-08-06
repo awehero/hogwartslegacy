@@ -78,7 +78,18 @@ function openBlockEditor(block) {
         blockEditor.innerHTML = "Select a route block";
         somethingChanged();
     };
+    closeEditorBtn.style.display = "inline-block";
 }
+
+closeEditorBtn.onclick = function() {
+    document.querySelectorAll(".routeSelected").forEach(el => {
+        el.classList.remove("routeSelected");
+    });
+    selectedRouteBlock = null;
+    blockEditor.innerHTML = "Select a route block";
+    closeEditorBtn.style.display = "none";
+    somethingChanged();
+};
 
 routeContainer.addEventListener("click", e => {
     const block = e.target.closest(".libraryBlock");
