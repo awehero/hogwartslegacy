@@ -276,6 +276,24 @@ button {
 #closeEditorBtn:hover {
     background-color: rgba(0, 0, 0, 0.3);
 }
+#helpBtn {
+    position: absolute;
+    left: 5vw;
+    bottom: 11vh;
+    height: 10vh;
+    width: 10vh;
+    display: inline-block;
+    border-radius: 100%;
+    font-size: xx-large;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: cursive;
+}
+#helpBtn:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
 #popupBtn {
     position: absolute;
     bottom: 3vh;

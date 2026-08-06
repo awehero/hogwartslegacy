@@ -75,6 +75,9 @@ popupBtn.onclick = function() {
 closePopupBtn.onclick = function() {
     closePopup();
 };
+helpBtn.onclick = function() {
+    window.open('https://www.youtube.com/watch?v=TK7JDincm0E', '_blank');
+};
 routesHeader.onclick = function() {
     openRoutesMenu();
 };
