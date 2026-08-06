@@ -296,19 +296,6 @@ document.getElementById("importEverything").onclick = function() {
         for (const id in data.saves) {
             localStorage.setItem("route_" + id, JSON.stringify(data.saves[id]));
         }
-        somethingChanged();//hi
-    });
-};
-document.getElementById("importEverything").onclick = function() {
-    loadFiles(".json", 1, text => {
-        let data = JSON.parse(text);
-        settings = data.settings;
-        let saves = data.saves;
-        localStorage.setItem("routeSettings", JSON.stringify(settings));
-        for (const id in saves) {
-            const route = saves[id];
-            localStorage.setItem("route_" + id, JSON.stringify(route));
-        }
         somethingChanged();
     });
 };
