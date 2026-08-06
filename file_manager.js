@@ -298,7 +298,7 @@ document.getElementById("importEverything").onclick = function() {
         }
         somethingChanged();
     });
-};
+};//hi
 document.getElementById("exportEverything").onclick = function() {
     let store = {};
     store.settings = JSON.parse(localStorage.getItem("routeSettings"));
