@@ -296,7 +296,7 @@ document.getElementById("importEverything").onclick = function() {
         for (const id in data.saves) {
             localStorage.setItem("route_" + id, JSON.stringify(data.saves[id]));
         }
-        somethingChanged();
+        somethingChanged();//hi
     });
 };
 document.getElementById("importEverything").onclick = function() {
