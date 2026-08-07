@@ -252,14 +252,20 @@ routeTitle.onchange=()=>{
 };
 document.getElementById("importRouteBtn").onclick = function() {
     loadFiles(".json", 79, texts => {
-        texts.forEach(text => {
-            let save = JSON.parse(text);
+        for (const text of texts) {
+            let save;
+            try {
+                save = JSON.parse(text);
+            } catch {
+                alert("Invalid JSON file.");
+                return;
+            }
             if (!isValidRouteSave(save)) {
                 alert("Invalid route file.");
                 return;
             }
             localStorage.setItem("route_" + save.id, JSON.stringify(save));
-        });
+        }
         somethingChanged();
     });
 };
@@ -292,6 +298,7 @@ document.getElementById("importEverything").onclick = function() {
             }
         }
         settings = data.settings;
+        setSettings();
         localStorage.setItem("routeSettings", JSON.stringify(settings));
         for (const id in data.saves) {
             localStorage.setItem("route_" + id, JSON.stringify(data.saves[id]));
@@ -310,20 +317,19 @@ document.getElementById("exportEverything").onclick = function() {
     );
 };
 function isValidRouteSave(obj) {
-    return obj &&
-        typeof obj.id === "string" &&
-        typeof obj.title === "string" &&
-        Array.isArray(obj.route);
-}
-function isValidSettings(obj) {
     if (!obj || typeof obj !== "object") return false;
-    if (!obj.notes || typeof obj.notes !== "object") return false;
-
+    if (typeof obj.id !== "string") return false;
+    if (typeof obj.title !== "string") return false;
+    if (!Array.isArray(obj.route)) return false;
+    for (const item of obj.route) {
+        if (!isValidRouteItem(item)) return false;
+    }
     return true;
 }
 function isValidRouteItem(item) {
     if (!item || typeof item !== "object") return false;
-    if (typeof item.position !== "number") return false;
+    if (item.position === undefined) return false;
+    if (isNaN(Number(item.position))) return false;
     if (!item.name && !item.path) return false;
     return true;
 }

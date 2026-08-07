@@ -6,39 +6,75 @@
 //scroll speed
 //newBlankBlock code
 
+const SETTINGS_SCHEMA = {
+    notes: {
+        numberStyle: ".",
+        blankLines: 1,
+        showNotesLabel: true,
+        pathStyle: " - ",
+        pathOptions: "Full",
+        titleSpacing: 2,
+        showRouteTitle: true,
+        notesFormat: "New Line",
+        notesFormatNewLinePrefix: "    - "
+    },
+    editor: {
+        scrollSpeed: false,
+        showDurations: true,
+        showNotes: true,
+        displayPrefixes: true,
+        durationDisplayStyle: true
+    },
+    shortcuts: {
+        jumpToSearchKey: "/",
+        emptySearchOnJump: true,
+        emptySearchKey: ".",
+        newBlankBlockKey: "b",
+        deleteBlockKey: "Delete"
+    }
+};
 
 settings = JSON.parse(localStorage.getItem("routeSettings") || '{}');
-
-function setting(path, defaultValue) {
-    let obj = settings;
-    for (let i = 0; i < path.length - 1; i++) {
-        obj[path[i]] ??= {};
-        obj = obj[path[i]];
-    }
-    obj[path.at(-1)] ??= defaultValue;
+if (!validateSettingsAgainstSchema(settings, SETTINGS_SCHEMA)) {
+    console.warn("Corrupted settings detected, resetting.");
+    settings = JSON.parse(JSON.stringify(SETTINGS_SCHEMA));
+} else {
+    applySettingsDefaults(settings, SETTINGS_SCHEMA);
 }
 
-setting(["notes", "numberStyle"], ".");
-setting(["notes", "blankLines"], 1);
-setting(["notes", "showNotesLabel"], true);
-setting(["notes", "pathStyle"], " - ");
-setting(["notes", "pathOptions"], "Full");
-setting(["notes", "titleSpacing"], 2);
-setting(["notes", "showRouteTitle"], true);
-setting(["notes", "notesFormat"], "New Line");
-setting(["notes", "notesFormatNewLinePrefix"], "    - ");
-setting(["editor", "scrollSpeed"], false);
-setting(["editor", "showDurations"], true);
-setting(["editor", "showNotes"], true);
-setting(["editor", "displayPrefixes"], true);
-setting(["editor", "durationDisplayStyle"], true);
-setting(["notes", "pathStyle"], " - ");
-setting(["notes", "pathOptions"], "Full");
-setting(["shortcuts", "jumpToSearchKey"], "/");
-setting(["shortcuts", "emptySearchOnJump"], true);
-setting(["shortcuts", "emptySearchKey"], ".");
-setting(["shortcuts", "newBlankBlockKey"], "b");
-setting(["shortcuts", "deleteBlockKey"], "Delete");
+function saveSettings() {
+    if (!validateSettingsAgainstSchema(settings, SETTINGS_SCHEMA)) {
+        console.warn("Refusing to save corrupted settings:", settings);
+        return;
+    }
+    localStorage.setItem("routeSettings", JSON.stringify(settings));
+}
+
+function validateSettingsAgainstSchema(target, schema) {
+    for (const key in schema) {
+        const expected = schema[key];
+        const actual = target[key];
+        if (typeof expected === "object" && !Array.isArray(expected)) {
+            if (typeof actual !== "object" || actual === null) return false;
+            if (!validateSettingsAgainstSchema(actual, expected)) return false;
+        } else {
+            if (typeof actual !== typeof expected) return false;
+        }
+    }
+    return true;
+}
+
+function applySettingsDefaults(target, schema) {
+    for (const key in schema) {
+        const expected = schema[key];
+        if (typeof expected === "object" && !Array.isArray(expected)) {
+            target[key] ??= {};
+            applySettingsDefaults(target[key], expected);
+        } else {
+            target[key] ??= expected;
+        }
+    }
+}
 
 document.addEventListener("keydown", (e) => {
     const active = document.activeElement;
@@ -99,7 +135,3 @@ document.addEventListener("keydown", (e) => {
         }
     }
 });
-
-function saveSettings() {
-    localStorage.setItem("routeSettings", JSON.stringify(settings));
-}
