@@ -54,10 +54,13 @@ function validateSettingsAgainstSchema(target, schema) {
     for (const key in schema) {
         const expected = schema[key];
         const actual = target[key];
+        if (actual === undefined) continue;
+        
         if (typeof expected === "object" && !Array.isArray(expected)) {
             if (typeof actual !== "object" || actual === null) return false;
             if (!validateSettingsAgainstSchema(actual, expected)) return false;
-        } else {
+        }
+        else {
             if (typeof actual !== typeof expected) return false;
         }
     }
