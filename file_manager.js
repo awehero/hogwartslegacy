@@ -278,7 +278,7 @@ document.getElementById("importEverything").onclick = function() {
             alert("Invalid JSON file.");
             return;
         }
-        if (!isValidSettings(data.settings)) {
+        if (!validateSettingsAgainstSchema(data.settings, SETTINGS_SCHEMA)) {
             alert("Invalid settings data in file.");
             return;
         }
@@ -298,8 +298,9 @@ document.getElementById("importEverything").onclick = function() {
             }
         }
         settings = data.settings;
-        setSettings();
+        applySettingsDefaults(settings, SETTINGS_SCHEMA);
         localStorage.setItem("routeSettings", JSON.stringify(settings));
+
         for (const id in data.saves) {
             localStorage.setItem("route_" + id, JSON.stringify(data.saves[id]));
         }
